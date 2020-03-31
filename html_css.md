@@ -76,6 +76,31 @@
 ![](https://i.imgur.com/PlEtZ8F.jpg)
 
 
+## Day 6~10: React
+
+## React
+
+> 在學習的過程中，請特別注意以下觀念
+- React LifeCycle
+- React function component, class component
+- React Context API
+- React Hooks
+    - useState
+    - useEffect
+    - useMemo/useCallback
+    - Custom Hook
+
+### Basic Concept
+- [Basic Concept](https://reactjs.org/docs/hello-world.html)
+
+### Hook
+- [Hook Intro](https://reactjs.org/docs/hooks-intro.html)
+
+### 作業： 請使用到目前為止所學的全部技能，做一個TODO LIST 出來
+
+![https://medium.com/@walkccc/build-a-todo-list-app-with-react-hooks-and-context-a7f8e9f158af](https://miro.medium.com/max/1400/1*vWsA0iGmSrCyNmYgqtYdOw.png)
+
+
 ### 其他參考
 
 ### 30個你必須記住的CSS選擇器
@@ -92,6 +117,8 @@ http://www.flexboxdefense.com
 
 ### Flex Pirate 擊倒海盜 (六角學院)
 https://w3c.hexschool.com/flexbox/cc1c1b71
+
+
 
 
 

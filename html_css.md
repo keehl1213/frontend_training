@@ -75,6 +75,22 @@
 
 ![](https://i.imgur.com/PlEtZ8F.jpg)
 
+### 其他參考
+
+### 30個你必須記住的CSS選擇器
+https://code.tutsplus.com/zh-hant/tutorials/the-30-css-selectors-you-must-memorize--net-16048
+### CSS 專家密技
+https://github.com/AllThingsSmitty/css-protips/tree/master/translations/zh-TW
+
+## Flex
+支援度：https://caniuse.com/#search=flex  
+教學：http://www.oxxostudio.tw/articles/201501/css-flexbox.html
+
+### Flexbox Defense 
+http://www.flexboxdefense.com
+
+### Flex Pirate 擊倒海盜 (六角學院)
+https://w3c.hexschool.com/flexbox/cc1c1b71
 
 ## Day 6~10: React
 
@@ -96,27 +112,16 @@
 ### Hook
 - [Hook Intro](https://reactjs.org/docs/hooks-intro.html)
 
+### 串接API
+- [使用Json-server模擬API，並使用Axios呼叫API](https://fullstackopen.com/en/part2/getting_data_from_server)
+> 注意：文章中使用Promise，請試著將它轉換成async/await
+
 ### 作業： 請使用到目前為止所學的全部技能，做一個TODO LIST 出來
 
 ![https://medium.com/@walkccc/build-a-todo-list-app-with-react-hooks-and-context-a7f8e9f158af](https://miro.medium.com/max/1400/1*vWsA0iGmSrCyNmYgqtYdOw.png)
 
 
-### 其他參考
 
-### 30個你必須記住的CSS選擇器
-https://code.tutsplus.com/zh-hant/tutorials/the-30-css-selectors-you-must-memorize--net-16048
-### CSS 專家密技
-https://github.com/AllThingsSmitty/css-protips/tree/master/translations/zh-TW
-
-## Flex
-支援度：https://caniuse.com/#search=flex  
-教學：http://www.oxxostudio.tw/articles/201501/css-flexbox.html
-
-### Flexbox Defense 
-http://www.flexboxdefense.com
-
-### Flex Pirate 擊倒海盜 (六角學院)
-https://w3c.hexschool.com/flexbox/cc1c1b71
 
 
 

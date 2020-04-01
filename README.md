@@ -15,5 +15,9 @@
 * [Atom](https://atom.io/)
 
 ## 時程
-
+- javascript    3d
+- html & css    2d
+- react         5d   
 ## 執行方式
+
+gitlab 開學員專屬資料夾,屬於每個學員的分支做開發,開發完發mr回來

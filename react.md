@@ -35,6 +35,17 @@
 ![https://medium.com/@walkccc/build-a-todo-list-app-with-react-hooks-and-context-a7f8e9f158af](https://miro.medium.com/max/1400/1*vWsA0iGmSrCyNmYgqtYdOw.png)
 
 
+#### 檢核項目
+- 樣式要與畫面一致
+- 在Input 輸入後 按 Enter 後新增項目
+- Input 沒有輸入文字時，需要顯示文字(placeholder)，Add your task here…
+- 預設顯示沒有被刪除的項目
+- 每頁3筆資料，要顯示 `目前頁數/總頁數`
+- 當沒有上一頁/下一頁時，該文字反灰
+- 當 show deleted items 打勾時，顯示所有項目
+- 滑鼠移到項目上 該項目背景需反灰
+- 滑鼠移到項目上 後方出現 刪除符號
+- 被刪除的項目需要 文字上要畫刪除線
 
 
 

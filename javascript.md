@@ -1,5 +1,6 @@
 # Javascript
 
+
 ### ES5
 - [JavaScript 標準參考教程](http://javascript.ruanyifeng.com/)
 - [JS Introduction](https://hackmd.io/GYVgLARgjMUMYFoBMAGA7ANgWNKAmCAhhiikWAKZggUYUCceIEQA)
@@ -16,11 +17,15 @@
 ### ES6、ES7、ES8、ES9、ES10
 [特性一覽表](https://juejin.im/post/5ca2e1935188254416288eb2)
 
+### JS course (69minutes)
+
+- [online video](https://scrimba.com/g/gintrotojavascript)
+
 ### JS training game
 - [codecademy](https://www.codecademy.com/learn/introduction-to-javascript)(先完成這個)
-- [code wars](https://www.codewars.com/trainer/setup)
+- [code wars](https://www.codewars.com/trainer/setup)(junior部分)
 
-### Home work
+### Home work (是否要出作業還是完成codecadmy?)
 
 - concat
 ```
@@ -128,7 +133,7 @@ jack
     }
   ]
   
-  利用reduce 
+  利用reduce 將相同的projectCode 提取出成一個新的object 如下  
   
   [
       {

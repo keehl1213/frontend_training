@@ -9,11 +9,7 @@
     "dist": "npm run clean && webpack --mode production --config webpack.config.js",
     "deploy": "npm run dist && gh-pages -d dist",
     "build:docker": "npm run dist && docker build -t reactdocker .",
-    "lint": "eslint ./src --quiet",
-    "test": "jest --config=jest.config.json --coverage",
-    "test:f": "jest --detectOpenHandles --config=jest.config.json",
-    "test:fw": "jest --coverage --watch --detectOpenHandles --config=jest.config.json",
-    "analysis": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json"
+    "lint": "eslint ./src --quiet"
   },
   "husky": {
     "hooks": {

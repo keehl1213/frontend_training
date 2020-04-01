@@ -36,7 +36,7 @@
 
 
 #### 檢核項目
-- 樣式要與畫面一致
+- 樣式要與畫面一致，不允許放圖片
 - 在Input 輸入後 按 Enter 後新增項目
 - Input 沒有輸入文字時，需要顯示文字(placeholder)，Add your task here…
 - 預設顯示沒有被刪除的項目

@@ -12,6 +12,13 @@
         * ESLint
         * Live Server
 
+## 課程連結
+
+- [Java Script](https://gitlab.devpack.cc/Jasonyen_Chang/frontend_training/blob/master/javascript.md)
+- [Html](https://gitlab.devpack.cc/Jasonyen_Chang/frontend_training/blob/master/html.md)
+- [CSS](https://gitlab.devpack.cc/Jasonyen_Chang/frontend_training/blob/master/css.md)
+- [React JS](https://gitlab.devpack.cc/Jasonyen_Chang/frontend_training/blob/master/react.md)
+
 ## 時程
 
 |課程       |後端     |前端(全部)| 前端(有其他前端經驗)|

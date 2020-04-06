@@ -41,6 +41,8 @@
 ![https://medium.com/@walkccc/build-a-todo-list-app-with-react-hooks-and-context-a7f8e9f158af](https://gitlab.devpack.cc/Jasonyen_Chang/frontend_training/raw/master/react_todolist.png)
 
 #### 檢核項目
+- 請使用 functional component及hook概念來實作
+- 請試著拆分出component
 - 樣式要與畫面一致，不允許放圖片
 - Input 沒有輸入文字時，需要顯示文字(placeholder)，Add your task here…
 - 預設顯示尚未完成的項目

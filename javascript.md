@@ -1,4 +1,8 @@
 # Javascript
+> 學習目標  
+> - 常用語法
+> - Functional Programming - Array
+> - promise, async/await
 
 ### JS course (69minutes)
 

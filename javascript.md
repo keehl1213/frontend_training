@@ -35,6 +35,6 @@
 
 ## training test
 
-[Test](https://hackmd.io/b7EZxyS3TbebMbbVc_N6Rg)
+[Test](https://hackmd.io/b7EZxyS3TbebMbbVc_N6Rg) 請實作1 ~ 5 
 
 [codesandbox](https://codesandbox.io/dashboard/recent)

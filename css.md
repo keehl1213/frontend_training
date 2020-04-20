@@ -17,7 +17,8 @@
 - [Flexbox Froggy 小遊戲學習 flexbox](http://flexboxfroggy.com/)
 
 ### 作業：切版
-<img src="https://i.imgur.com/PlEtZ8F.jpg" alt="drawing" width="400"/>
+<img src="https://i.imgur.com/tnpW34m.jpg" alt="drawing1" width="400">
+<img src="https://i.imgur.com/PlEtZ8F.jpg" alt="drawing2" width="400"/>
 
 ### 其他參考
 [Chrome DevTools for CSS](https://www.youtube.com/watch?v=Z3HGJsNLQ1E)

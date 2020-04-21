@@ -10,19 +10,15 @@ body {
     background-color: lightgray;
 }
 
-header {
+header ul {
     display: flex;
     justify-content: center;
-}
-
-.nav {
-    display: flex;
-    flex-direction: row;
+    align-items: center;
 }
 
 .nav>li {
     display: flex;
-    margin: 20px;
+    margin: 10px;
 }
 
 .title {
@@ -96,34 +92,47 @@ title div {
     background-color: gray;
 }
 
+.section{
+    width: 400px;
+    height: 200px;
+}
+
+.section_title_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
 .section_div {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-content: center;
-    width: 400px;
-    height: 200px;
 }
 
-.section_content_div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    width: 400px;
-    height: 200px;
-    margin: 2px;
+.section_div_margin {
+    margin: 4px;
 }
 
-.kitchen {
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.section_content_div>div {
-    margin: 2px;
-    width: 33%;
+.section_div>div {
     height: 100%;
+}
+
+.left_div {
+    margin-right: 4px;
+}
+
+.right_div {
+    margin-left: 4px;
+}
+
+.kitchen_left_div {
+    margin-right: 4px;
+}
+
+.kitchen_right_div {
+    margin-left: 4px;
 }
 
 .left_div img {
@@ -138,11 +147,11 @@ title div {
 
 .mid_div div {
     width: 100%;
-    height: 48%;
+    height: calc(50% - 2px);
 }
 
-.pic_space_div{
-    height: 4%;
+.mid_div_margin {
+    margin-bottom: 4px;
 }
 
 .mid_div img {
@@ -152,12 +161,13 @@ title div {
 
 .right_up_div {
     width: 100%;
-    height: 28%;
+    height: 30%;
+    margin-bottom: 4px;
 }
 
 .right_down_div {
     width: 100%;
-    height: 68%;
+    height: 70%;
 }
 
 .right_div img {
@@ -168,5 +178,46 @@ title div {
 .right_div {
     display: flex;
     flex-direction: column;
-    align-content: space-between
+}
+
+.kitchen_mid_div img {
+    width: 100%;
+    height: 100%;
+}
+
+.kitchen_right_div {
+    display: flex;
+    flex-direction: column;
+}
+
+.kitchen_right_div>div {
+    width: 100%;
+    height: calc(50% - 2px);
+}
+
+.kitchen_right_div img {
+    width: 100%;
+    height: 100%;
+}
+
+.left_up_div {
+    width: 100%;
+    height: 30%;
+    margin-bottom: 4px;
+}
+
+.left_down_div {
+    width: 100%;
+    height: 70%;
+}
+
+.kitchen_left_div img {
+    width: 100%;
+    height: 100%;
+}
+
+.kitchen_left_div {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
 }

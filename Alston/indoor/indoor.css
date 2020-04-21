@@ -10,7 +10,7 @@ body {
     background-color: lightgray;
 }
 
-header ul {
+.nav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -127,11 +127,11 @@ title div {
     margin-left: 4px;
 }
 
-.kitchen_left_div {
+.reverse_left_div {
     margin-right: 4px;
 }
 
-.kitchen_right_div {
+.reverse_right_div {
     margin-left: 4px;
 }
 
@@ -180,22 +180,22 @@ title div {
     flex-direction: column;
 }
 
-.kitchen_mid_div img {
+.reverse_mid_div img {
     width: 100%;
     height: 100%;
 }
 
-.kitchen_right_div {
+.reverse_right_div {
     display: flex;
     flex-direction: column;
 }
 
-.kitchen_right_div>div {
+.reverse_right_div>div {
     width: 100%;
     height: calc(50% - 2px);
 }
 
-.kitchen_right_div img {
+.reverse_right_div img {
     width: 100%;
     height: 100%;
 }
@@ -211,12 +211,12 @@ title div {
     height: 70%;
 }
 
-.kitchen_left_div img {
+.reverse_left_div img {
     width: 100%;
     height: 100%;
 }
 
-.kitchen_left_div {
+.reverse_left_div {
     display: flex;
     flex-direction: column;
     align-content: space-between;

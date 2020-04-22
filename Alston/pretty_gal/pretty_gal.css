@@ -3,15 +3,44 @@ body {
 }
 
 header {
-    background-color: #494748;
-    height: 85px;
-}
-
-header ul {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    background-color: #494748;
+    height: 85px;
+}
+
+header li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    height: 25%;
+}
+
+.shop_bag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+
+.shop_bag div{
+    height: 100%;
+}
+
+.shop_bag img {
+    height: 100%;
+}
+
+.shop_num {
+    position: absolute;
+    top:5%;
+    color: white;
+    font-size: 7px;
 }
 
 .header_item {

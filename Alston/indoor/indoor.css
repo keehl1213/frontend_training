@@ -51,11 +51,12 @@ header p{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .shop_num{
     position: absolute;
-    top: -25.5%;
+    top: 20%;
 }
 
 .title {
@@ -176,6 +177,39 @@ h5 {
 
 .reverse_right_div {
     margin-left: 4px;
+}
+
+.sale_section{
+    position: relative;
+}
+
+.on_sale_div div:nth-child(2){
+    
+    height: 100%;
+}
+
+.on_sale{
+    background-color: #759ba4;
+    position: absolute;
+    color: white;
+    font-size: 10px;
+    width: 40%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new_sale{
+    background-color: #759ba4;
+    position: absolute;
+    color: white;
+    font-size: 10px;
+    width: 20%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .left_div img {

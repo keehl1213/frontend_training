@@ -10,15 +10,25 @@ body {
     background-color: #ebecee;
 }
 
-.nav {
+header {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.nav>li {
+header a {
+    color: #c1c1c1;
+}
+
+header li {
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 10px;
+}
+
+header a {
+    text-decoration: none;
 }
 
 .title {
@@ -89,10 +99,10 @@ title div {
 .down_footer {
     height: 20%;
     width: 100%;
-    background-color: gray;
+    background-color: #535353;
 }
 
-.section{
+.section {
     width: 400px;
     height: 200px;
 }

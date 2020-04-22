@@ -10,7 +10,7 @@ body {
     background-color: #ebecee;
 }
 
-header div{
+header div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +30,7 @@ header li {
     height: 10%;
 }
 
-header li div{
+header li div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -42,9 +42,9 @@ header img {
     height: 100%;
 }
 
-header p{
+header p {
     font-size: 7px;
-    color:white;
+    color: white;
 }
 
 .shop_bag {
@@ -54,7 +54,7 @@ header p{
     position: relative;
 }
 
-.shop_num{
+.shop_num {
     position: absolute;
     top: 20%;
 }
@@ -98,8 +98,10 @@ h5 {
     background-color: #759ba4;
 }
 
-.title_txt u{
-    color: #527378;
+.title_txt span {
+    color: white;
+    box-shadow: 0px 1px 0px #527378;
+    padding-bottom: 1.5px;
 }
 
 .section_txt {
@@ -179,16 +181,16 @@ h5 {
     margin-left: 4px;
 }
 
-.sale_section{
+.sale_section {
     position: relative;
 }
 
-.on_sale_div div:nth-child(2){
-    
+.on_sale_div div:nth-child(2) {
+
     height: 100%;
 }
 
-.on_sale{
+.on_sale {
     background-color: #759ba4;
     position: absolute;
     color: white;
@@ -200,7 +202,7 @@ h5 {
     align-items: center;
 }
 
-.new_sale{
+.new_sale {
     background-color: #759ba4;
     position: absolute;
     color: white;

@@ -11,7 +11,7 @@ const TodoItem = (props) => {
     setIsHover(false);
   }, [isShowDone]);
 
-  const onMouseEnter = () => {
+  const onMouseOver = () => {
     setIsHover(true);
   };
 
@@ -20,26 +20,19 @@ const TodoItem = (props) => {
   };
 
   return (
-    <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      {!isDone && (
-        <div className={`task-row ${isHover ? 'task-hover' : null}`}>
-          <div>{task}</div>
-          {isHover && (
-            <div>
-              <button type="button" onClick={() => handleDone(id)}>Mark as done</button>
-              <button type="button" onClick={() => handleDelete(id)}>Delete</button>
-            </div>
-          )}
-        </div>
-      )}
-      {
-        isShowDone && isDone && (
-          <div className={`task-row ${isHover ? 'task-hover' : null}`}>
-            <div className="task-done">{task}</div>
-            <div className="task-time">{`完成時間 ${finishTime}`}</div>
+    <div className={`task-row ${isHover ? 'task-hover' : ''}`} onMouseOver={onMouseOver} onFocus={() => 0} onMouseLeave={onMouseLeave}>
+      <div className={`${isDone ? 'task-done' : ''}`}>{task}</div>
+      <>
+        {(isHover && !isDone) && (
+          <div>
+            <button type="button" onClick={() => handleDone(id)}>Mark as done</button>
+            <button type="button" onClick={() => handleDelete(id)}>Delete</button>
           </div>
-        )
-      }
+        )}
+        {isDone && (
+          <div className="task-time">{`完成時間 ${finishTime}`}</div>
+        )}
+      </>
     </div>
   );
 };

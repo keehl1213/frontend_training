@@ -92,6 +92,7 @@ const TodoList = () => {
         <label htmlFor="showAll" className="show-checkbox">
           <input
             type="checkbox"
+            className="show-checkbox"
             id="showAll"
             name="showAll"
             checked={isShowDone}

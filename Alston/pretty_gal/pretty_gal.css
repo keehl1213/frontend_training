@@ -16,7 +16,7 @@ header li {
     justify-content: center;
     align-items: center;
     margin: 10px;
-    height: 25%;
+    height: 30%;
 }
 
 .shop_bag {
@@ -28,7 +28,7 @@ header li {
     position: relative;
 }
 
-.shop_bag div{
+.shop_bag div {
     height: 100%;
 }
 
@@ -38,9 +38,8 @@ header li {
 
 .shop_num {
     position: absolute;
-    top:5%;
     color: white;
-    font-size: 7px;
+    font-size: 10px;
 }
 
 .header_item {
@@ -58,7 +57,6 @@ header li {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 50%;
     background-color: rgba(225, 217, 206, 0.5);
     padding: 30px;
     width: 30%;
@@ -111,6 +109,7 @@ header li {
 .title_img_div img {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .bottom_main {
@@ -143,6 +142,7 @@ header li {
     width: 33%;
     height: 100%;
     margin: 15px;
+    overflow: hidden;
 }
 
 .bottom_bottom_section div img {
@@ -189,7 +189,8 @@ header li {
 footer {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: row;
     width: 100%;
     height: 245px;
     background-color: #2a2b2d;
@@ -197,5 +198,78 @@ footer {
 }
 
 footer p {
+    color: white;
+}
+
+.shop_name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+footer>div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 0px 40px 40px 40px;
+}
+
+.footer_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #a5a6ab;
+}
+
+footer>div>div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    font-size: 15px;
+}
+
+.assis_info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.op_div div {
+    margin: 3px;
+    height: 35px;
+}
+
+.email {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    background-color: #494748;
+    color: white;
+    font-size: 12px;
+    width: 290px;
+}
+
+.subscribe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #cdcdcd;
+    color: #828282;
+    font-size: 12px;
+    width: 295px;
+}
+
+.copy_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #828282;
+    font-size: 12px;
+    margin: 10px;
+}
+
+.media_detail {
     color: white;
 }

@@ -1,0 +1,42 @@
+.task-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 0 20px;
+  height: 50px;
+  color: #707070;
+}
+
+.task-hide {
+  display: none;
+}
+
+
+.task-show {
+  display: flex;
+}
+
+
+.task-hover {
+  background: #e5e5e5;
+}
+
+.task-row button {
+  padding: 0;
+  margin-left: 25px;
+  border: 0;
+  background: transparent;
+  color: #707070;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: sans-serif;
+  text-decoration: underline;
+}
+
+.task-done {
+  text-decoration: line-through;
+}
+
+.task-time {
+  font-weight: bold;
+}

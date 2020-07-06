@@ -33,8 +33,3 @@
 - [code wars](https://www.codewars.com/trainer/setup)(junior部分)
  
 
-## training test
-
-[Test](https://hackmd.io/b7EZxyS3TbebMbbVc_N6Rg) 請實作1 ~ 5 
-
-[codesandbox](https://codesandbox.io/dashboard/recent)

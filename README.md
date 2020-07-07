@@ -66,3 +66,10 @@
 - 滑鼠移到項目上 該項目背景需反灰
 - 滑鼠移到項目上 後方出現 刪除及完成文字
 - 已完成的項目需要 文字上要畫刪除線
+- 
+
+## training test
+
+[Test](https://hackmd.io/b7EZxyS3TbebMbbVc_N6Rg) 請實作1 ~ 5
+
+[codesandbox](https://codesandbox.io/dashboard/recent)

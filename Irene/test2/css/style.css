@@ -1,0 +1,295 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+input[type="button"] {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height:30px;
+    background-color: #434e54;
+    color: lightgray;
+    border: 0 none;
+    font-size: 10px;
+}
+
+input[type="text"] {
+    padding: 0;
+    margin: 5px 0;
+    width: 100%;
+    height:20px;
+    background-color: lightgray;
+    border: 0 none;
+    font-size: 10px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+p div {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: #fff;
+    height: 115px;
+    color: #8b8b8b;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+header ul {
+    margin: 0;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 45%;
+    list-style:none;
+    align-items: center;
+}
+
+header a {
+    color: #8b8b8b;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+header a:hover {
+    text-decoration: underline
+}
+
+ul li {
+    height: 30%;
+}
+
+.cart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+
+.cart div {
+    height: 100%;
+    overflow: hidden;
+}
+
+.cart-img {
+    margin-top: 10px;
+}
+
+.shop-num {
+    position: absolute;
+    color: white;
+    font-size: 8px;
+    margin-top: 13px;
+}
+
+.indoor {
+    border-bottom: #434e54;
+    font-weight: bold;
+    border: #434e54;
+    display: contents;
+}
+
+main {
+    background-color: #ebecee;
+    align-content: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.top {
+    width: 50%;
+    margin: 0 0;
+    position: relative;
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.title-left {
+    margin: 0;
+    display: flex;
+    width: 50%;
+    background-color: #759BA4;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.title-left-text{
+    margin: 30px 0 0 30px;
+     width:100%;
+}
+
+.slogan{
+    font-weight: bold;
+    font-family:Verdana;
+    font-size: 36px;
+     color: #3A5256;
+}
+
+.title-right {
+    display: flex;
+    width: 50%;
+    margin: 0 0;
+    object-fit: cover;
+}
+
+#footer {
+    display: flex;
+    background-color: #557276;
+    color: lightgray;
+    width: 100%;
+    height: 150px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#copyright {
+    display: flex;
+    background-color: #535353;
+    color: lightgray;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.columns {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: inherit;
+}
+
+.column1 {
+    margin: 0 10px;
+    flex:1
+}
+
+.column2 {
+    margin: 0 10px;
+    flex:1
+}
+
+.column3 {
+    margin: 0 10px;
+    flex:2
+}
+
+.img-collection {
+    width: 50%;
+    flex-direction: column;
+    margin: 0;
+}
+.img-section{
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.multi-img {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+}
+
+.img-section>div {
+    flex: 1 1 150px;
+}
+
+.top-section {
+    margin: 0 20px 0 0;
+}
+
+
+.mid-section {
+    margin: 0 20px 0 0;
+}
+
+.down-section {
+    margin: 0;
+}
+
+.small-up-img {
+    width: 100%;
+    height: 48%;
+}
+
+.small-down-img {
+    width: 100%;
+    height: 48%;
+    position: relative;
+}
+
+.txt-in-img{
+    background-repeat:no-repeat;
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    top: 0;
+    left: 0px;
+}
+
+.mid-txt-img {
+    background-image: url(../img/NEW.png);
+}
+
+.down-txt-img {
+    background-image: url(../img/SALE.png);
+}
+
+.mid-img {
+    width: 100%;
+    height: 65%;
+}
+
+.long-img {
+    overflow: hidden;
+}
+
+.tag-img {
+    width: 100%;
+    height: 31%;
+}
+
+.icon{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.social-media {
+    width: 70%;
+    height: 40%;
+}
+
+.payment{
+    width: 80%;
+    height: 30%;
+}
+

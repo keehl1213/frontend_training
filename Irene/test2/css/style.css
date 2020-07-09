@@ -7,7 +7,7 @@ input[type="button"] {
     padding: 0;
     margin: 0;
     width: 100%;
-    height:30px;
+    height: 30px;
     background-color: #434e54;
     color: lightgray;
     border: 0 none;
@@ -18,7 +18,7 @@ input[type="text"] {
     padding: 0;
     margin: 5px 0;
     width: 100%;
-    height:20px;
+    height: 20px;
     background-color: lightgray;
     border: 0 none;
     font-size: 10px;
@@ -38,7 +38,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
     background-color: #fff;
     height: 115px;
     color: #8b8b8b;
@@ -48,7 +47,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
+    font-family: Verdana;
 }
 
 header ul {
@@ -57,7 +56,7 @@ header ul {
     display: flex;
     justify-content: space-between;
     width: 45%;
-    list-style:none;
+    list-style: none;
     align-items: center;
 }
 
@@ -77,7 +76,6 @@ ul li {
 
 .cart {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -91,6 +89,7 @@ ul li {
 
 .cart-img {
     margin-top: 10px;
+    width: 25px;
 }
 
 .shop-num {
@@ -137,16 +136,28 @@ main {
     justify-content: flex-start;
 }
 
-.title-left-text{
+.title-left-text {
     margin: 30px 0 0 30px;
-     width:100%;
+    width: 100%;
 }
 
-.slogan{
+.title-left-text>p {
+    font-family: Tahoma;
+    font-size: 18px;
+    text-align: left;
+    width: fit-content;
+    color: white;
+    margin: 10px 0 50px 0;
+    border-bottom: solid;
+    border-width: medium;
+    border-color: #53747A;
+}
+
+.slogan {
     font-weight: bold;
-    font-family:Verdana;
+    font-family: Verdana;
     font-size: 36px;
-     color: #3A5256;
+    color: #3A5256;
 }
 
 .title-right {
@@ -181,39 +192,39 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: inherit;
+    font-family: 'Lucida Console';
 }
 
 .column1 {
     margin: 0 10px;
-    flex:1
+    flex: 1
 }
 
 .column2 {
     margin: 0 10px;
-    flex:1
+    flex: 1
 }
 
 .column3 {
     margin: 0 10px;
-    flex:2
+    flex: 2
 }
 
 .img-collection {
     width: 50%;
     flex-direction: column;
-    margin: 0;
 }
-.img-section{
+
+.img-section {
     margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
     margin-top: 20px;
 }
 
 .multi-img {
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -221,17 +232,9 @@ main {
     flex: 1 1 150px;
 }
 
-.top-section {
-    margin: 0 20px 0 0;
-}
-
-
+.top-section,
 .mid-section {
     margin: 0 20px 0 0;
-}
-
-.down-section {
-    margin: 0;
 }
 
 .small-up-img {
@@ -245,8 +248,8 @@ main {
     position: relative;
 }
 
-.txt-in-img{
-    background-repeat:no-repeat;
+.txt-in-img {
+    background-repeat: no-repeat;
     width: 100%;
     height: 40%;
     position: absolute;
@@ -267,19 +270,14 @@ main {
     height: 65%;
 }
 
-.long-img {
-    overflow: hidden;
-}
-
 .tag-img {
     width: 100%;
     height: 31%;
 }
 
-.icon{
+.icon {
     display: flex;
     flex: 1;
-    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -288,8 +286,7 @@ main {
     height: 40%;
 }
 
-.payment{
+.payment {
     width: 80%;
     height: 30%;
 }
-

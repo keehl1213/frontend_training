@@ -1,0 +1,235 @@
+ 
+.Body {
+    display: flex;
+    min-height: 1000px;
+    flex-direction: column;
+    margin: 0;
+  }
+  
+.Content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+.headerfooter{
+    background-color: black;
+}
+
+.intermediate{
+    padding: 0 15%;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+}
+
+.Head{
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+}
+
+.Head-item{
+    color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+}
+
+.logo{
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.icon{
+    width: 25px;
+    height: 25px;
+    background-size: 100%;
+    background-image:url("image/shopCar.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 80%;
+}
+
+.icon-text{
+    margin: 5px 0 0 0;
+}
+
+.ContentDiv1{
+    background-color: rgba(255, 255, 255, 0.5);
+    min-width: 300px;
+    padding: 20px;
+}
+
+.ContentDiv2{
+    position: absolute;
+    bottom: 0;
+    background-color: red;
+    min-height: 50px;
+    width: 100%;
+}
+
+.Fall-winter{
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.Shop-now{
+    background-color: black;
+    color: white;
+    padding: 5px 20px;
+    margin: 10px 0 0 0;
+}
+
+.Upper {
+    background-image:url(./image/bg.jpg);
+    background-size: 100%;
+    min-height: 400px;
+    min-width: 300px;
+}
+
+.Middle{
+    background-color: rgb(170, 173, 168);
+    height: 34px; 
+}
+
+.Below{
+    background-color: white;
+}
+
+.testBox{
+    margin: 16px 0 0 0;
+}
+
+.p1{
+    margin: 16px 0 0 0;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.p2{
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.p3{
+    margin: 16px 0 0 0;
+}
+
+.imageBox{
+    display: flex;
+    flex-wrap:wrap;
+    margin: 20px 0 0 0;
+    padding: 0 10px 0 0;
+}
+
+.image{
+    margin: 0 0 0 10px;
+    min-height: 300px;
+    min-width: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.img1{
+    background-image: url(./image/item1.png);
+    background-size: auto 100%;
+}
+
+.img2{
+    background-image: url(./image/item2.png);
+    background-size: auto 100%;
+}
+
+.img3{
+    background-image: url(./image/item3.png);
+    background-size: auto 100%;
+}
+
+.image *{
+    position: absolute;
+    bottom: 0px;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 5px 0 5px 0;
+}
+
+.hide{
+    display: none;
+}
+
+
+.Footer{
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.Footer-box{
+    margin: 20px 0 0 0;
+    display: flex ;
+    width: 100%;
+}
+
+.Footer-title{
+    height: 50px;
+    flex: 1;
+}
+
+.Footer-content{
+    flex: 1;
+}
+
+.Email{
+    align-items: flex-start;
+    background-color: rgb(82, 81, 81);
+    padding: 0 0 0 8px;
+    height: 34px;
+    text-align:left;
+}
+
+.Subscribe{
+    background-color: rgb(250, 247, 244);
+    margin: 5px 0 0 0;
+    height: 38px;
+    color: black;
+}
+    
+
+.Footer-inline{
+    display: flex;
+    justify-content: center;
+}
+
+
+.fb{
+    margin: 0 0 0 5px;
+    background-image: url(./image/facebook.png);
+}
+
+.line{
+    margin: 0 0 0 5px;
+    background-image: url(./image/line.png);
+}
+
+.youtube{
+    margin: 0 0 0 5px;
+    background-image: url(./image/youtube.png);
+}
+
+.twitter{
+    margin: 0 0 0 5px;
+    background-image: url(./image/twitter.png);
+}
+
+.Copyright{
+    height: 70px;;
+}

@@ -1,10 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
+import * as Style from './style';
 
 const Main = () => (
-  <div>
-    Hello world
-  </div>
+  <>
+    <Style.Title>Hello world</Style.Title>
+    <div style={{ backgroundColor: 'yellow' }}>Hello world</div>
+  </>
 );
 
 render(<Main />, document.getElementById("app"));

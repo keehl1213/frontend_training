@@ -1,10 +1,11 @@
 import React from "react";
 import { render } from "react-dom";
+import TodoList from "@/containers/TodoList/TodoList";
 
 const Main = () => (
-  <div>
-    Hello world
-  </div>
+  <>
+    <TodoList />
+  </>
 );
 
 render(<Main />, document.getElementById("app"));

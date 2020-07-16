@@ -19,6 +19,8 @@
 ### 作業：切版
 <img src="https://i.imgur.com/tnpW34m.jpg" alt="drawing1" width="400">
 <img src="https://i.imgur.com/PlEtZ8F.jpg" alt="drawing2" width="400"/>
+<img src="https://i.imgur.com/6VbalsA.png" alt="drawing3" width="400"/>
+<img src="https://i.imgur.com/gRr09Sg.jpg" alt="drawing4" width="400"/>
 
 ### 其他參考
 [Chrome DevTools for CSS](https://www.youtube.com/watch?v=Z3HGJsNLQ1E)

@@ -41,6 +41,7 @@
 |Joey     | 4/14    | 4/ 16         | 4/16             |4/22 (後續會有Code Review 4/24)
 |Irene     | 7/6    | 7/8         | 7/8             |7/17 
 |Sky     | 7/6    | 7/8         | 7/8             |7/17 
+|Chester     | 7/21    | 7/24         | 7/24             |7/31 
 
  > ** 有空閒時間可以去學其他課程
 
@@ -66,9 +67,3 @@
 - 滑鼠移到項目上 該項目背景需反灰
 - 滑鼠移到項目上 後方出現 刪除及完成文字
 - 已完成的項目需要 文字上要畫刪除線
-
-## training test
-
-[Test](https://hackmd.io/b7EZxyS3TbebMbbVc_N6Rg) 請實作1 ~ 5
-
-[codesandbox](https://codesandbox.io/dashboard/recent)

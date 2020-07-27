@@ -177,6 +177,9 @@
 .marin-bottom-30p{
     margin-bottom: 30px;
 }
+.marin-bottom-20p{
+    margin-bottom: 20px;
+}
 .marin-bottom-10p{
     margin-bottom: 10px;
 }
@@ -202,14 +205,24 @@
     width: 210px;
     height: 28px;
 }
+.height-28p{
+    height: 28px;
+}
 .width-188p{
     width: 218px;
-    height: 28px;
-
+    height: 34px;
+    line-height: 2em;
 }
 .text-alig-center{
     text-align: center;
 }
 .width-140p{
     width: 140px;
+}
+.vertical-align-top{
+    vertical-align: top; 
+}
+
+.height-100p{
+    height: 180px;
 }

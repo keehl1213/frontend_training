@@ -159,8 +159,8 @@
 }
 .marin-set{
     margin-top: 100px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 .marin-left-10p{
     margin-left: 10px;
@@ -195,12 +195,7 @@
     display: flex;
     justify-content: space-around;
 }
-.width-130p{
-    width: 130px;
-}
-.width-150p{
-    width: 150px;
-}
+
 .width-180p{
     width: 210px;
     height: 28px;
@@ -226,3 +221,28 @@
 .height-100p{
     height: 180px;
 }
+
+.width-130p{
+    width: 130px;
+}
+.width-150p{
+    width: 150px;
+}
+.width-1150p{
+    width: 1150p;
+}
+
+.width-1300p{
+    width: 1300px;
+}
+
+
+.height-100p{
+    height: 100px;
+}
+
+.height-200p{
+    height: 200p;
+}
+
+

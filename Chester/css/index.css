@@ -1,8 +1,12 @@
+
 .content{
   position: relative;
   background-color: #f6f6f4;
 }
 
+/* .vertical-align{
+    vertical-align: middle;
+} */
 .header{
     display: flex;
     justify-content:center;
@@ -72,8 +76,7 @@
     display: flex;
     justify-content:space-between;
 }
-.body-bot-left{
-}
+
 
 /* .body-bot-right{
     display: flex;
@@ -244,5 +247,156 @@
 .height-200p{
     height: 200p;
 }
+
+/*index2*/
+
+.fl-start{
+    display: flex;
+    justify-content: start;
+}
+
+.fl-end{
+    display: flex;
+    justify-content:flex-end;
+}
+.fl-center{
+    display: flex;
+    justify-content:center;
+}
+
+.fl-space{
+    display: flex;
+    justify-content: space-around;
+}
+
+.fl-space-evenly{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.al-items-center{
+    align-items: center;
+}
+
+.fl-di-row{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.main-margin-left{
+    margin-left: 300px;
+}
+
+.main-width{
+    width: 900px;
+}
+
+.item1-top{
+    height: 120px;
+    background-color: khaki;
+
+}
+.item1-bot{
+    height: 40px;
+    background-color: mintcream;
+}
+
+.item2-left{
+    width: 250px;
+    height: 420px;
+    background-color: khaki;
+}
+
+.item2-right{
+    width: 650px;
+    height: 420px;
+    background-color: lightseagreen;
+}
+.main-item3-subitem{
+    width: 250px;
+    height: 300px;
+}
+
+.main-item3-subitem-title{
+    width: 200px;
+    height: 25px;
+}
+
+.main-item3-subitem-content{
+    width: 200px;
+    height: 120px;
+}
+
+.backcolor-grey{
+    background-color:grey;
+}
+.backcolor-brown{
+    background-color: brown;
+}
+
+.text-size{
+    color: white;
+    font-size: 15px;
+}
+.text-color-brown{
+    color: #9b7f1a;
+}
+
+.title-size{
+    color: white;
+    font-size: 20px;
+}
+
+.button-size{
+    width: 160px;
+    height: 35px;
+}
+.itempic{
+    width: 215px;
+    height: 150px;
+}
+
+
+.item4-left{
+    width: 700px;
+    height: 120px;
+}
+
+.item4-right{
+    width: 220px;
+    height: 120px;
+}
+
+.item4-left-top{
+    height: 70px;
+}
+
+.item4-left-bot{
+    height: 30px;
+}
+
+.main-item5-left{
+    width: 450px;
+    height: 250px;
+    background-color: skyblue;
+}
+
+.main-item5-right{
+    width: 450px;
+    height: 250px;
+    background-color: yellow;
+}
+
+.border-botandtop{
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+.backcolor-black{
+    background-color: black;
+}
+
+
 
 

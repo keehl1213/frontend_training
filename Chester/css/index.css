@@ -202,6 +202,9 @@
 .marin-bottom-40p{
     margin-bottom: 40px;
 }
+.marin-bottom-35p{
+    margin-bottom: 34px;
+}
 .marin-bottom-30p{
     margin-bottom: 30px;
 }
@@ -308,6 +311,10 @@
     display: flex;
     flex-direction: row;
 }
+.fl-di-column{
+    display: flex;
+    flex-direction: column;
+}
 .padding-3p{
     padding-left:3px;
 }
@@ -358,7 +365,7 @@
 }
 .main-item3-subitem{
     width: 250px;
-    height: 325px;
+    height: 350px;
 }
 
 .main-item3-subitem-title{
@@ -414,12 +421,12 @@
 
 .item4-left{
     width: 680px;
-    height: 220px;
+    height: 70px;
 }
 
 .item4-right{
-    width: 220px;
-    height: 220px;
+    width: 900px;
+    height: 170px;
 }
 
 .item4-left-top{
@@ -478,6 +485,7 @@
 .line-height-155p{
   line-height: 155px;
   font-size: 30px;
+  text-align:center;
 }
 
 .line-height-70p{

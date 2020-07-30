@@ -1,20 +1,22 @@
 import styled from "styled-components";
 
 export const InputRow = styled.div`
-  margin: 20px 0 0 0;
   display: flex;
+  border: 1px solid #00000026;
+  border-radius: 4px;
 `;
 
 export const Input = styled.input`
-  flex: 1;
-  padding: 10px;
-  border: 0;
-  border-bottom: 1px solid #707070;
+  padding: 5px;
+  border: transparent;
   background: transparent;
+  border: 0;
   outline: none;
 `;
 
-export const Button = styled.button`
-  padding: 0;
-  width: 60px;
+export const Icon = styled.img`
+width: 32px;
+height: 32px;
+border: transparent;
+background: transparent;
 `;

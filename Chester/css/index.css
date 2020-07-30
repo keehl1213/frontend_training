@@ -316,7 +316,15 @@
 }
 
 .main-margin-left{
-    margin-left: 25%;
+    margin-left: 20%;
+}
+
+.main-margin-auto{
+    margin: 0 auto;
+} 
+
+.vertical-align-middle{
+    vertical-align:middle;
 }
 
 .main-width{
@@ -354,7 +362,6 @@
 }
 
 .main-item3-subitem-title{
-    width: 200px;
     height: 25px;
 }
 
@@ -425,14 +432,13 @@
 
 .main-item5-item1{
     width: 225px;
-    height: 200px;
+    height: 190px;
 }
 .main-item5-item2{
     width: 220px;
-    height: 210px;
+    height: 190px;
 }
 .main-item5-item3{
-    width: 225px;
     height: 50px;
 }
 .main-item5-item4{
@@ -476,6 +482,10 @@
 
 .line-height-70p{
     line-height: 70px;
+}
+
+.line-height-40p{
+    line-height: 40px;
 }
 
 

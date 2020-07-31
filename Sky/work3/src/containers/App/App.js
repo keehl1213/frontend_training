@@ -20,13 +20,11 @@ const App = () => {
   const [searchValue, setSearchValue] = useState('');
   const [bugData, setBugData] = useState([]);
   const [newData, setNewData] = useState([]);
-  const [bugDataCheck, setBugDataCheck] = useState([]);
-  const [newDataCheck, setNewDataCheck] = useState([]);
 
   const bugDefaultData = () => {
     const textData = [];
     for (let index = 23; index < 53; index += 1) {
-      textData.push(`S1820452D3${index}`);
+      textData.push({ value: `S1820452D3${index}`, isCheck: false });
     }
     setBugData(textData);
   };
@@ -35,12 +33,8 @@ const App = () => {
     bugDefaultData();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(bugDataCheck);
-  // }, [bugDataCheck]);
-
   const getBugData = () => bugData.filter((item) => {
-    if (item.match(searchValue) != null) {
+    if (item.value.match(searchValue) != null) {
       return true;
     }
     return false;
@@ -49,47 +43,54 @@ const App = () => {
   const bugDataMap = useMemo(() => getBugData(), [bugData, searchValue]);
 
   const SnofbugText = `SN of Bug ID 68891(#${bugDataMap.length})`;
-
   const SnofnewText = `SN of New groug(#${newData.length})`;
 
-  const handleOnChick = (value) => {
+  const handleOnChick = () => {
 
   };
 
-  const handleBugOnChange = (check, value) => {
-    if (!check) {
-      setBugDataCheck([...bugDataCheck, value]);
-    } else {
-      setBugDataCheck(bugDataCheck.filter((item) => item !== value));
-    }
-  };
+  // const handleOnChange = (value) => {
+  //   console.log(value);
+  // };
 
-  const handleNewOnChange = (check, value) => {
-    if (!check) {
-      setNewDataCheck([...newDataCheck, value]);
-    } else {
-      setNewDataCheck(newDataCheck.filter((item) => item !== value));
-    }
+  const handleTbbutton = () => {
+    const BugMap = bugData.filter((item) => !item.isCheck);
+    const newMap = bugData.filter((item) => item.isCheck);
+    newMap.forEach((item) => {
+      if (item.isCheck) {
+        item.isCheck = !item.isCheck;
+      }
+    });
+    setNewData([...newData, ...newMap]);
+    setBugData(BugMap);
+
+    // setBugData([...bugData, ...newDataCheck]);
+    // let map = newData;
+    // newDataCheck.forEach((value) => {
+    //   map = map
+    // });
+    // setNewData(map);
+    // setNewDataCheck([]);
   };
 
   const handleTtbutton = () => {
-    setBugData([...bugData, ...newDataCheck]);
-    let map = newData;
-    newDataCheck.forEach((value) => {
-      map = map.filter((item) => item !== value);
+    const BugMap = newData.filter((item) => item.isCheck);
+    const newMap = newData.filter((item) => !item.isCheck);
+    BugMap.forEach((item) => {
+      if (item.isCheck) {
+        item.isCheck = !item.isCheck;
+      }
     });
-    setNewData(map);
-    setNewDataCheck([]);
-  };
+    setBugData([...bugData, ...BugMap]);
+    setNewData(newMap);
 
-  const handleTbbutton = () => {
-    setNewData([...newData, ...bugDataCheck]);
-    let map = bugData;
-    bugDataCheck.forEach((value) => {
-      map = map.filter((item) => item !== value);
-    });
-    setBugData(map);
-    setBugDataCheck([]);
+    // setNewData([...newData, ...bugDataCheck]);
+    // let map = bugData;
+    // bugDataCheck.forEach((value) => {
+    //   map = map.filter((item) => item.value !== value);
+    // });
+    // setBugData(map);
+    // setBugDataCheck([]);
   };
 
   return (
@@ -103,7 +104,7 @@ const App = () => {
         <Input value={searchValue} onChange={setSearchValue} icon={search} />
       </Div>
       <Box height="150px">
-        {bugDataMap.map((item) => <Checkbox key={item} value={item} name={item} onChange={handleBugOnChange}>{item}</Checkbox>)}
+        {bugDataMap.map((item) => <Checkbox key={item.value} data={item}>{item.value}</Checkbox>)}
       </Box>
       <Div placement="center">
         <Ttbutton onClick={handleTtbutton} />
@@ -113,7 +114,7 @@ const App = () => {
         <Snofbug placeholder={SnofnewText} height="34px" />
       </Div>
       <Box height="100px">
-        {newData.map((item) => <Checkbox key={item} value={item} name={item} onChange={handleNewOnChange}>{item}</Checkbox>)}
+        {newData.map((item) => <Checkbox key={item.value} data={item}>{item.value}</Checkbox>)}
       </Box>
       <Div placement="right">
         <Button onClick={handleOnChick}>ok</Button>

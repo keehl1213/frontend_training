@@ -4,18 +4,16 @@ import {
   Box
 } from './style';
 
-const Checkbox = ({ value, name, onChange, checked }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const Checkbox = ({ data }) => {
 
-  const change = (event) => {
-    setIsChecked(!isChecked);
-    onChange(isChecked, event.target.value);
+  const change = () => {
+    data.isCheck = !data.isCheck;
   };
 
   return (
     <Box>
-      <input type="checkbox" id={value} value={name} onChange={change} checked={isChecked} />
-      <label htmlFor={value}>{name}</label>
+      <input type="checkbox" id={data.value} value={data.isCheck} onChange={change} />
+      <label htmlFor={data.value}>{data.value}</label>
     </Box>
   );
 };

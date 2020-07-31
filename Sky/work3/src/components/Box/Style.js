@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-const getHeight = ({ height }) => `height: ${height}`;
+const getHeight = ({ height }) => `min-height: ${height}`;
 
 export const Box = styled.div`
 margin: 5px 0 0 0;
+padding-bottom: 10px;
 display:flex;
 flex-wrap:wrap;
 flex-direction:row;

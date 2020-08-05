@@ -18,14 +18,23 @@ import {
 
 const App = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [originalData, setoriginalData] = useState([]);
   const [bugData, setBugData] = useState([]);
   const [newData, setNewData] = useState([]);
+
+  const SnofbugText = `SN of Bug ID 68891(#${bugData.length})`;
+  const SnofnewText = `SN of New groug(#${newData.length})`;
+
+  const handleOnChick = () => {
+
+  };
 
   const bugDefaultData = () => {
     const textData = [];
     for (let index = 23; index < 53; index += 1) {
-      textData.push({ value: `S1820452D3${index}`, isCheck: false });
+      textData.push({ value: `S1820452D3${index}`, isCheck: false, isTop: true });
     }
+    setoriginalData(textData);
     setBugData(textData);
   };
 
@@ -33,68 +42,43 @@ const App = () => {
     bugDefaultData();
   }, []);
 
-  const handleOnChick = () => {
-
+  const handleOnChangeMap = () => {
+    const newTopData = originalData.filter((v) => (v.value.match(searchValue) != null || searchValue === '') && v.isTop);
+    const newBottonData = originalData.filter((v) => !v.isTop);
+    setBugData(newTopData);
+    setNewData(newBottonData);
   };
 
-  // useEffect(() => {
-  //   console.log(bugData);
-  // }, [bugData]);
+  useEffect(() => {
+    handleOnChangeMap();
+  }, [originalData, searchValue]);
 
-  const getBugData = () => bugData.filter((item) => {
-    if (item.value.match(searchValue) != null) {
-      return true;
-    }
-    return false;
-  });
-
-  const bugDataMap = useMemo(() => getBugData(), [bugData, searchValue]);
-
-  const SnofbugText = `SN of Bug ID 68891(#${bugDataMap.length})`;
-  const SnofnewText = `SN of New groug(#${newData.length})`;
-
-  const bugChange = (value) => {
-    bugData.forEach((item) => {
+  const onChange = (value) => {
+    originalData.forEach((item) => {
       if (item.value === value) {
         item.isCheck = !item.isCheck;
       }
     });
   };
-
-  const newChange = (value) => {
-    newData.forEach((item) => {
-      if (item.value === value) {
-        item.isCheck = !item.isCheck;
-      }
-    });
-  };
-
-  // const handleOnChange = (value) => {
-  //   console.log(value);
-  // };
 
   const handleTbbutton = () => {
-    const BugMap = bugData.filter((item) => !item.isCheck);
-    const newMap = bugData.filter((item) => item.isCheck);
-    newMap.forEach((item) => {
-      if (item.isCheck) {
+    originalData.forEach((item) => {
+      if (item.isCheck && item.isTop) {
         item.isCheck = !item.isCheck;
+        item.isTop = !item.isTop;
       }
     });
-    setNewData([...newData, ...newMap]);
-    setBugData(BugMap);
+    handleOnChangeMap();
   };
 
   const handleTtbutton = () => {
-    const BugMap = newData.filter((item) => item.isCheck);
-    const newMap = newData.filter((item) => !item.isCheck);
-    BugMap.forEach((item) => {
-      if (item.isCheck) {
+    originalData.forEach((item) => {
+      if (item.isCheck && !item.isTop) {
         item.isCheck = !item.isCheck;
+        item.isTop = !item.isTop;
       }
     });
-    setBugData([...bugData, ...BugMap]);
-    setNewData(newMap);
+    handleOnChangeMap();
   };
 
   return (
@@ -108,7 +92,7 @@ const App = () => {
         <Input value={searchValue} onChange={setSearchValue} icon={search} />
       </Div>
       <Box height="150px">
-        {bugDataMap.map((item) => <Checkbox key={item.value} data={item} onChange={bugChange}>{item.value}</Checkbox>)}
+        {bugData.map((item) => <Checkbox key={item.value} data={item} onChange={onChange}>{item.value}</Checkbox>)}
       </Box>
       <Div placement="center">
         <Ttbutton onClick={handleTtbutton} />
@@ -118,7 +102,7 @@ const App = () => {
         <Snofbug placeholder={SnofnewText} height="34px" />
       </Div>
       <Box height="100px">
-        {newData.map((item) => <Checkbox key={item.value} data={item} onChange={newChange}>{item.value}</Checkbox>)}
+        {newData.map((item) => <Checkbox key={item.value} data={item} onChange={onChange}>{item.value}</Checkbox>)}
       </Box>
       <Div placement="right">
         <Button onClick={handleOnChick}>ok</Button>

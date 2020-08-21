@@ -1,0 +1,21 @@
+.wrap{
+  width: 100%;
+  height: 100%;
+  background-color: lightgoldenrodyellow;
+  font-family: "Microsoft JhengHei UI", sans-serif;
+  color: rgb(77, 71, 71);
+}
+
+.title{
+  font-size: 50px;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.todoList{
+  width: 90%;
+  margin: 0 auto;
+  font-size: 25px;
+
+}
+

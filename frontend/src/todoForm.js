@@ -4,14 +4,14 @@ import * as Style from './style';
 const TodoForm = ({ addItem }) => {
   const [value, setValue] = useState("");
 
-  function handleAddItem(e) {
+  const handleAddItem = (e) => {
     e.preventDefault();
     if (!value) {
       return;
     }
     addItem(value);
     setValue("");
-  }
+  };
 
   return (
     <Style.Form>

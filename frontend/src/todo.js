@@ -7,7 +7,7 @@ const Todo = ({ todo, completeItem, deleteItem }) => {
     <Style.TodoItem
       onMouseOver={() => setShowButton(true)}
       onMouseLeave={() => setShowButton(false)}
-      onFocus={() => 0}>
+      onFocus={() => false}>
 
       <Style.ItemText todo={todo}>{todo.text}</Style.ItemText>
       <Style.ItemCompleteTime todo={todo}>{todo.completeTime}</Style.ItemCompleteTime>

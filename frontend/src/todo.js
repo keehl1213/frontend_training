@@ -1,29 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Style from './style';
 
-const completeItemStyle = {
-  textDecoration: "line-through"
+const Todo = ({ todo, completeItem, deleteItem }) => {
+  const [showButton, setShowButton] = useState(false);
+  return (
+    <Style.TodoItem
+      onMouseOver={() => setShowButton(true)}
+      onMouseLeave={() => setShowButton(false)}
+      onFocus={() => 0}>
+
+      <Style.ItemText todo={todo}>{todo.text}</Style.ItemText>
+      <Style.ItemCompleteTime todo={todo}>{todo.completeTime}</Style.ItemCompleteTime>
+
+      {showButton && (
+        <Style.ButtonArea todo={todo}>
+          <Style.ItemButton
+            todo={todo}
+            type="submit"
+            onClick={() => completeItem(todo.id)}
+          >Mark as done
+          </Style.ItemButton>
+          <Style.ItemButton
+            todo={todo}
+            type="submit"
+            onClick={() => deleteItem(todo.id)}
+          >Delete
+          </Style.ItemButton>
+        </Style.ButtonArea>
+      )}
+    </Style.TodoItem>
+  );
 };
-
-const Todo = ({ todo, completeItem, deleteItem }) => (
-  <div className="todo">
-    <Style.Item>
-      <span>{todo.text}</span>
-      <span>{todo.completeTime}</span>
-    </Style.Item>
-
-    <button
-      type="submit"
-      onClick={() => completeItem(todo.id)}
-    >Mark as done
-    </button>
-
-    <button
-      type="submit"
-      onClick={() => deleteItem(todo.id)}
-    >Delete
-    </button>
-  </div>
-);
 
 export default Todo;

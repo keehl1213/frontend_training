@@ -5,8 +5,11 @@ import TodoList from "./todoList";
 
 const Main = () => (
   <Style.Wrapper>
-    {/* <h1 className="title">TODOLIST</h1> */}
-    <Style.Title>TODOLIST</Style.Title>
+    <Style.Title>
+      <Style.TitleLeft>TODO</Style.TitleLeft>
+      <Style.TitleRight>LIST</Style.TitleRight>
+    </Style.Title>
+    <Style.Subtitle>A Simple todolist built react hooks & context</Style.Subtitle>
     <TodoList />
   </Style.Wrapper>
 );

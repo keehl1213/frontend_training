@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import TodoForm from "./todoForm";
 import Todo from "./todo";
+import * as Style from './style';
 
 const TodoList = () => {
   const [initTodos, setInitTodos] = useState([]);
@@ -45,39 +46,30 @@ const TodoList = () => {
 
   useEffect(() => { showList(); }, [showAll, todos]);
 
-//   useEffect(() => {
-//     initTodos = JSON.parse(localStorage.getItem('list'));
-//     setInitTodos(todoData);
-//   }, []);
-
-//   useEffect(() => {
-//     localStorage.setItem('list', JSON.stringify(todoData));
-//   }, [todos]);
-
   return (
-    <div>
+    <Style.TodoList>
       <TodoForm addItem={addItem} />
-      <div className="todoList">
-        <p className="itemNum">{num} item(s)</p>
-        <label htmlFor="showAll">
-          <input
+      <Style.ControlBar>
+        <Style.ItemNum>{num} item(s)</Style.ItemNum>
+        <Style.ShowAllLabel htmlFor="showAll">
+          <Style.Checkbox
             type="checkbox"
             checked={showAll}
             onChange={handleShow}
           />
           Show done items
-        </label>
+        </Style.ShowAllLabel>
+      </Style.ControlBar>
 
-        {showTodos.map((todo) => (
-          <Todo
-            key={todo.id}
-            todo={todo}
-            completeItem={completeItem}
-            deleteItem={deleteItem}
-          />
-        ))}
-      </div>
-    </div>
+      {showTodos.map((todo) => (
+        <Todo
+          key={todo.id}
+          todo={todo}
+          completeItem={completeItem}
+          deleteItem={deleteItem}
+        />
+      ))}
+    </Style.TodoList>
   );
 };
 

@@ -20,7 +20,7 @@ const TodoItem = ({ item, onDelete, onDone }) => {
     }
 
     const showTime = (time) => {
-        return `${time.getFullYear()}/${pad(time.getMonth() + 1)}/${pad(time.getDate())} ${pad(time.getHours())}:${pad(time.getSeconds())}`
+        return `${time.getFullYear()}/${pad(time.getMonth() + 1)}/${pad(time.getDate())} ${pad(time.getHours())}:${pad(time.getMinutes())}`
     }
 
     return (

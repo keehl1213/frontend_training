@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-// import React, { useState } from 'react'
+import React, { useState } from 'react';
 import TodoData from './TodoData';
 import TodoList from './TodoList';
-// import React, { useState, useEffect } from 'react'
 
+// let LstNum = TodoData.length;
 
-const SayHi = () => {
-    const date = new Date();
-    const styles = {
-        fontSize: 20,
-    }
-    let show = `Hi Now is ${date.toLocaleTimeString()}`;
-    alert(show);
+const INIT_ITEM = {
+    id: undefined,
+    text: undefined,
+    completed: false,
+    updateTime: undefined,
 }
-
-
-let LstNum = TodoData.length;
 
 const Section = () => {
     const [todos, setTodos] = useState(TodoData);
@@ -24,78 +17,61 @@ const Section = () => {
     const [Addtxt, setAddtxt] = useState('');
 
     const handleAdd = () => {
-        if(Addtxt!=="")
-        {
-            const newData =
-            {
+        if (Addtxt !== "") {
+            const newData = {
+                ...INIT_ITEM,
                 id: Math.random(),
                 text: Addtxt,
-                completed: false
             };
-            setTodos(oldData=>[...oldData,newData]);
-            LstNum = todos.length+1;
+            setTodos(oldData => [...oldData, newData]);
+            setAddtxt('');
+            // LstNum = todos.length + 1;
         }
     };
 
-
-
-    const handleChange = (item, str) => { //Mark Ckick
-        const date = new Date();
-        if (str == "D") {
-            console.log("Delete Ckick!", item.id);
-            // delete TodoData[item.id]
-
-            // const deleteData = todos.filter((e) => e.id !== item.id);
-            // setTodos(deleteData);
-
+    const handleDelete = (item) => {
+        // if (str === "D") {
             setTodos(oldData => oldData.filter((e) => e.id !== item.id));
-            LstNum = todos.length-1;
-            // setTodos({...todos},deleteData);
-        }
-
+            // LstNum = todos.length - 1;
+        // }
     }
 
     const handleFinish = () => {
         setFinish(!Finished);
-        // const compData = todos.map(e=>(e.finished && e.completed))
-        // setTodos(todos.map(e=>(e.completed)));
-
     }
 
-
-    const TodoComponents = todos.filter(item => !Finished || (Finished && item.completed)).map(item =>
-        <TodoList
-            key={item.id}
-            item={item}
-            handleChange={handleChange}
-        />
-    );
+    const handleDone = (item) => {
+        const nextTodos = [].concat(todos);
+        const idx = nextTodos.findIndex(t => t.id === item.id);
+        if (idx !== -1) {
+            nextTodos[idx].completed = true;
+            nextTodos[idx].updateTime = new Date();
+            setTodos(nextTodos);
+        }
+    }
+    
+    const showList = todos.filter(item => !Finished || (Finished && item.completed));
 
     return (
         <main>
             <div className="Center">
-                {/* onChange={e=>e.target.addtxt} */}
-                <input className="input" type="text" id="text" onChange={e => setAddtxt(e.target.value)} placeholder="Add your text here..."></input>
+                <input className="input" type="text" value={Addtxt} onChange={e => setAddtxt(e.target.value)} placeholder="Add your text here..."></input>
                 <button className="Addbtn" onClick={handleAdd}>Add</button>
             </div>
-            {/* <div style={{display:"flex",justifyContent:"space-around"}}> */}
             <div className="List Center">
-                <p>{LstNum} item(s)</p>
+                <p>{showList.length} item(s)</p>
                 <div>
-                    <input type="checkbox" id="ShowDone" value="Finished" onClick={handleFinish}></input>
-                    <label for="ShowDone">Show done items</label>
+                    <input type="checkbox" value="Finished" onClick={handleFinish}></input>
+                    <label>Show done items</label>
                 </div>
             </div>
-
             <div>
-                {TodoComponents}
+                <TodoList
+                    todos={showList}
+                    onDelete={handleDelete}
+                    onDone={handleDone}
+                />
             </div>
-            {/* <div>
-               <p> {this.state.count}</p>
-            </div> */}
-
-
-
         </main>
 
     );

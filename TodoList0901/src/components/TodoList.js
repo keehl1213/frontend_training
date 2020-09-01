@@ -1,81 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import TodoItem from './TodoItem';
 
-
-
-const DeleteData = (index) => {
-    alert(index);
-}
-
-
-const MarkClick = () => {
-
-    console.log("Change!");
-
-}
-
-
-const markstyle = "underline";
-let GetNowTime;
-
-const TodoList = (props) => {
-    // console.log(props)
-    const date =new Date();
-    const [done, setDone] = useState(false);
-    const [showbtn,setShow] =useState(false);
-    
-    const handleDone = (item) => {
-        // props.handleChange(props.item, "M")
-        // console.log("Mark Ckick!", props.item.id)
-        // props.item.Component = true;
-        
-        setDone(!done);
-       GetNowTime=date.toLocaleString("en-US");
-       props.item.completed=!done;
-
-    }
-
-    const handleDelete=()=>
-    {
-       props.handleChange(props.item, "D")
-    }
-    
-    const handleHover=()=>{
-        setShow(!showbtn);
-    }   
-
+const TodoList = ({ todos, onDelete, onDone, onChange }) => {
     return (
-        // {(props.finished && props.item.completed)? :null }
-        <div className="List2" value="showbtn" onMouseOver={handleHover}>
-            
-           
-            <p style={{textDecoration: done ? "line-through" : "none" }}>{props.item.text}</p>
-            <div style={{display:"flex",alignItems:"center"}}>
-                {done ? (
-                    <nobr className="mark" style={{textDecoration:"none"}} onClick={handleDone}>Finished :{GetNowTime}</nobr>
-                ) : (
-                <span className="done">
-                    <nobr className="mark" onClick={handleDone}>Mark as done</nobr>
-                    <nobr className="mark" onClick={handleDelete}>Delete</nobr>
-                </span>
-                )}
-            </div>
-
-            {/* <div style={{display:"flex",alignItems:"center"}}>
-                {done? 
-                <nobr className="mark" style={{textDecoration:"none"}} onClick={handleDone}>Finished :{GetNowTime}</nobr>
-                :
-                <nobr className="done mark" onClick={handleDone}>Mark as done</nobr>
-                }
-                {done? "":<nobr className="mark" onClick={handleDelete}>Delete</nobr>}
-            </div> */}
-
-        </div>
+        <>
+        {
+            todos.map(item =>
+                <TodoItem
+                    key={item.id}
+                    item={item}
+                    onDelete={onDelete}
+                    onDone={onDone}
+                />
+            )
+        }
+        </>
     )
 };
 
+TodoList.propTypes = {
+    todos: PropTypes.arrayOf(PropTypes.shape({})),
+    onDelete: PropTypes.func,
+    onDone: PropTypes.func,
+}
 
-
-
-
+TodoList.defultProps = {
+    todos: [],
+    onDelete: () => null,
+    onDone: () => null,
+}
 
 export default TodoList

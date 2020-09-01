@@ -17,21 +17,27 @@ body{
 }
 
 .done {
+  visibility: visible;
+}
+
+.List2:hover .done {
   visibility: hidden;
-  display: flex;
+}
+
+.notdone {
+  /* visibility: hidden; */
+  display: none;
   font-weight:bold;
 }
 
-.List2:hover .done{
-  visibility: visible;
+.List2:hover .notdone{
+  /* visibility: visible; */
   cursor:  pointer;
-  
+  display: flex;
 }
 
 
 .List{
-  /* align-items: center;
-  justify-content: center; */
   font-size: 18px;
   color: #6C6C6C;
   display: flex;

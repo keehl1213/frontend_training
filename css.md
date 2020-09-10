@@ -23,7 +23,7 @@
 <img src="https://i.imgur.com/gRr09Sg.jpg" alt="drawing4" width="400"/>
 
 ### 其他參考
-[Chrome DevTools for CSS](https://www.youtube.com/watch?v=Z3HGJsNLQ1E)
+[Chrome DevTools for CSS](https://www.youtube.com/watch?v=Z3HGJsNLQ1E)  
 [Learn CSS](https://www.codecademy.com/learn/learn-css)  
 [30個你必須記住的CSS選擇器](https://code.tutsplus.com/zh-hant/tutorials/the-30-css-selectors-you-must-memorize--net-16048)  
 [CSS 專家密技](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/zh-TW)  

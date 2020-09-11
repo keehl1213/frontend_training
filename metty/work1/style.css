@@ -4,23 +4,24 @@ body{
 }
 
 nav{
+    display: flex;
+    justify-content: center;
     background:white;
+    padding-top: 10px;
 }
 
 .nav-style{
+    width: 50%;
     display: flex;
-    justify-content: center;    
+    justify-content: space-around;  
+    margin-bottom: 10px; 
 }
 
 .nav-style li{
     display: flex;
     align-items: center;
     list-style-type: none;
-    padding: 30px;
-}
-
-nav ul li img{  
-    height: 30px;
+    border: #024747;
 }
 
 li a{
@@ -29,49 +30,76 @@ li a{
     font-size: 14px;   
 }
 
+li a:hover{
+    color: #447a7a;
+    font-weight: bolder;
+    border-bottom: #024747 dotted 2px;
+}
+
+.logo a{
+    font-weight: bolder;
+    color: black;
+    border-bottom: black 3px solid;
+    font-size: 20px;
+}
+
+.logo a:hover{
+    color: #447a7a;
+    border: none;
+}
+
 .shop{
     position: relative;
+}
+
+.shop img{
+    width: 50%;
 }
 
 .shop_num{
     position: absolute;
     left: 8px;
-    top: 14px;
+    top: 13px;
     color: white;
     font-size: 8px;;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    border: red 2px solid;
+}
+
+.container{
+    flex-direction: column;
+    width: 50%;
+    border: #024747 2px solid;
 }
 
 .banner{
     display: flex;
     justify-content: center;
     background: #759BA4;
-    margin: 0 auto;
-    width: 900px;
     height: 350px;
-}
-
-.banner div{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column; 
     flex-grow: 1; 
+    margin-bottom: 20px;
 }
 
-.banner > .box{
-    padding: 50px 30px;  
+.box{
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0px 0px 30px;
+    flex-grow: 1;  
 }
-
-.box h1{
+.box{
     font-size: 40px;
-    margin: 5px 0;
     color:  #024747	;
-    font-weight:bold
+    font-weight:bold;
 }
 
-.box h2{
+.box-text{
     margin-top: 10px;
-    width: 250px;
-    padding: 5px 0px;
+    width: 80%;
     color: white;
     border-bottom: 3px	#447a7a solid;
     font-size: 22px;
@@ -86,17 +114,15 @@ li a{
 .column1{
     display: flex;
     justify-content: space-between;
-    margin: 20px auto;;
-    width: 900px;
     box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 .block1{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    width: 286px;
-    height: 600px;
+    margin-right: 20px;
 }
 
 .block1 img{
@@ -106,8 +132,8 @@ li a{
 }
 
 .block1  div{
+    position: relative;
     display: flex;
-    height: 290;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
@@ -115,29 +141,46 @@ li a{
 
 .block1-text{
     background:  #759BA4;
-    height: 150px;
     color: white;
+    height: 30%;
     font-size: 30px;
+    margin-bottom: 20px;
     font-weight: bold;
+}
+
+.tag{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30%;
+    height: 10%;
+    background: #447a7a;
+    color: white;
 }
 
 footer{
     display: flex;
+    align-items: center;
     flex-direction: column;
-    flex-grow: 1;
     background:  #759BA4;
     color: rgb(221, 215, 215);
     
 }
 
+.footer-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    border:blue 2px solid;
+    padding-top: 20px;
+}
+
 .contact{
     display: flex;
     justify-content: space-between;
-    width: 900px;
-    margin: auto;
     flex-grow: 1;
-    padding: 20px;
     font-size: 15px;
+    margin-bottom: 20px;
 }
 
 p{

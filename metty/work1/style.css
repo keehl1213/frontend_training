@@ -1,0 +1,175 @@
+body{
+    background: #D9D9D9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav{
+    background:white;
+}
+
+.nav-style{
+    display: flex;
+    justify-content: center;    
+}
+
+.nav-style li{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    padding: 30px;
+}
+
+nav ul li img{  
+    height: 30px;
+}
+
+li a{
+    text-decoration: none;
+    color: gray;
+    font-size: 14px;   
+}
+
+.shop{
+    position: relative;
+}
+
+.shop_num{
+    position: absolute;
+    left: 8px;
+    top: 14px;
+    color: white;
+    font-size: 8px;;
+}
+
+.banner{
+    display: flex;
+    justify-content: center;
+    background: #759BA4;
+    margin: 0 auto;
+    width: 900px;
+    height: 350px;
+}
+
+.banner div{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column; 
+    flex-grow: 1; 
+}
+
+.banner > .box{
+    padding: 50px 30px;  
+}
+
+.box h1{
+    font-size: 40px;
+    margin: 5px 0;
+    color:  #024747	;
+    font-weight:bold
+}
+
+.box h2{
+    margin-top: 10px;
+    width: 250px;
+    padding: 5px 0px;
+    color: white;
+    border-bottom: 3px	#447a7a solid;
+    font-size: 22px;
+}
+
+.box2 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.column1{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;;
+    width: 900px;
+    box-sizing: border-box;
+}
+
+.block1{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 286px;
+    height: 600px;
+}
+
+.block1 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;  
+}
+
+.block1  div{
+    display: flex;
+    height: 290;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+
+.block1-text{
+    background:  #759BA4;
+    height: 150px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background:  #759BA4;
+    color: rgb(221, 215, 215);
+    
+}
+
+.contact{
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    margin: auto;
+    flex-grow: 1;
+    padding: 20px;
+    font-size: 15px;
+}
+
+p{
+    padding: 5px;
+}
+
+.email{
+    width: 400px;
+}
+
+.email input[type=email]{
+    opacity: 0.6;
+    width: 400PX;
+    padding: 8px 5px;
+    border: none;
+    box-sizing: border-box;
+}
+
+.email input[type=button]{
+    background: #024747;
+    margin-top: 5px;
+    color: white;
+    width: 400PX;
+    padding: 8px 5px;
+    border: none;
+    box-sizing: border-box;
+}
+
+.copyright{
+    display: flex;
+    justify-content: center;
+    background: gray;
+    padding: 5px;
+    font-size: 10px;
+}

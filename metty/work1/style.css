@@ -191,7 +191,7 @@ footer{
 
 .contact{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: stretch;
     flex-grow: 1;
     font-size: 15px;
@@ -247,6 +247,7 @@ footer{
 .copyright p{
     font-size: 10px;
     margin-bottom: 5px;
+    color: white;
 }
 
 .social-icon{

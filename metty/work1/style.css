@@ -76,33 +76,39 @@ li a:hover{
 
 .banner{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     background: #759BA4;
-    height: 350px;
     flex-grow: 1; 
     margin-bottom: 20px;
 }
 
 .box{
     display: flex;
-    flex-direction: column;
-    padding: 30px 0px 0px 30px;
+    justify-content: space-around;
+    align-items: center;
     flex-grow: 1;  
     font-size: 40px;
     color:  #024747	;
     font-weight:bold;
+    box-sizing: border-box;
 }
 
+.box-content{
+    display: flex;
+    flex-direction: column;
+}
+
+p{ 
+    padding-bottom: 8px;
+}
 
 .box-text{
-    margin-top: 10px;
-    width: 80%;
     color: white;
     border-bottom: 3px	#447a7a solid;
     font-size: 22px;
 }
 
-.box2 img{
+img{
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -122,7 +128,7 @@ li a:hover{
     margin-right: 20px;
 }
 
-.block1 img{
+img{
     height: 100%;
     width: 100%;
     object-fit: cover;  
@@ -182,36 +188,49 @@ footer{
     margin-bottom: 20px;
 }
 
-p{
-    padding: 5px;
+.email{
+    width: 50%;
 }
 
-.email{
-    width: 400px;
+.textbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+    height: 30%;
+    border: none;
+    box-sizing: border-box;
 }
 
 .email input[type=email]{
     opacity: 0.6;
-    width: 400PX;
-    padding: 8px 5px;
-    border: none;
-    box-sizing: border-box;
 }
 
 .email input[type=button]{
     background: #024747;
-    margin-top: 5px;
     color: white;
-    width: 400PX;
-    padding: 8px 5px;
-    border: none;
-    box-sizing: border-box;
 }
 
 .copyright{
-    display: flex;
-    justify-content: center;
     background: gray;
-    padding: 5px;
+    padding-top: 5px;
+}
+
+.copyright p{
     font-size: 10px;
 }
+
+.social-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.social-icon div img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+

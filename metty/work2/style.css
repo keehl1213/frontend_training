@@ -11,9 +11,12 @@ body{
     align-items: center;
 }
 
+.all-top{
+    margin-bottom: 40px;
+}
+
 .top-box{
     width: 70%;
-    padding-top: 40px;
     margin-bottom: 40px;
 }
 
@@ -39,8 +42,9 @@ body{
     color: white;
 }
 
-.logo_text{
+.logo-box{
     margin-bottom: 40px;
+    width: 100%;
 }
 
 nav{
@@ -63,23 +67,31 @@ nav ul li a:hover{
     font-size: 1.2em;
 }
 
+.active{
+    color: darkgoldenrod;
+}
+
 .container{
     width: 70%;
-    margin-bottom: 20px;
 }
 
 .banner{
     display: flex;
-    justify-content: space-between;
-    flex: 1;
+    flex: 1 1;
     margin-bottom: 30px;
+    align-items: stretch;
 }
 
 .box-left{
-    margin-right: 10px;
+    margin-right: 0.3em;
+    flex-grow: 1 1;
     width: 30%;
 }
 
+.box-right{
+    flex-grow: 1 1;
+    width: 70%;
+}
 
 img{
     width: 100%;
@@ -91,15 +103,18 @@ img{
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    border-bottom: 2px white solid;
-
+    margin-bottom: 40PX;
 }
 
 .column-box{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 40PX;
+}
+
+.border-line{
+    border-bottom: 2px white solid;
+    width: 100%;
+    margin-bottom: 40px;
 }
 
 .column-box:not(:last-child){
@@ -122,6 +137,15 @@ img{
     margin-bottom: 20px;
 }
 
+.title1{
+    margin-bottom: 40px;
+}
+
+.title1 p{
+    font-size: 1.5em;
+    text-transform: capitalize;
+}
+
 .more a{
     text-decoration: none;
     text-transform: capitalize;
@@ -138,13 +162,6 @@ img{
 }
 
 .reservation{
-    padding-top: 60px;
-    width: 100%;
-    margin-bottom: 20px;
-    border-bottom: 2px white solid;
-}
-
-.selector{
     width: 70%;
     margin-bottom: 60px;
 }
@@ -162,6 +179,7 @@ select{
     border: white 2px solid;
     margin-right: 30px;
     width: 30%;
+    height: 2.5em;
 }
 
 .selector input{

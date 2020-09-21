@@ -20,8 +20,10 @@ var a = {
     book:{aaa:'1', bbb:'2'}
 };
 
-string.work1(s,t); //判斷重組字 結果:false
-string.work2(str); //字串反轉 結果:olleh
+
 object.work1(a);  //deep clone 結果:aaa
+
+console.log(string.work1(s,t)); //判斷重組字 結果:false
+console.log(string.work2(str)); //字串反轉 結果:olleh
 
 

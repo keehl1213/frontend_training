@@ -10,8 +10,20 @@
 // console.log(find1);
 
 import string from './string';
+import object from './object_Regexp';
 
-string.test();
-string.test222();
+let s = 'rat';
+let t = 'car';
+let str = 'hello';
+var a = {
+    text: 'aaa',
+    book:{aaa:'1', bbb:'2'}
+};
+
+
+object.work1(a);  //deep clone 結果:aaa
+
+console.log(string.work1(s,t)); //判斷重組字 結果:false
+console.log(string.work2(str)); //字串反轉 結果:olleh
 
 

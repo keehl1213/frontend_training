@@ -16,6 +16,14 @@ const work1 = (a) => {
 //     return a.book;
 // } 
 
+Date.prototype.format = function () {
+
+    var yyyy = this.getFullYear().toString(); //以4位數返回年份                                   
+    var mm = (this.getMonth() + 1).toString();  //返回月份，月份是0-11，所以再加1      
+    var dd = this.getDate().toString();      //返回日期          
+
+    return "'" + yyyy + '-' + (mm[1] ? mm : "0" + mm[0]) + '-' + (dd[1] ? dd : "0" + dd[0]) + "'";
+};
 
 class Person { //class constructor for Person
     constructor(name, age) {
@@ -36,7 +44,7 @@ function replaceAll(string, search, replace) { //regexp replace all
 }
 
 const email_format = (e) => {
-    const emailRule = /^\w+((-\w+)|(\.\w+))*\@[\w]+((\.|-)[\w]+)*\.[A-Za-z]+$/; 
+    const emailRule = /^\w+((-\w+)|(\.\w+))*\@[\w]+((\.|-)[\w]+)*\.[A-Za-z]+$/;
     //開頭必須是英文或數字
     //@前可以出現 1 個以上的文字、數字或「-」的組合  或者  出現 1 個以上的文字、數字或「.」的組合
     //中間一定有@
@@ -48,9 +56,37 @@ const email_format = (e) => {
     }
 }
 
+//reduce版本
+const reduce_test = (arr) => arr.reduce(function (accumulator, currentValue) {
+    const person = currentValue;
+    const { name, age, city } = person;
+    const item = {
+        name,
+        age
+    };
+    if (!accumulator[city]) {
+        accumulator = {
+            ...accumulator,
+            [city]: [
+                item
+            ],
+        };
+    } else {
+        accumulator[city].push(
+            item
+        )
+    }
+    return accumulator;
+
+}, {});
+
+
 export default {
     work1,
     Person,
     replaceAll,
-    email_format
+    email_format,
+    Date,
+    reduce_test
 }
+

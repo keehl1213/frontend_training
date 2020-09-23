@@ -18,11 +18,13 @@ const work1 = (a) => {
 
 Date.prototype.format = function () {
 
-    var yyyy = this.getFullYear().toString(); //以4位數返回年份                                   
-    var mm = (this.getMonth() + 1).toString();  //返回月份，月份是0-11，所以再加1      
-    var dd = this.getDate().toString();      //返回日期          
+    let yyyy = this.getFullYear().toString(); //以4位數返回年份                                   
+    let mm = (this.getMonth() + 1).toString();  //返回月份，月份是0-11，所以再加1      
+    let dd = this.getDate().toString();      //返回日期   
+    let pad = '0';       
 
-    return "'" + yyyy + '-' + (mm[1] ? mm : "0" + mm[0]) + '-' + (dd[1] ? dd : "0" + dd[0]) + "'";
+    return `' ${yyyy}-${mm.padStart(2,'0')}-${dd.padStart(2,'0')} '`;
+    //return "'" + yyyy + '-' + (mm[1] ? mm : "0" + mm[0]) + '-' + (dd[1] ? dd : "0" + dd[0]) + "'";
 };
 
 class Person { //class constructor for Person
@@ -57,8 +59,7 @@ const email_format = (e) => {
 }
 
 //reduce版本
-const reduce_test = (arr) => arr.reduce(function (accumulator, currentValue) {
-    const person = currentValue;
+const reduce_test = (arr) => arr.reduce(function (accumulator, person) {
     const { name, age, city } = person;
     const item = {
         name,

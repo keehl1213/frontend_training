@@ -23,7 +23,7 @@ Date.prototype.format = function () {
     let dd = this.getDate().toString();      //返回日期   
     
 
-    return ` ${yyyy}-${mm.padStart(2,'0')}-${dd.padStart(2,'0')} `;
+    return `${yyyy}-${mm.padStart(2,'0')}-${dd.padStart(2,'0')}`;
     //return "'" + yyyy + '-' + (mm[1] ? mm : "0" + mm[0]) + '-' + (dd[1] ? dd : "0" + dd[0]) + "'";
 };
 

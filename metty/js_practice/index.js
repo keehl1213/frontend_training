@@ -1,42 +1,70 @@
-import string from './string';
-import object from './object_Regexp';
+import string from './src/string';
+import object from './src/object_Regexp';
+import object_pratice06 from './json/object_pratice06';
+import object_pratice07 from './json/object_pratice07';
+import r_object_pratice06 from './json/r_object_pratice06';
 
+
+
+console.log('...............................string...............................');
+
+//1. 判斷重組字 結果:false
 let s = 'rat';
 let t = 'car';
+let ss1 = string.work1(s, t);
+console.log('ss1',ss1); 
+
+//2.字串反轉 結果:olleh
 let str = 'hello';
+let ss2 = string.work2(str);
+console.log('ss2',ss2); 
+
+
+console.log('...............................object...............................');
+
+//1. deep clone 結果:{aaa:'1', bbb:'2'}
 var a = {
     text: 'aaa',
     book: { aaa: '1', bbb: '2' }
 };
+let oo1 = object.work1(a);
+console.log('oo1',oo1);
+
+//2. Date 結果'2020-09-22'
+let oo2 = new Date().format();
+console.log('oo2',oo2);
+
+//3. class constructor for Person 
+//結果 hi I'm john, 18 years old.
+let john = new object.Person('john', 18); 
+let oo3 = john.sayhi();
+console.log('oo3',oo3); 
+
+//4. regexp replace all
+//結果 123b123c123d123e123f
+let oo4 = object.replaceAll('abacadaeaf', 'a', '123');
+console.log('oo4',oo4);
+
+//5. email
 let e1 = 'wistron@wistron.com';
 let e2 = 'wistron.com';
-let d = new Date().format();
-let arr = [
-    {
-        name: "Ryan",
-        age: 10,
-        city: "TPE"
-    },
-    {
-        name: "Apeach",
-        age: 8,
-        city: "KHH"
-    },
-    {
-        name: "Muzi",
-        age: 15,
-        city: "TPE"
-    },
-]
+let oo5_t = object.email_format(e1);
+let oo5_f = object.email_format(e2);
+console.log('oo5_t',oo5_t); //true
+console.log('oo5_f',oo5_f); //false
 
-console.log(string.work1(s, t)); //判斷重組字 結果:false
-console.log(string.work2(str)); //字串反轉 結果:olleh
-console.log(object.work1(a));//deep clone 結果:{aaa:'1', bbb:'2'}
+//6. array to object
+let oo6 = object.reduce_test(object_pratice06);
+console.log('oo6',oo6); 
 
-var john = new object.Person('john', 18); //class constructor for Person
-console.log(d); //'2020-09-22'
-console.log(john.sayhi()); //hi I'm john, 18 years old.
-console.log(object.replaceAll('abacadaeaf', 'a', '123')); //123b123c123d123e123f
-console.log(object.email_format(e1)); //true
-console.log(object.email_format(e2));
-console.log(object.reduce_test(arr)); //array to object
+//7. array to object
+let oo7 = object.reduce_test1(object_pratice07);
+let result = JSON.stringify(oo7);
+console.log('oo7',result);
+
+console.log('...............................reverse..............................');
+
+//8. reverse object to array
+let oo8 = object.reverse_obj(r_object_pratice06);
+console.log('oo8',oo8);
+

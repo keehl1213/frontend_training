@@ -1,3 +1,13 @@
+// 1. deep clone object
+//   輸入物件，輸出一個深層複製的物件。兩者記憶體位置不能一樣。
+  
+// fix this bug, a.text should be 'aaa':
+// var a = {text: 'aaa'};
+// var b = a;
+// b.text = 'bbb';
+
+// console.log(a.text); 
+
 const work1 = (a) => {
 
     let b_str = JSON.stringify(a);//把物件轉字串
@@ -8,13 +18,15 @@ const work1 = (a) => {
 
 }
 
-// lodash
-// const work1_1 = (a) => {
-//     let b = _.cloneDeep(objects);
-//     b.text = 'bbb';
-//     b.book.aaa = '3';
-//     return a.book;
-// } 
+
+// 2. add a format prototype to Date
+//   為 Date 新增一個原型方法為 format，可以執行 new Date().format()
+  
+//   format: 'YYYY-MM-DD'
+  
+// 範例：
+// 輸入：new Date().format()
+// 輸出：'2018-02-25'
 
 Date.prototype.format = function () {
 
@@ -27,6 +39,14 @@ Date.prototype.format = function () {
     //return "'" + yyyy + '-' + (mm[1] ? mm : "0" + mm[0]) + '-' + (dd[1] ? dd : "0" + dd[0]) + "'";
 };
 
+
+// 3. class constructor for Person
+
+// 範例：
+// 輸入：
+// var john = new Person('john', 18);
+// john.sayhi(); // "hi I'm john, 18 years old"
+
 class Person { //class constructor for Person
     constructor(name, age) {
         this.name = name;
@@ -38,12 +58,26 @@ class Person { //class constructor for Person
     }
 }
 
+
+// 4. regexp replace all
+
+// 範例：
+// 輸入： 'abacadaeaf', 'a', '123'
+// 輸出： '123b123c123d123e123f'
+
 function replaceAll(string, search, replace) { //regexp replace all
 
     const result = string.replace(new RegExp(search, 'g'), replace);
     return result;
 
 }
+
+
+// 5. regexp condition match email format
+
+// 範例：
+// 'wistron@wistron.com' return true
+// 'wistron.com' return false
 
 const email_format = (e) => {
     const emailRule = /^\w+((-\w+)|(\.\w+))*\@[\w]+((\.|-)[\w]+)*\.[A-Za-z]+$/;
@@ -58,7 +92,8 @@ const email_format = (e) => {
     }
 }
 
-//reduce版本
+
+// 6. 請將下列Array轉換為指定的Object
 const reduce_test = (arr) => arr.reduce(function (accumulator, person) {
     const { name, age, city } = person;
     const item = {
@@ -82,12 +117,54 @@ const reduce_test = (arr) => arr.reduce(function (accumulator, person) {
 }, {});
 
 
+//7. 請將下列Array轉換為指定的Object
+const reduce_test1 = (arr) => arr.reduce(function (result, plan) {
+
+    const { project, form, part, tooling } = plan;
+
+    let project1 = result[project];
+    if (!project1) {
+        result = {
+            ...result,
+            [project]: {
+                [form]: {
+
+                    [part]: [tooling]
+
+                }
+            },
+        };
+        return result;
+    }
+
+    let form1 = project[form];
+    if (!form1) {
+        result[project][form] = {
+            [part]: [tooling],
+        }
+        return result;
+    }
+
+    let part1 = form1[part];
+    if (!part1) {
+        result[project][form][part] = [tooling];
+
+    } else {
+        result[project][form][part].push(tooling);
+        result[project][form][part].sort();
+    }
+
+    return result;
+
+}, {});
+
 export default {
     work1,
     Person,
     replaceAll,
     email_format,
     Date,
-    reduce_test
+    reduce_test,
+    reduce_test1
 }
 

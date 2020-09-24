@@ -39,6 +39,8 @@ const reduce_test1 = (arr) => arr.reduce(function (result, plan) {
 }, {});
 
 
+
+
 export default {
     reduce_test1
 }

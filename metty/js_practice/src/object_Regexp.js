@@ -157,25 +157,44 @@ const reduce_test1 = (arr) => arr.reduce(function (result, plan) {
 }, {});
 
 //8. 請將下列Object轉換為指定的Array
-const reverse_obj = (obj) => {
-    const city = Object.keys(obj);
-    let obj_length = Object.keys(obj).length;
-    let result = [];
-    for (let i = 0; i < obj_length; i++) {
-        let city1 = obj[city[i]];
-        if (city1) {
-            for (let j = 0; j < city1.length; j++) {
-                let city_obj = {
-                    city: city[i]
-                };
-                let aa = city1[j];
-                let person = { ...aa, ...city_obj };
-                result.push(person);
-            }
-        }
+// const reverse_obj = (obj) => {
+//     const city = Object.keys(obj);
+//     let obj_length = Object.keys(obj).length;
+//     let result = [];
+//     for (let i = 0; i < obj_length; i++) {
+//         let city1 = obj[city[i]];
+//         if (city1) {
+//             for (let j = 0; j < city1.length; j++) {
+//                 let city_obj = {
+//                     city: city[i]
+//                 };
+//                 let aa = city1[j];
+//                 let person = { ...aa, ...city_obj };
+//                 result.push(person);
+//             }
+//         }
+//     }
+//     return result;
+// }
+let reverse_obj = (obj) => obj.reduce(function (result, entry) {
+    const [city, person_list] = entry;
+    const [list] = person_list;
+    const item = {
+        ...list,
+        city
+    };
+
+    if (person_list.length > 1) {
+        person_list.reduce(function (list2, person_list1) {
+            return list2 = result.push(
+                { ...person_list1, city });
+        }, []);
+    } else {
+        result.push(item);
     }
     return result;
-}
+    
+}, []);
 
 
 export default {

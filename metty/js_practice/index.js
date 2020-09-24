@@ -65,6 +65,8 @@ console.log('oo7',result);
 console.log('...............................reverse..............................');
 
 //8. reverse object to array
-let oo8 = object.reverse_obj(r_object_pratice06);
-console.log('oo8',oo8);
+let aaa = Object.entries(r_object_pratice06);
+let oo8 = object.reverse_obj(aaa);
+let result1 = JSON.stringify(oo8);
+console.log('oo8',result1);
 

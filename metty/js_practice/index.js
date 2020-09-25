@@ -3,6 +3,7 @@ import object from './src/object_Regexp';
 import object_pratice06 from './json/object_pratice06';
 import object_pratice07 from './json/object_pratice07';
 import r_object_pratice06 from './json/r_object_pratice06';
+import r_object_practice07 from './json/r_object_practice07';
 
 
 
@@ -66,7 +67,12 @@ console.log('...............................reverse.............................
 
 //8. reverse object to array
 let aaa = Object.entries(r_object_pratice06);
-let oo8 = object.reverse_obj(aaa);
+let oo8 = object.reverse(aaa);
 let result1 = JSON.stringify(oo8);
 console.log('oo8',result1);
+
+//9. reverse object to array
+let oo9 = object.reverse1(r_object_practice07);
+console.log('oo9',oo9);
+
 

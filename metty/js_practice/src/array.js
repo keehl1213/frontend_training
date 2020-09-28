@@ -22,8 +22,7 @@ const array01 = (arr) => {
 // s = ["a", "b", "c"], t = ["d", "e", "f"] 回傳 ["a", "b", "c", "d", "e", "f"]
 const array02 = (s, t) => {
 
-    let spread_arr = [...s, ...t];
-    return spread_arr;
+    return [...s, ...t];
 
 }
 
@@ -41,10 +40,7 @@ const array02 = (s, t) => {
 //     }
 const array03 = (id) => {
 
-    let find_id = array_pratice.find(function (item) {
-        return item.id === id;
-    });
-    return find_id;
+    return array_pratice.find(item => item.id === id);
 
 }
 
@@ -76,8 +72,7 @@ const array03 = (id) => {
 //     }
 const array04 = (filter_item) => {
 
-    let filter_arr = array_pratice.filter(array => array.title.match(filter_item));
-    return filter_arr;
+    return array_pratice.filter(array => array.title.toLowerCase().includes(filter_item.toLowerCase()));
 
 }
 
@@ -93,8 +88,16 @@ const array04 = (filter_item) => {
 // ...
 const array05 = (insert_item) => {
 
-    array_pratice.splice(10, 0, insert_item);
-    return array_pratice;
+    let index = array_pratice.findIndex(item => item.id === 10);
+    let index1 = array_pratice.findIndex(item => item.id === 11);
+
+    if(index < index1){
+        array_pratice.splice(index+1, 0, insert_item);
+        return array_pratice;
+    }else{
+        array_pratice.splice(index1+1, 0, insert_item);
+        return array_pratice;
+    }
 
 }
 
@@ -115,12 +118,9 @@ const array05 = (insert_item) => {
 // ...
 const array06 = (id, revise) => {
 
-    let find_id = array_pratice.find(function (item) {
-        return item.id === id;
-    });
+    let find_id = array_pratice.find(item => item.id === id);
+    return {...find_id,...revise};
 
-    let result = Object.assign({},find_id,revise);;
-    return result;
 }
 
 // 7. 刪除特定id的資料
@@ -128,12 +128,8 @@ const array06 = (id, revise) => {
 // 輸入 5 輸出已經刪除完 id 為 5 的陣列
 const array07 = (delet_id) => {
     
-    let find_index = array_pratice.findIndex(function (item) {
-        return item.id === delet_id;
-    });
-    array_pratice.splice(find_index, 1)
-    return `已經刪除id為${delet_id}的陣列`;
-    
+    return array_pratice.filter(item => item.id !== delet_id);
+      
 }
 
 // 8. 依照價格排序

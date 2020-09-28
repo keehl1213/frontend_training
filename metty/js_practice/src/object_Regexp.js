@@ -203,12 +203,12 @@ let reverse_result = project_num.reduce(function (result, project) {
     let form_num = Object.keys(o1[project]);
     let project_order = o1[project];
 
-    form_num.reduce(function (part_list, form) {
+    form_num.forEach(function (form) {
         
-        part_list = Object.keys(project_order[form]);
+        let part_list = Object.keys(project_order[form]);
 
-        part_list.reduce(function (tooling, part) {
-            tooling = Object.values(project_order[form][part]);
+        part_list.forEach(function (part) {
+            let tooling = Object.values(project_order[form][part]);
             tooling.reduce(function (list, tooling_num) {
             return list = result.push(
                 {
@@ -219,10 +219,10 @@ let reverse_result = project_num.reduce(function (result, project) {
                 });
         }, []);
 
-        }, []);
+        });
 
     
-    }, []);
+    });
 
     return result;
 

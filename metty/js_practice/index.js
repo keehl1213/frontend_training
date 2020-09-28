@@ -102,7 +102,7 @@ console.log('s03', s03);
 //}
 
 // 4. 模糊搜尋title包含特定文字的資料
-let s04 = array.array04('美好');
+let s04 = array.array04('BEAUTIFUL');
 console.log('s04', s04);
 // 輸出：{
 //         "id": 1,

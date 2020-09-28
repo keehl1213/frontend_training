@@ -1,4 +1,3 @@
-import { result } from 'lodash';
 import array_pratice from './array_pratice';
 // 1. deep clone array
 //   輸入陣列，輸出一個深層複製的陣列。兩者記憶體位置不能一樣。
@@ -11,7 +10,7 @@ import array_pratice from './array_pratice';
 // console.log(a); // [1,2,3,4]
 const array01 = (arr) => {
 
-    let b = Array.from(arr);
+    let b = arr.slice(0);
     b.push(4);
     return arr;
 

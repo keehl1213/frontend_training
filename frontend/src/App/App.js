@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
 import * as Style from "./Style";
 
+const DATA = [
+  {
+    id: 1,
+    title: 'eat',
+    doneTime: '2020/10/06 02:02'
+  },
+  {
+    id: 2,
+    title: 'sleep',
+    doneTime: ''
+  },
+];
+
 const App = () => {
-    const [list, setList] = useState([{ id: 1, title: 'eat', doneTime: '2020/10/06 02:02' }, { id: 2, title: 'sleep', doneTime: '' }]);
+    const [list, setList] = useState(DATA);
     const [title, setTitle] = useState('');
     const addItems = () => {
-      let id = Math.random();
+      const id = Math.random();
       setList([...list, {id, title, doneTime: ''}]);
     }
     // const deleteItem = (props) => {

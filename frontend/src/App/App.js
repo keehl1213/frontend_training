@@ -19,7 +19,12 @@ const App = () => {
     const [title, setTitle] = useState('');
     const addItems = () => {
       const id = Math.random();
-      setList([...list, {id, title, doneTime: ''}]);
+      {
+        title &&
+        setList([...list, {id, title, doneTime: ''}]);
+        setTitle('');
+      }
+      
     }
     // const deleteItem = (props) => {
     //     console.log(props)
@@ -39,8 +44,8 @@ const App = () => {
         </Style.Header>
         <Style.ContentBox>
           <Style.AddList>
-           <input type="text" className="inputBox" placeholder="Add your task here…" onChange={(e)=>{setTitle(e.target.value)}}/>
-           <button className="addButton" onClick={addItems}>Add</button>
+              <input type="text" className="inputBox" placeholder="Add your task here…" value={title} onChange={(e)=>setTitle(e.target.value)}/> 
+              <button className="addButton"  onClick={addItems}>Add</button>
           </Style.AddList>
           <Style.ListBox>
             <Style.Item>

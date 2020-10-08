@@ -11,18 +11,23 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   margin-bottom: 30px;
+  h1 {
+    margin: 0;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    text-transform:uppercase;
+    font-size: 4em;
+    font-weight: lighter;
+  }
+  h2 {
+    font-weight: lighter;
+    margin: 0;
+  }
 `;
 
-export const Logo = styled.div` 
-  display: flex;
-  justify-content: center;
-  text-transform:uppercase;
-  font-size: 4em;
-  margin-bottom: 30px;
-`;
-
-export const Desc = styled.div` 
-  font-size: 1.5em;
+export const TextDelete = styled.div`
+  text-decoration: line-through;	
 `;
 
 export const ContentBox = styled.div` 
@@ -71,26 +76,17 @@ export const ListShow = styled.div`
   flex-direction: column;
 `;
 
-export const ListRow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 2em;
-  :hover {
-    background-color: #E5E5E5;
-  }
-`;
-
-export const ReviseRow = styled.div`
-  text-decoration: underline;
-  margin-right: 5px;
+export const DoneTimeBox = styled.div`
   font-weight: bold;
 `;
 
-export const ReviseBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+export const Revise = styled.div`
+  text-decoration: underline;
+  font-weight: bold;
+  :not(:last-child){
+    margin-right: 10px;
+  }
+`
 
 export const ListText = styled.div`
   display: block;

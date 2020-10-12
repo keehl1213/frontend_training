@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import * as Style from "./Style";
 import TodoAct from "./components/TodoAct";
 import Date from "./components/DateFormat";
-import DoneShow from "./components/DoneShow";
 
 const Data = [
   {
@@ -24,29 +23,23 @@ const App = () => {
 
     const addItems = () => {
       const id = Math.random();
-      {
-        title 
-        &&
+      if (title) {
         setList([...list, {id, title, doneTime: ''}]);
         setTitle('');
       }
-    }
-    const handleClick = () => {
-      setDoneCheck(!doneCheck);
-    }
-    
+    };
+
     const doneTodo = (id) => {
-      const findID = list.find((item) => (item.id === id));
-      const filterID = list.filter((item) => (item.id !== id));
-      const date = new Date().format();
-      const addDoneTime = {doneTime:date};
-      const updateTodo = {...findID,...addDoneTime};
-      setList([...filterID, updateTodo]);
-    }
+      const findDoneList = list.find((item) => (item.id === id));
+      const findIndexNum = list.findIndex((item) => (item.id === id));
+      const updateTodo = {...findDoneList, doneTime: new Date().format()};
+      list.splice(findIndexNum, 1, updateTodo);
+      setList([...list]);
+    };
 
     const deleteTodo = (id) => {
-      setList(list.filter(item => item.id !== id));
-    } 
+      setList(list.filter((item) => item.id !== id));
+    };
 
     return (
       <Style.Container>
@@ -60,42 +53,55 @@ const App = () => {
         </Style.Header>
         <Style.ContentBox>
           <Style.AddList>
-              <input type="text" className="inputBox" placeholder="Add your task here…" value={title} onChange={(e)=>setTitle(e.target.value)} />
-              <button className="addButton" onClick={addItems}>Add</button>
+            <input
+              type="text"
+              className="inputBox"
+              placeholder="Add your task here…"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <button
+              type="submit"
+              className="addButton"
+              onClick={addItems}>
+              Add
+            </button>
           </Style.AddList>
           <Style.ListBox>
             <Style.Item>
               <Style.ListText>{list.length} items</Style.ListText>
               <Style.ListText>
-                <input type="checkbox" onClick={handleClick} checked={doneCheck} />
+                <input
+                  type="checkbox"
+                  onClick={() => setDoneCheck(!doneCheck)}
+                  checked={doneCheck}
+                />
                 Show done items
               </Style.ListText>
             </Style.Item>
-              
-              {list
-              .filter((item) => !item.doneTime)
-              .map((item) =>
-                  (
+            {
+              doneCheck
+              ? (
+                list
+                .map((item) => (
+                  <TodoAct
+                    item={item}
+                    deleteTodo={deleteTodo}
+                    doneTodo={doneTodo}
+                  />
+                  ))
+                )
+                : (
+                  list
+                  .filter((item) => !item.doneTime)
+                  .map((item) => (
                     <TodoAct
                       item={item}
                       deleteTodo={deleteTodo}
                       doneTodo={doneTodo}
                     />
-                  )
-              )}
-
-              {
-                doneCheck
-                &&
-                list
-                .filter ((item) => item.doneTime)
-                .map((item) =>
-                (
-                  <DoneShow 
-                    item={item}
-                  />
+                  ))
                 )
-              )
               }
           </Style.ListBox>
         </Style.ContentBox>

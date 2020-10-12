@@ -27,7 +27,7 @@ export const Header = styled.div`
 `;
 
 export const TextDelete = styled.div`
-  text-decoration: line-through;	
+  text-decoration: line-through;
 `;
 
 export const ContentBox = styled.div` 
@@ -86,7 +86,7 @@ export const Revise = styled.div`
   :not(:last-child){
     margin-right: 10px;
   }
-`
+`;
 
 export const ListText = styled.div`
   display: block;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ListRow = styled.div`
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   height: 2em;
@@ -39,5 +40,9 @@ export const DoneTimeBox = styled.div`
 `;
 
 export const TextDelete = styled.div`
-  text-decoration: line-through;	
+  text-decoration: line-through;
+`;
+
+export const Item = styled.div`
+  width: 100%;
 `;

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import * as Style from "./Style";
+import TodoAct from "./components/TodoAct";
+import Date from "./components/DateFormat";
 
-const DATA = [
+const Data = [
   {
     id: 1,
     title: 'eat',
@@ -15,63 +17,96 @@ const DATA = [
 ];
 
 const App = () => {
-    const [list, setList] = useState(DATA);
-    const [title, setTitle] = useState('');
-    const addItems = () => {
-      const id = Math.random();
-      {
-        title &&
-        setList([...list, {id, title, doneTime: ''}]);
-        setTitle('');
-      }
-      
+  const [list, setList] = useState(Data);
+  const [title, setTitle] = useState('');
+  const [doneCheck, setDoneCheck] = useState(false);
+
+  const addItems = () => {
+    const id = Math.random();
+    if (title) {
+      setList([...list, { id, title, doneTime: '' }]);
+      setTitle('');
     }
-    // const deleteItem = (props) => {
-    //     console.log(props)
-    //     const a = list
-    //     .find(item => item.id === props)
-    //     console.log(a)
-    // }
-    return (
-      <Style.Container>
-        <Style.Header>
-          <Style.Logo>
-            Todo<strong>List</strong>
-          </Style.Logo>
-          <Style.Desc>
-            A Simple todolist built react hooks & context
-          </Style.Desc>
-        </Style.Header>
-        <Style.ContentBox>
-          <Style.AddList>
-              <input type="text" className="inputBox" placeholder="Add your task here…" value={title} onChange={(e)=>setTitle(e.target.value)}/> 
-              <button className="addButton"  onClick={addItems}>Add</button>
-          </Style.AddList>
-          <Style.ListBox>
-            <Style.Item>
-              <Style.ListText>{list.length} items</Style.ListText>
-              <Style.ListText>
-                <input type="checkbox" />
+  };
+
+  const doneTodo = (id) => {
+    const newList = [...list];
+    const findDoneObj = newList.find((item) => (item.id === id));
+    const findIndexNum = newList.findIndex((item) => (item.id === id));
+    newList.splice(findIndexNum, 1, { ...findDoneObj, doneTime: new Date().format() });
+    setList(newList);
+  };
+
+  const deleteTodo = (id) => {
+    setList(list.filter((item) => item.id !== id));
+  };
+
+  return (
+    <Style.Container>
+      <Style.Header>
+        <h1>
+          Todo<strong>List</strong>
+        </h1>
+        <h2>
+          A Simple todolist built react hooks & context
+        </h2>
+      </Style.Header>
+      <Style.ContentBox>
+        <Style.AddList>
+          <input
+            type="text"
+            className="inputBox"
+            placeholder="Add your task here…"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="addButton"
+            onClick={addItems}>
+            Add
+          </button>
+        </Style.AddList>
+        <Style.ListBox>
+          <Style.Item>
+            <Style.ListText>{list.length} items</Style.ListText>
+            <Style.ListText>
+              <input
+                type="checkbox"
+                onClick={() => setDoneCheck(!doneCheck)}
+                checked={doneCheck}
+              />
                 Show done items
-              </Style.ListText>
-            </Style.Item>
-            
-              {list.map((item) =>
-                  (
-                  <Style.ListRow>
-                    { item.title }
-                    <Style.ReviseBox>
-                      <Style.ReviseRow>Mark as done</Style.ReviseRow>
-                      <Style.ReviseRow>Delete</Style.ReviseRow>
-                    </Style.ReviseBox>
-                  </Style.ListRow>
-                  )
-                  //<ListItems id={item.id} title={item.title} doneTime={item.doneTime} />
-              )}
-            
-          </Style.ListBox>
-        </Style.ContentBox>
-      </Style.Container>
-    );
+            </Style.ListText>
+          </Style.Item>
+          <Style.ListShow>
+            {
+              doneCheck ? (
+                list
+                  .map((item) => (
+                    <TodoAct
+                      item={item}
+                      deleteTodo={deleteTodo}
+                      doneTodo={doneTodo}
+                    />
+                  ))
+              )
+                : (
+                  list
+                    .filter((item) => !item.doneTime)
+                    .map((item) => (
+                      <TodoAct
+                        item={item}
+                        deleteTodo={deleteTodo}
+                        doneTodo={doneTodo}
+                      />
+                    ))
+                )
+            }
+          </Style.ListShow>
+        </Style.ListBox>
+      </Style.ContentBox>
+    </Style.Container>
+  );
 };
 export default App;

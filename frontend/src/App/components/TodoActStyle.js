@@ -39,10 +39,6 @@ export const DoneTimeBox = styled.div`
   font-weight: bold;
 `;
 
-export const TextDelete = styled.div`
-  text-decoration: line-through;
-`;
-
 export const Item = styled.div`
   width: 100%;
 `;

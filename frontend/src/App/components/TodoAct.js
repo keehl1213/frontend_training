@@ -2,33 +2,30 @@ import React from 'react';
 import * as TodoActStyle from "./TodoActStyle";
 
 const TodoAct = (props) => {
-    const {item, deleteTodo, doneTodo} = props;
-    const {id, title, doneTime} = item;
-    return (
-      <TodoActStyle.Item>
+  const { item, deleteTodo, doneTodo } = props;
+  const { id, title, doneTime } = item;
+  return (
+    <TodoActStyle.Item>
+      <TodoActStyle.ListRow>
+        <div style={{ ...(doneTime ? { textDecoration: 'line-through' } : {}) }}>
+          {title}
+        </div>
         {
-            !doneTime
+          !doneTime
             ? (
-              <TodoActStyle.ListRow>
-                {title}
-                <TodoActStyle.ReviseBox>
-                  <button type="submit" className="reviseRow" onClick={() => { doneTodo(id); }}>Mark as done</button>
-                  <button type="submit" className="reviseRow" onClick={() => { deleteTodo(id); }}>Delete</button>
-                </TodoActStyle.ReviseBox>
-              </TodoActStyle.ListRow>
+              <TodoActStyle.ReviseBox>
+                <button button type="submit" className="reviseRow" onClick={() => { doneTodo(id); }}>Mark as done</button>
+                <button type="submit" className="reviseRow" onClick={() => { deleteTodo(id); }}>Delete</button>
+              </TodoActStyle.ReviseBox>
             ) : (
-              <TodoActStyle.ListRow>
-                <TodoActStyle.TextDelete>
-                  {title}
-                </TodoActStyle.TextDelete>
-                <TodoActStyle.DoneTimeBox>
-                    完成時間: {doneTime}
-                </TodoActStyle.DoneTimeBox>
-              </TodoActStyle.ListRow>
+              <TodoActStyle.DoneTimeBox>
+                完成時間: {doneTime}
+              </TodoActStyle.DoneTimeBox>
             )
-          }
-      </TodoActStyle.Item>
-    );
+        }
+      </TodoActStyle.ListRow>
+    </TodoActStyle.Item>
+  );
 };
 
 export default TodoAct;

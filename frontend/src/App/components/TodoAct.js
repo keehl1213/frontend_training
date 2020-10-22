@@ -2,11 +2,12 @@ import React from 'react';
 import * as TodoActStyle from "./TodoActStyle";
 
 const TodoAct = (props) => {
-  const { item, deleteTodo, doneTodo } = props;
+  const { item, deleteTodo, doneTodo, doneChecked} = props;
   const { id, title, doneTime } = item;
+
   return (
     <TodoActStyle.Item>
-      <TodoActStyle.ListRow>
+      <TodoActStyle.ListRow style={{...(!doneChecked && doneTime ? { display: 'none' } : {}) }}>
         <div style={{ ...(doneTime ? { textDecoration: 'line-through' } : {}) }}>
           {title}
         </div>

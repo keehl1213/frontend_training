@@ -14,12 +14,29 @@ const Data = [
     title: 'sleep',
     doneTime: ''
   },
+  {
+    id: 3,
+    title: 'play',
+    doneTime: ''
+  },
+  {
+    id: 4,
+    title: 'read',
+    doneTime: ''
+  },
 ];
 
 const App = () => {
   const [list, setList] = useState(Data);
   const [title, setTitle] = useState('');
-  const [doneCheck, setDoneCheck] = useState(false);
+  const [search, setSearch] = useState('');
+  const [doneChecked, setDoneChecked] = useState(false);
+  // const [pageNum, setPageNum] = useState(0);
+
+
+  const needTodoList = list.filter((item) => !item.doneTime);
+  const listLength = list.length;
+  const todoListLength = needTodoList.length;
 
   const addItems = () => {
     const id = Math.random();
@@ -41,6 +58,46 @@ const App = () => {
     setList(list.filter((item) => item.id !== id));
   };
 
+  const searchItem = () => {
+    const newList = list.filter((array) => array.title.toLowerCase().includes(search.toLowerCase()));
+    setList(newList);
+    setSearch('');
+  };
+
+  const sortFuc = (e) => {
+    const newList = [...list];
+    newList.sort((a, b) => {
+      const A = a.title.toUpperCase();
+      const B = b.title.toUpperCase();
+      const reg = /[a-zA-Z]/;
+      const num = /[0-9]/;
+      if (reg.test(A) || reg.test(B)) {
+        if (A < B) {
+        return -1;
+      }
+        if (A > B) {
+        return 1;
+      }
+        return 0;
+      }
+      if (num.test(A) || num.test(B)) {
+        return A - B;
+      }
+        return A.localeCompare(B);
+    });
+    if (e.target.value === 'asc') {
+      setList(newList);
+    } else {
+      newList.reverse();
+      setList(newList);
+    }
+  };
+
+  // const pageTotalNum = () => {
+  //   const page = listLength / 3;
+  //   const totalPage = Math.ceil(page);;
+  // }
+
   return (
     <Style.Container>
       <Style.Header>
@@ -52,6 +109,21 @@ const App = () => {
         </h2>
       </Style.Header>
       <Style.ContentBox>
+        <Style.Search>
+          <input
+            type="text"
+            className="searchBox"
+            placeholder="search…"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="searchButton"
+            onClick={searchItem}>
+            Search
+          </button>
+        </Style.Search>
         <Style.AddList>
           <input
             type="text"
@@ -69,42 +141,54 @@ const App = () => {
         </Style.AddList>
         <Style.ListBox>
           <Style.Item>
-            <Style.ListText>{list.length} items</Style.ListText>
+            <Style.ListText>{doneChecked ? listLength : todoListLength} items</Style.ListText>
             <Style.ListText>
-              <input
-                type="checkbox"
-                onClick={() => setDoneCheck(!doneCheck)}
-                checked={doneCheck}
-              />
+              <Style.Box>
+                  Sort:
+                <input
+                  name="sort"
+                  value="asc"
+                  type="radio"
+                  onClick={sortFuc}
+                />
+                Asc
+                <input
+                  name="sort"
+                  value="desc"
+                  type="radio"
+                  onClick={sortFuc}
+                />
+                Desc
+              </Style.Box>
+              <Style.Box>
+                <input
+                  type="checkbox"
+                  onClick={() => setDoneChecked(!doneChecked)}
+                  checked={doneChecked}
+                />
                 Show done items
+              </Style.Box>
             </Style.ListText>
           </Style.Item>
           <Style.ListShow>
             {
-              doneCheck ? (
-                list
-                  .map((item) => (
-                    <TodoAct
-                      item={item}
-                      deleteTodo={deleteTodo}
-                      doneTodo={doneTodo}
-                    />
-                  ))
-              )
-                : (
-                  list
-                    .filter((item) => !item.doneTime)
-                    .map((item) => (
-                      <TodoAct
-                        item={item}
-                        deleteTodo={deleteTodo}
-                        doneTodo={doneTodo}
-                      />
-                    ))
-                )
+              list
+              .map((item) => (
+                <TodoAct
+                  item={item}
+                  deleteTodo={deleteTodo}
+                  doneTodo={doneTodo}
+                  doneChecked={doneChecked}
+                />
+              ))
             }
           </Style.ListShow>
         </Style.ListBox>
+        <Style.ContentBox>
+          <Style.PageBox>
+            {/* {totalPage} */}
+          </Style.PageBox>
+        </Style.ContentBox>
       </Style.ContentBox>
     </Style.Container>
   );

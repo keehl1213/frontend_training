@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Style from "./Style";
 import TodoAct from "./components/TodoAct";
 import Date from "./components/DateFormat";
@@ -7,7 +7,7 @@ const Data = [
   {
     id: 1,
     title: 'eat',
-    doneTime: '2020/10/06 02:02'
+    doneTime: '2020/10/23'
   },
   {
     id: 2,
@@ -24,6 +24,21 @@ const Data = [
     title: 'read',
     doneTime: ''
   },
+  {
+    id: 5,
+    title: 'learn1',
+    doneTime: '2020/10/23'
+  },
+  {
+    id: 5,
+    title: 'learn2',
+    doneTime: ''
+  },
+  {
+    id: 5,
+    title: 'learn3',
+    doneTime: '2020/10/23'
+  },
 ];
 
 const App = () => {
@@ -31,12 +46,12 @@ const App = () => {
   const [title, setTitle] = useState('');
   const [search, setSearch] = useState('');
   const [doneChecked, setDoneChecked] = useState(false);
-  // const [pageNum, setPageNum] = useState(0);
+  const [isSearched, setIsSearched] = useState(false);
+  const [searchResult, setSearchResult] = useState([]);
 
-
-  const needTodoList = list.filter((item) => !item.doneTime);
-  const listLength = list.length;
-  const todoListLength = needTodoList.length;
+  const todoList = list.filter((item) => !item.doneTime);
+  const [listLength, setListLength] = useState(todoList.length);
+  const [pageNum, setPageNum] = useState(0);
 
   const addItems = () => {
     const id = Math.random();
@@ -59,9 +74,13 @@ const App = () => {
   };
 
   const searchItem = () => {
-    const newList = list.filter((array) => array.title.toLowerCase().includes(search.toLowerCase()));
-    setList(newList);
-    setSearch('');
+    if (search) {
+      const newList = list.filter((array) => array.title.toLowerCase().includes(search.toLowerCase()));
+      setSearchResult(newList);
+      setSearch('');
+      setIsSearched(true);
+      setListLength(newList.length);
+    }
   };
 
   const sortFuc = (e) => {
@@ -93,11 +112,26 @@ const App = () => {
     }
   };
 
-  // const pageTotalNum = () => {
-  //   const page = listLength / 3;
-  //   const totalPage = Math.ceil(page);;
-  // }
+  const handleDoneClick = () => {
+    setDoneChecked(!doneChecked);
+    if (!isSearched) {
+      setListLength(!doneChecked ? list.length : todoList.length);
+    }
+  };
 
+  const showPage = () => {
+    const page = [];
+    (isSearched ? searchResult : list)
+    .filter((item) => (!doneChecked ? !item.doneTime : true))
+    .forEach((element, index) => { if (index % 3 === 0) { page.push(index); } });
+    return (
+      page.map((item, index) => (
+        <button type="submit" onClick={() => setPageNum(index)}>
+          {index + 1}
+        </button>
+      ))
+    );
+  };
   return (
     <Style.Container>
       <Style.Header>
@@ -141,7 +175,7 @@ const App = () => {
         </Style.AddList>
         <Style.ListBox>
           <Style.Item>
-            <Style.ListText>{doneChecked ? listLength : todoListLength} items</Style.ListText>
+            <Style.ListText>{listLength} items</Style.ListText>
             <Style.ListText>
               <Style.Box>
                   Sort:
@@ -163,7 +197,7 @@ const App = () => {
               <Style.Box>
                 <input
                   type="checkbox"
-                  onClick={() => setDoneChecked(!doneChecked)}
+                  onClick={handleDoneClick}
                   checked={doneChecked}
                 />
                 Show done items
@@ -172,7 +206,10 @@ const App = () => {
           </Style.Item>
           <Style.ListShow>
             {
-              list
+              (isSearched ? searchResult : list)
+              // .filter((array) => (isSearched ? array.title.toLowerCase().includes(search.toLowerCase()) : true))
+              .filter((item) => (!doneChecked ? !item.doneTime : true))
+              .slice(pageNum * 3, 3 * (pageNum + 1))
               .map((item) => (
                 <TodoAct
                   item={item}
@@ -184,11 +221,9 @@ const App = () => {
             }
           </Style.ListShow>
         </Style.ListBox>
-        <Style.ContentBox>
-          <Style.PageBox>
-            {/* {totalPage} */}
-          </Style.PageBox>
-        </Style.ContentBox>
+        <Style.Page>
+          {showPage()}
+        </Style.Page>
       </Style.ContentBox>
     </Style.Container>
   );

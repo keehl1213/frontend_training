@@ -116,11 +116,16 @@ export const Box = styled.div`
   }
 `;
 
-export const PageBox = styled.div`
+export const Page = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1.5px solid gray;
-  width: 1.5em;
-  height:1.5em;
+  .button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.5px solid gray;
+    width: 1.5em;
+    height:1.5em;
+  }
 `;

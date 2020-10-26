@@ -42,113 +42,77 @@ const Data = [
 ];
 
 const App = () => {
-  const [dataSource, setDataSource] = useState(Data);
   const [title, setTitle] = useState('');
   const [doneChecked, setDoneChecked] = useState(false);
   const [listLength, setListLength] = useState();
-  const todoList = dataSource.filter((item) => !item.doneTime);
-  const [list, setList] = useState(todoList);
+  const [list, setList] = useState(Data);
   const [searchItem, setSearchItem] = useState('');
-  const [searchResult, setSearchResult] = useState();
+  const [inputSearchItem, setInputSearchItem] = useState('');
   const [pageNum, setPageNum] = useState(0);
+  const [isSortAsc, setIsSortAsc] = useState(true);
+  const pageSize = 3;
 
   const addItems = () => {
     const id = Math.random();
     if (title) {
-      const newList = [...dataSource, { id, title, doneTime: '' }];
-      setDataSource(newList);
+      const newList = [...list, { id, title, doneTime: '' }];
       setTitle('');
-      const newList1 = newList.filter((item) => !item.doneTime);
-      setList(!doneChecked ? newList1 : newList);
-      setSearchItem('');
+      setList(newList);
     }
   };
 
   const deleteTodo = (id) => {
-    const newList = dataSource.filter((item) => item.id !== id);
-    setDataSource(newList);
-    const newList1 = newList.filter((item) => !item.doneTime);
-    setList(!doneChecked ? newList1 : newList);
-    setSearchItem('');
-    setSearchResult('');
+    const newList = list.filter((item) => item.id !== id);
+    setList(newList);
+    setPageNum(0);
   };
 
   const markDone = (id) => {
-    const newList = [...dataSource];
+    const newList = [...list];
     const findDoneObj = list.find((item) => (item.id === id));
     const findIndexNum = newList.findIndex((item) => (item.id === id));
     newList.splice(findIndexNum, 1, { ...findDoneObj, doneTime: new Date().format() });
-    setDataSource(newList);
-    const newList1 = newList.filter((item) => !item.doneTime);
-    setList(!doneChecked ? newList1 : newList);
-    setSearchItem('');
-    setSearchResult('');
+    setList(newList);
+    setPageNum(0);
   };
 
   const handleDoneClick = () => {
     setDoneChecked(!doneChecked);
-    if (searchResult) {
-      const newList = searchResult.filter((item) => !item.doneTime);
-      setList(doneChecked ? newList : searchResult);
-    } else {
-      setList(!doneChecked ? dataSource : todoList);
-    }
+    setPageNum(0);
   };
 
   const search = () => {
-    if (searchItem) {
-      const newList = dataSource.filter((array) => array.title.toLowerCase().includes(searchItem.toLowerCase()));
-      setSearchResult(newList);
-      const newList1 = newList.filter((item) => !item.doneTime);
-      setList(!doneChecked ? newList1 : newList);
-    }
+    setSearchItem(inputSearchItem);
+    setPageNum(0);
   };
 
-  const sortFuc = (e) => {
-    const newList = [...list];
-    newList.sort((a, b) => {
-      const A = a.title.toUpperCase();
-      const B = b.title.toUpperCase();
-      const reg = /[a-zA-Z]/;
-      const num = /[0-9]/;
-      if (reg.test(A) || reg.test(B)) {
-        if (A < B) {
-          return -1;
-        }
-        if (A > B) {
-          return 1;
-        }
-        return 0;
+  const sortFuc = (a, b) => {
+    const A = a.title.toUpperCase();
+    const B = b.title.toUpperCase();
+    const reg = /[a-zA-Z]/;
+    const num = /[0-9]/;
+    if (reg.test(A) || reg.test(B)) {
+      if (A < B) {
+        return (isSortAsc ? -1 : 1);
       }
-      if (num.test(A) || num.test(B)) {
-        return A - B;
+      if (A > B) {
+        return (isSortAsc ? 1 : -1);
       }
-      return A.localeCompare(B);
-    });
-    if (e.target.value === 'asc') {
-      setList(newList);
-    } else {
-      newList.reverse();
-      setList(newList);
+      return 0;
     }
+    if (num.test(A) || num.test(B)) {
+      return (isSortAsc ? A - B : B - A);
+    }
+    return (isSortAsc ? A.localeCompare(B) : B.localeCompare(A));
   };
 
-  const showPage = () => {
-    const page = [];
-    list.forEach((element, index) => { if (index % 3 === 0) { page.push(index); } });
-    return (
-      page.map((item, index) => (
-        <button type="submit" onClick={() => setPageNum(index)}>
-          {index + 1}
-        </button>
-      ))
-    );
-  };
-
+  const page = [];
+  const renderList = list.filter((item) => (!doneChecked ? !item.doneTime : true)).filter((array) => array.title.toLowerCase().includes(searchItem.toLowerCase()));
+  renderList.forEach((element, index) => { if (index % pageSize === 0) { page.push(index); } });
   useEffect(() => {
-    setListLength(list.length);
+    setListLength(renderList.length);
   },
-    [list]);
+    [renderList]);
 
   return (
     <Style.Container>
@@ -166,8 +130,8 @@ const App = () => {
             type="text"
             className="searchBox"
             placeholder="search…"
-            value={searchItem}
-            onChange={(e) => setSearchItem(e.target.value)}
+            value={inputSearchItem}
+            onChange={(e) => setInputSearchItem(e.target.value)}
           />
           <button
             type="submit"
@@ -199,16 +163,15 @@ const App = () => {
                 Sort:
                 <input
                   name="sort"
-                  value="asc"
                   type="radio"
-                  onClick={sortFuc}
+                  onClick={() => setIsSortAsc(true)}
+                  checked={isSortAsc}
                 />
                 Asc
                 <input
                   name="sort"
-                  value="desc"
                   type="radio"
-                  onClick={sortFuc}
+                  onClick={() => setIsSortAsc(false)}
                 />
                 Desc
               </Style.Box>
@@ -224,8 +187,9 @@ const App = () => {
           </Style.Item>
           <Style.ListShow>
             {
-              list
-                .slice(pageNum * 3, 3 * (pageNum + 1))
+              renderList
+                .sort(sortFuc)
+                .slice(pageNum * pageSize, pageSize * (pageNum + 1))
                 .map((item) => (
                   <TodoAct
                     item={item}
@@ -237,7 +201,14 @@ const App = () => {
           </Style.ListShow>
         </Style.ListBox>
         <Style.Page>
-          {showPage()}
+          {
+            page
+            .map((item, index) => (
+              <button type="submit" onClick={() => setPageNum(index)} style={{ ...(pageNum === index ? { backgroundColor: 'gray', color: 'white' } : {}) }}>
+                {index + 1}
+              </button>
+            ))
+          }
         </Style.Page>
       </Style.ContentBox>
     </Style.Container>

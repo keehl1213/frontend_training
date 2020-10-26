@@ -30,56 +30,77 @@ const Data = [
     doneTime: '2020/10/23'
   },
   {
-    id: 5,
+    id: 6,
     title: 'learn2',
     doneTime: ''
   },
   {
-    id: 5,
+    id: 7,
     title: 'learn3',
     doneTime: '2020/10/23'
   },
 ];
 
 const App = () => {
-  const [list, setList] = useState(Data);
+  const [dataSource, setDataSource] = useState(Data);
   const [title, setTitle] = useState('');
-  const [search, setSearch] = useState('');
   const [doneChecked, setDoneChecked] = useState(false);
-  const [isSearched, setIsSearched] = useState(false);
-  const [searchResult, setSearchResult] = useState([]);
-
-  const todoList = list.filter((item) => !item.doneTime);
-  const [listLength, setListLength] = useState(todoList.length);
+  const [listLength, setListLength] = useState();
+  const todoList = dataSource.filter((item) => !item.doneTime);
+  const [list, setList] = useState(todoList);
+  const [searchItem, setSearchItem] = useState('');
+  const [searchResult, setSearchResult] = useState();
   const [pageNum, setPageNum] = useState(0);
 
   const addItems = () => {
     const id = Math.random();
     if (title) {
-      setList([...list, { id, title, doneTime: '' }]);
+      const newList = [...dataSource, { id, title, doneTime: '' }];
+      setDataSource(newList);
       setTitle('');
+      const newList1 = newList.filter((item) => !item.doneTime);
+      setList(!doneChecked ? newList1 : newList);
+      setSearchItem('');
     }
   };
 
-  const doneTodo = (id) => {
-    const newList = [...list];
-    const findDoneObj = newList.find((item) => (item.id === id));
+  const deleteTodo = (id) => {
+    const newList = dataSource.filter((item) => item.id !== id);
+    setDataSource(newList);
+    const newList1 = newList.filter((item) => !item.doneTime);
+    setList(!doneChecked ? newList1 : newList);
+    setSearchItem('');
+    setSearchResult('');
+  };
+
+  const markDone = (id) => {
+    const newList = [...dataSource];
+    const findDoneObj = list.find((item) => (item.id === id));
     const findIndexNum = newList.findIndex((item) => (item.id === id));
     newList.splice(findIndexNum, 1, { ...findDoneObj, doneTime: new Date().format() });
-    setList(newList);
+    setDataSource(newList);
+    const newList1 = newList.filter((item) => !item.doneTime);
+    setList(!doneChecked ? newList1 : newList);
+    setSearchItem('');
+    setSearchResult('');
   };
 
-  const deleteTodo = (id) => {
-    setList(list.filter((item) => item.id !== id));
+  const handleDoneClick = () => {
+    setDoneChecked(!doneChecked);
+    if (searchResult) {
+      const newList = searchResult.filter((item) => !item.doneTime);
+      setList(doneChecked ? newList : searchResult);
+    } else {
+      setList(!doneChecked ? dataSource : todoList);
+    }
   };
 
-  const searchItem = () => {
-    if (search) {
-      const newList = list.filter((array) => array.title.toLowerCase().includes(search.toLowerCase()));
+  const search = () => {
+    if (searchItem) {
+      const newList = dataSource.filter((array) => array.title.toLowerCase().includes(searchItem.toLowerCase()));
       setSearchResult(newList);
-      setSearch('');
-      setIsSearched(true);
-      setListLength(newList.length);
+      const newList1 = newList.filter((item) => !item.doneTime);
+      setList(!doneChecked ? newList1 : newList);
     }
   };
 
@@ -92,17 +113,17 @@ const App = () => {
       const num = /[0-9]/;
       if (reg.test(A) || reg.test(B)) {
         if (A < B) {
-        return -1;
-      }
+          return -1;
+        }
         if (A > B) {
-        return 1;
-      }
+          return 1;
+        }
         return 0;
       }
       if (num.test(A) || num.test(B)) {
         return A - B;
       }
-        return A.localeCompare(B);
+      return A.localeCompare(B);
     });
     if (e.target.value === 'asc') {
       setList(newList);
@@ -112,18 +133,9 @@ const App = () => {
     }
   };
 
-  const handleDoneClick = () => {
-    setDoneChecked(!doneChecked);
-    if (!isSearched) {
-      setListLength(!doneChecked ? list.length : todoList.length);
-    }
-  };
-
   const showPage = () => {
     const page = [];
-    (isSearched ? searchResult : list)
-    .filter((item) => (!doneChecked ? !item.doneTime : true))
-    .forEach((element, index) => { if (index % 3 === 0) { page.push(index); } });
+    list.forEach((element, index) => { if (index % 3 === 0) { page.push(index); } });
     return (
       page.map((item, index) => (
         <button type="submit" onClick={() => setPageNum(index)}>
@@ -132,6 +144,12 @@ const App = () => {
       ))
     );
   };
+
+  useEffect(() => {
+    setListLength(list.length);
+  },
+    [list]);
+
   return (
     <Style.Container>
       <Style.Header>
@@ -148,13 +166,13 @@ const App = () => {
             type="text"
             className="searchBox"
             placeholder="search…"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={searchItem}
+            onChange={(e) => setSearchItem(e.target.value)}
           />
           <button
             type="submit"
             className="searchButton"
-            onClick={searchItem}>
+            onClick={search}>
             Search
           </button>
         </Style.Search>
@@ -178,7 +196,7 @@ const App = () => {
             <Style.ListText>{listLength} items</Style.ListText>
             <Style.ListText>
               <Style.Box>
-                  Sort:
+                Sort:
                 <input
                   name="sort"
                   value="asc"
@@ -206,18 +224,15 @@ const App = () => {
           </Style.Item>
           <Style.ListShow>
             {
-              (isSearched ? searchResult : list)
-              // .filter((array) => (isSearched ? array.title.toLowerCase().includes(search.toLowerCase()) : true))
-              .filter((item) => (!doneChecked ? !item.doneTime : true))
-              .slice(pageNum * 3, 3 * (pageNum + 1))
-              .map((item) => (
-                <TodoAct
-                  item={item}
-                  deleteTodo={deleteTodo}
-                  doneTodo={doneTodo}
-                  doneChecked={doneChecked}
-                />
-              ))
+              list
+                .slice(pageNum * 3, 3 * (pageNum + 1))
+                .map((item) => (
+                  <TodoAct
+                    item={item}
+                    deleteTodo={deleteTodo}
+                    doneTodo={markDone}
+                  />
+                ))
             }
           </Style.ListShow>
         </Style.ListBox>

@@ -120,12 +120,15 @@ export const Page = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  .button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1.5px solid gray;
-    width: 1.5em;
-    height: 1.5em;
-  }
+`;
+
+export const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1.5px solid gray;
+  width: 1.5em;
+  height: 1.5em;
+  color: ${(props) => (props.pageNum === props.index ? 'white' : 'gray')};
+  background-color: ${(props) => (props.pageNum === props.index ? 'gray' : 'transparent')};
 `;

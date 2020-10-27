@@ -106,9 +106,8 @@ const App = () => {
     return (isSortAsc ? A.localeCompare(B) : B.localeCompare(A));
   };
 
-  const page = [];
   const renderList = list.filter((item) => (!doneChecked ? !item.doneTime : true)).filter((array) => array.title.toLowerCase().includes(searchItem.toLowerCase()));
-  renderList.forEach((element, index) => { if (index % pageSize === 0) { page.push(index); } });
+  const page = [...Array(Math.ceil(renderList.length / pageSize))].map((item, index) => index + 1);
   useEffect(() => {
     setListLength(renderList.length);
   },
@@ -204,9 +203,9 @@ const App = () => {
           {
             page
             .map((item, index) => (
-              <button type="submit" onClick={() => setPageNum(index)} style={{ ...(pageNum === index ? { backgroundColor: 'gray', color: 'white' } : {}) }}>
+              <Style.Button pageNum={pageNum} index={index} type="submit" onClick={() => setPageNum(index)}>
                 {index + 1}
-              </button>
+              </Style.Button>
             ))
           }
         </Style.Page>

@@ -204,7 +204,7 @@ const App = () => {
             page
             .map((item, index) => (
               <Style.Button pageNum={pageNum} index={index} type="submit" onClick={() => setPageNum(index)}>
-                {index + 1}
+                {item}
               </Style.Button>
             ))
           }

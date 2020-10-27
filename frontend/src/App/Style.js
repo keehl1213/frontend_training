@@ -129,6 +129,6 @@ export const Button = styled.div`
   border: 1.5px solid gray;
   width: 1.5em;
   height: 1.5em;
-  color: ${(props) => (props.pageNum === props.index ? 'white' : 'gray')};
-  background-color: ${(props) => (props.pageNum === props.index ? 'gray' : 'transparent')};
+  color: ${(props) => (props.pageNum === props.item ? 'white' : 'gray')};
+  background-color: ${(props) => (props.pageNum === props.item ? 'gray' : 'transparent')};
 `;

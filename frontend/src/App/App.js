@@ -48,7 +48,7 @@ const App = () => {
   const [list, setList] = useState(Data);
   const [searchItem, setSearchItem] = useState('');
   const [inputSearchItem, setInputSearchItem] = useState('');
-  const [pageNum, setPageNum] = useState(0);
+  const [pageNum, setPageNum] = useState(1);
   const [isSortAsc, setIsSortAsc] = useState(true);
   const pageSize = 3;
 
@@ -64,7 +64,7 @@ const App = () => {
   const deleteTodo = (id) => {
     const newList = list.filter((item) => item.id !== id);
     setList(newList);
-    setPageNum(0);
+    setPageNum(1);
   };
 
   const markDone = (id) => {
@@ -73,17 +73,17 @@ const App = () => {
     const findIndexNum = newList.findIndex((item) => (item.id === id));
     newList.splice(findIndexNum, 1, { ...findDoneObj, doneTime: new Date().format() });
     setList(newList);
-    setPageNum(0);
+    setPageNum(1);
   };
 
   const handleDoneClick = () => {
     setDoneChecked(!doneChecked);
-    setPageNum(0);
+    setPageNum(1);
   };
 
   const search = () => {
     setSearchItem(inputSearchItem);
-    setPageNum(0);
+    setPageNum(1);
   };
 
   const sortFuc = (a, b) => {
@@ -188,7 +188,7 @@ const App = () => {
             {
               renderList
                 .sort(sortFuc)
-                .slice(pageNum * pageSize, pageSize * (pageNum + 1))
+                .slice((pageNum - 1) * pageSize, pageSize * pageNum)
                 .map((item) => (
                   <TodoAct
                     item={item}
@@ -202,8 +202,8 @@ const App = () => {
         <Style.Page>
           {
             page
-            .map((item, index) => (
-              <Style.Button pageNum={pageNum} index={index} type="submit" onClick={() => setPageNum(index)}>
+            .map((item) => (
+              <Style.Button pageNum={pageNum} item={item} type="submit" onClick={() => setPageNum(item)}>
                 {item}
               </Style.Button>
             ))

@@ -5,7 +5,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: gray;  
+  color: gray;
   font-family: Arial;
 `;
 
@@ -30,7 +30,7 @@ export const TextDelete = styled.div`
   text-decoration: line-through;
 `;
 
-export const ContentBox = styled.div` 
+export const ContentBox = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@ export const AddList = styled.div`
   .inputBox {
     width: 100%;
     height: 2em;
-    border-style: none;  
+    border-style: none;
     border-bottom: 1.5px gray solid;
     background-color: transparent;
   }
@@ -53,7 +53,22 @@ export const AddList = styled.div`
     border-style:none;
     background-color: white;
     border: 1.5px gray solid;
-    width: 5%; 
+    width: 5%;
+  }
+`;
+
+export const Search = styled.div`
+  width: 90%;
+  margin-bottom: 10px;
+  .searchBox {
+    border-style: none;
+    background-color: transparent;
+    border: 1.5px gray solid;
+  }
+  .searchButton {
+    border-style:none;
+    background-color: white;
+    border: 1.5px gray solid;
   }
 `;
 
@@ -61,6 +76,7 @@ export const ListBox = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 20px;
   width: 80%;
 `;
 
@@ -89,5 +105,30 @@ export const Revise = styled.div`
 `;
 
 export const ListText = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Box = styled.div`
   display: block;
+  :not(:last-child){
+    margin-right: 20px;
+  }
+`;
+
+export const Page = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1.5px solid gray;
+  width: 1.5em;
+  height: 1.5em;
+  color: ${(props) => (props.pageNum === props.item ? 'white' : 'gray')};
+  background-color: ${(props) => (props.pageNum === props.item ? 'gray' : 'transparent')};
 `;

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-extend-native
 Date.prototype.format = function () {
     const yyyy = this.getFullYear().toString();
     const mm = (this.getMonth() + 1).toString();

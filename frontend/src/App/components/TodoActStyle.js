@@ -1,20 +1,6 @@
 import styled from 'styled-components';
 
-export const ListRow = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  height: 2em;
-  :hover {
-    background-color: #E5E5E5;
-  }
-`;
-
 export const ReviseBox = styled.div`
-  ${ListRow}:hover & {
-  display: block;
-  }
   display: none;
   font-weight: bold;
   .reviseRow {
@@ -27,6 +13,20 @@ export const ReviseBox = styled.div`
     color:gray;
     :not(:last-child){
       margin-right: 10px;
+    }
+  }
+`;
+
+export const ListRow = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  height: 2em;
+  :hover {
+    background-color: #E5E5E5;
+    ${ReviseBox} {
+      display: block;
     }
   }
 `;

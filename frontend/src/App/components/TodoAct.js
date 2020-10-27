@@ -2,8 +2,9 @@ import React from 'react';
 import * as TodoActStyle from "./TodoActStyle";
 
 const TodoAct = (props) => {
-  const { item, deleteTodo, doneTodo } = props;
+  const { item, deleteTodo, doneTodo} = props;
   const { id, title, doneTime } = item;
+
   return (
     <TodoActStyle.Item>
       <TodoActStyle.ListRow>

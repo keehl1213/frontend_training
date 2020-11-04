@@ -1,0 +1,166 @@
+
+*{
+    box-sizing: border-box;
+    margin:0; 
+    padding:0;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+header{
+    background-color: #FDFDFD;
+}
+.header{
+    display: flex;
+    height: 80px;
+    width: 60%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: darkgray;
+    padding: 0 10px;
+}
+.header div{
+    width: 66px;
+    text-align: center;
+}
+.cart-icon{
+    height: 20px;
+    margin: 0 12px;
+}
+.logo{
+    height: 24px;
+    font: 16px bold;
+    letter-spacing: 1px;
+    border-bottom: 4px solid #394A49;
+    margin: 0 40px 0 12px;
+    color:#394A49;
+}
+.content{
+    background-color: #EBECEE;
+    padding-bottom: 12px;
+}
+.top{
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+    height: 320px;
+}
+.top-left{
+    width: 50%;
+    text-align: left;
+    padding: 30px 28px;
+    background-color: #7D9AA3;
+}
+.top-left p{
+    color: #394A49;
+    font: 30px bold;
+    margin: 4px 0;
+    letter-spacing: 1px;
+}
+.top-left-des{
+    color: white;
+    font-size: 16px;
+    margin-top: 14px;
+    width: 230px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #394A49;
+    letter-spacing: 2px;
+}
+.top-image{
+    background-position: center center;
+    background-size: cover;
+    width: 50%;
+}
+.column{
+    display: flex;
+    width: 60%;
+    margin: 12px auto 0 auto;
+    justify-content: space-between;
+    height: 580px;
+}
+.column > div{
+    flex: 1;
+}
+.column > div:not(:first-child){
+    margin-left: 12px;
+}
+.image, .double-img1, .double-img2{
+    background-position: center center;
+    background-size: cover;
+}
+.double-img1, .double-img2{
+    width: 100%;
+    height: 284px;
+    margin-bottom: 12px;
+}
+.double-img2{
+    margin-bottom: 0;
+}
+.column-title{
+    width: 100%;
+    height: 142px;
+    font: 26px bold;
+    color: white;
+    text-align: center;
+    line-height: 142px;
+    background-color: #5B7175;
+    margin-bottom: 12px;
+}
+.double-box .image{
+    width: 100%;
+    height: 426px;
+}
+footer{
+    background-color: #5B7175;
+}
+.footer-top{
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+    padding: 30px 20px;
+    justify-content: space-between;
+    color: darkgrey;
+    font-size: 14px;
+}
+.social{
+    margin-top: 7px;
+}
+.social img{
+    height: 18px;
+    width: 18px;
+}
+.bank{
+    margin-top: 7px;
+}
+.bank img{
+    height: 20px;
+    width: 30px;
+}
+.email{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.email input{
+    background-color: #CED2CE;
+    padding: 6px;
+    border: none;
+    width: 100%;
+    margin-top: 3px;
+}
+.email button{
+    background-color: #3B484C;
+    padding: 8px 0;
+    text-align: center;
+    border: none;
+    width: 100%;
+    color: lightgray;
+    margin-top: 9px;
+}
+.copy{
+    background-color: #535353;
+    font: 10px;
+    color: lightgray;
+    text-align: center;
+    padding: 12px 0;
+}

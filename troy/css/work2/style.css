@@ -71,11 +71,43 @@ nav{
     justify-content: center;
 }
 
-.picbox{
+.picbox-pic {
+    position:relative;
+    background-image: url("https://picsum.photos/id/399/1264/300");
+    background-repeat:no-repeat;
+    height:300px;
+}
+
+.picbox-textblock {
+    background: rgba(222, 218, 207, 0.5);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    width: 400px;
+    height: 100px;
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    margin: -50px -200px;
 }
+
+.picbox-textblock p{
+    color:block;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.picbox-textblock input{
+    background:black;
+    color:white;
+    font-size: 12px;
+    font-weight: bolder;
+    border: none;
+    width: 100px;
+    height:20px;
+}
+
 
 .picbox_line{
     display: flex;
@@ -103,7 +135,6 @@ nav{
     flex-direction: column;
     justify-content: center;
     align-items: center
-
 }
 
 h1{
@@ -136,19 +167,54 @@ h3{
     margin-bottom: 20px;
 }
 
-.item_box{
+
+
+.item-box{
+    
     display: flex;
     justify-content: center;
+    /* width: 300px;
+    height:300px; */
 }
 
-.item_pic{
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left:5px;
+.item1{
+    position:relative;
+    background-image: url("https://picsum.photos/id/200/200/300");
+    background-repeat:no-repeat;
+    width:200px;
+    height:300px;
+    margin: 0px 5px;    
 }
 
-.item_text{
+.item2{
+    position:relative;
+    background-image: url("https://picsum.photos/id/201/200/300");
+    background-repeat:no-repeat;
+    width:200px;
+    height:300px;
+    margin: 0px 5px;
+}
+
+.item3{
+    position:relative;
+    background-image: url("https://picsum.photos/id/202/200/300");
+    background-repeat:no-repeat;
+    width:200px;
+    height:300px;
+    margin: 0px 5px;
+}
+
+.item2 p{
+    font-size: 32px;
+    letter-spacing: 10px;
+    position:absolute;
+    left: 50%;
+    top: 40px;
+    margin: 0px -50px;
+}
+
+
+.black-text{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -156,7 +222,11 @@ h3{
     background: black;
     color:white;
     height: 50px;
+    width:200px;
     font-size: 12px;
+    position:absolute;
+    left: 0px;
+    bottom: 0px;
 }
 
 .tag{

@@ -36,10 +36,9 @@ nav{
     font-weight: bolder;
 }
 
-.logo a{
+.nav-style li .logo a{
     font-weight: bolder;
     color: rgb(208, 208, 208);
-    border-bottom: black 3px solid;
     font-size: 16px;
     border: none;
     letter-spacing: 3px;
@@ -75,7 +74,11 @@ nav{
     position:relative;
     background-image: url("https://picsum.photos/id/399/1264/300");
     background-repeat:no-repeat;
+    background-size: cover;
     height:300px;
+    display:flex;        
+    justify-content: center;
+    align-items: center; 
 }
 
 .picbox-textblock {
@@ -86,10 +89,6 @@ nav{
     align-items: center;
     width: 400px;
     height: 100px;
-    position:absolute;
-    left: 50%;
-    top: 50%;
-    margin: -50px -200px;
 }
 
 .picbox-textblock p{
@@ -147,9 +146,12 @@ h1{
     margin-top: 20px;
 }
 
-h2{
-    color: black;
-    font-size: 40px;
+.line {
+    display: flex;
+    align-items: center;
+    width: 30px;
+    border-top: solid black 1px;
+    margin: 20px 0px 20px 0px;
 }
 
 .text_box h2{
@@ -171,43 +173,45 @@ h3{
 
 .item-box{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.item1{
+.item-block{
     position:relative;
+    /* width:200px; */
+    height:300px;
+    flex-grow: 1;
+    margin: 0px 5px;
+}
+
+
+.item1{
     background-image: url("https://picsum.photos/id/200/200/300");
     background-repeat:no-repeat;
-    width:200px;
-    height:300px;
-    margin: 0px 5px;    
 }
 
 .item2{
-    position:relative;
     background-image: url("https://picsum.photos/id/201/200/300");
     background-repeat:no-repeat;
-    width:200px;
-    height:300px;
-    margin: 0px 5px;
+
 }
 
 .item3{
-    position:relative;
     background-image: url("https://picsum.photos/id/202/200/300");
     background-repeat:no-repeat;
-    width:200px;
-    height:300px;
-    margin: 0px 5px;
 }
 
-.item2 p{
-    font-size: 32px;
-    letter-spacing: 10px;
+.item2 a{
+    font-size: 26px;
+    letter-spacing: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 100px;
     position:absolute;
     left: 50%;
-    top: 40px;
-    margin: 0px -50px;
+    right: 50%;
 }
 
 
@@ -217,13 +221,13 @@ h3{
     align-items: center;
     color:white;
     background: black;
-    color:white;
     height: 50px;
-    width:200px;
+    /* width:200px; */
     font-size: 12px;
     position:absolute;
     left: 0px;
     bottom: 0px;
+    right: 0px;
 }
 
 .tag{

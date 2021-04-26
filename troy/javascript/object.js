@@ -91,10 +91,11 @@ function transferObject()
 }
 transferObject();
 
+//==============test 7 ========================
 function transferObject2()
 {
   var obj = {};
-  var person = [
+  var projectInfo = [
     {
       project: 'project1',
       form: 'form1',
@@ -145,8 +146,42 @@ function transferObject2()
     },
   ];
 
+  let prjobj = {};
+  for(let i=0; i<5; i++)
+  {
+    let prjValue = `project${i}`;
+    let prjArray;
+    if( (prjArray = projectInfo.filter( ele => {if(ele.project == prjValue) return ele;})).length != 0)
+    {
+      let formobj = {};
+      for(let j=0; j<5; j++)
+      {
+        let formValue = `form${j}`;
+        let formArray;
+        if((formArray = prjArray.filter( ele => {if(ele.form == formValue) return ele;})).length != 0)
+        {
+          let partobj = {};
+          for(let l=0; l<5; l++)
+          {
+            let partValue = `part${l}`;
+            let partArray;
+            if((partArray =  formArray.filter( ele => {if(ele.part == partValue) return ele;})).length != 0)
+            {
+              partobj[partValue] = Object.values(partArray).map(item => item.tooling);
+              // console.log( partobj[partValue] );
+            }
+          }
+          formobj[formValue] = partobj;
+        }
+      }
+      prjobj[prjValue] = formobj;
+    }
+  }
+  Object.assign(obj, prjobj);
+  console.log("Test 7");
   console.log(obj);
 }
+transferObject2();
 
 
 

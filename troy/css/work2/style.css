@@ -75,6 +75,7 @@ nav{
     background-image: url("https://picsum.photos/id/399/1264/300");
     background-repeat:no-repeat;
     background-size: cover;
+    background-position:center;
     height:300px;
     display:flex;        
     justify-content: center;
@@ -87,8 +88,7 @@ nav{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 400px;
-    height: 100px;
+    padding: 30px;
 }
 
 .picbox-textblock p{
@@ -103,8 +103,8 @@ nav{
     font-size: 12px;
     font-weight: bolder;
     border: none;
-    width: 100px;
-    height:20px;
+    padding: 10px 50px;
+    margin: 20px 0px 0px 0px;
 }
 
 
@@ -179,50 +179,46 @@ h3{
 
 .item-block{
     position:relative;
-    /* width:200px; */
     height:300px;
-    flex-grow: 1;
+    flex: 1;
     margin: 0px 5px;
+    text-align: center;
 }
 
 
 .item1{
     background-image: url("https://picsum.photos/id/200/200/300");
     background-repeat:no-repeat;
+    background-size: cover;
+    background-position:center;
 }
 
 .item2{
     background-image: url("https://picsum.photos/id/201/200/300");
     background-repeat:no-repeat;
+    background-size: cover;
+    background-position:center;
 
 }
 
 .item3{
     background-image: url("https://picsum.photos/id/202/200/300");
     background-repeat:no-repeat;
+    background-size: cover;
+    background-position:center;
 }
 
-.item2 a{
+.item2 p{
     font-size: 26px;
     letter-spacing: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 100px;
-    position:absolute;
-    left: 50%;
-    right: 50%;
+    margin: 30px 0px;
 }
 
 
 .black-text{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color:white;
     background: black;
-    height: 50px;
-    /* width:200px; */
+    padding: 15px 0px;
     font-size: 12px;
     position:absolute;
     left: 0px;
@@ -230,20 +226,13 @@ h3{
     right: 0px;
 }
 
-.tag{
-    position: relative;
-    left: 0;
-    bottom: 0;
-}
-
-
 /* footer */
 footer{
     display: flex;
     justify-content: space-around;
     background:  rgb(42, 43, 45);
     color: rgb(208, 208, 208); 
-    height: 150px;
+    height: 170px;
     margin-top: 30px;
 }
 
@@ -251,6 +240,7 @@ footer{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding-top: 20px;
 } 
 
 .contact-box{
@@ -258,7 +248,6 @@ footer{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 20px;
 }
 .contact-text{
     font-size: 6px;
@@ -280,11 +269,23 @@ footer{
     margin-bottom: 20px;
 }
 
-.textbox{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.email-inpug{
+    background:rgb(73, 71, 72);
+    border:none;
+    padding: 5px 0px;
     font-size: 6px;
+}
+
+.email-inpug::placeholder { 
+    color: rgb(205, 205, 205);
+}
+
+.email-button{
+    background:rgb(205, 205, 205);
+    border:none;
+    padding: 5px 0px;
+    font-size: 6px;
+    margin: 5px 0px;
 }
 
 

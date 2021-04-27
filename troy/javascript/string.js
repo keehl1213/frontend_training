@@ -1,7 +1,9 @@
 
 function isMatch(a, b)
 {
-  console.log(a.match(b)!=null? "true" : "false")
+  let newA = a.split("").sort().join("");
+  let newB = b.split("").sort().join("");
+  console.log(newA.match(newB)!=null? "true" : "false")
 }
 
 function reverseString(a)
@@ -9,7 +11,7 @@ function reverseString(a)
   console.log(a.split("").reverse().join(""));
 }
 
-isMatch("anagaram", "nagaram");
+isMatch("anagram", "nagaram");
 isMatch("rat", "car");
 reverseString("hello");
 

@@ -25,10 +25,7 @@ function showArrayID (num) {
    }];
 
   console.log("Test 1:");
-  console.log(array.find((item) => {
-     if(item.id == num)
-      return item;
-  }));
+  console.log(array.find((item) => item.id === num));
 }
 showArrayID(5);
 
@@ -101,10 +98,7 @@ function addItemtoArray(item) {
       {id: 12, img: 'xxx', title: 'xxx', desc: 'xxx', price: 1200},
    ];
 
-   let index = array.indexOf(array.find((item) => {
-      if(item.id == 11)
-         return item;
-   }));
+   let index = array.findIndex((item) => item.id === 11);
    console.log("Test 3:");
    console.log(array);
    array.splice(index, 0, item);
@@ -138,10 +132,7 @@ function modifyArray(id, modify)
       "price": 400
   }];
 
-  let ele = array.find((item) => {
-   if(item.id == id)
-    return item;
-   });
+  let ele = array.find((item) => item.id === id);
    console.log("test 4:");
    console.log(array);
    ele = Object.assign(ele, modify);
@@ -163,10 +154,7 @@ function deleteID(id)
       {id: 11, img: 'xxx', title: 'xxx', desc: 'xxx', price: 2659},
       {id: 12, img: 'xxx', title: 'xxx', desc: 'xxx', price: 1200},
    ];
-   let index = array.indexOf(array.find((item) => {
-      if(item.id == id)
-         return item;
-   }));
+   let index = array.findIndex((item) => item.id === id);
    array.splice(index, 1);
    console.log("test 5:");
    console.log(array);

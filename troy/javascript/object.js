@@ -77,14 +77,19 @@ function transferObject()
       city: "TPE"
     },
   ];
-  obj.TPE = person.filter((ele) => {
-    if(ele["city"] == "TPE")
-      return (delete ele.city);
-  });
 
-  obj.KHH = person.filter((ele) => {
-    if(ele["city"] == "KHH")
-      return (delete ele.city);
+  var citygroup = person.map(item => item.city).reduce((a,b) => {
+    if(a.includes(b) === false) {
+      a.push(b);
+    }
+    return a;
+  }, []);
+
+  citygroup.forEach(city => {
+    obj[city] =  person.filter(ele => {
+      if(ele.city == city)
+        return (delete ele.city);
+    });
   });
   console.log("Test 6:");
   console.log(obj);
@@ -92,96 +97,101 @@ function transferObject()
 transferObject();
 
 //==============test 7 ========================
-function transferObject2()
-{
-  var obj = {};
-  var projectInfo = [
-    {
-      project: 'project1',
-      form: 'form1',
-      part: 'part1',
-      tooling: 1,
-    },
-    {
-      project: 'project1',
-      form: 'form1',
-      part: 'part1',
-      tooling: 2,
-    },
-    {
-      project: 'project1',
-      form: 'form1',
-      part: 'part1',
-      tooling: 3,
-    },
-    {
-      project: 'project1',
-      form: 'form1',
-      part: 'part2',
-      tooling: 4,
-    },
-    {
-      project: 'project1',
-      form: 'form1',
-      part: 'part2',
-      tooling: 5,
-    },
-    {
-      project: 'project1',
-      form: 'form2',
-      part: 'part3',
-      tooling: 6,
-    },
-    {
-      project: 'project2',
-      form: 'form3',
-      part: 'part4',
-      tooling: 7,
-    },
-    {
-      project: 'project2',
-      form: 'form3',
-      part: 'part4',
-      tooling: 8,
-    },
-  ];
-
-  let prjobj = {};
-  for(let i=0; i<5; i++)
+var projectInfo = [
   {
-    let prjValue = `project${i}`;
-    let prjArray;
-    if( (prjArray = projectInfo.filter( ele => {if(ele.project == prjValue) return ele;})).length != 0)
+    project: 'project1',
+    form: 'form1',
+    part: 'part1',
+    tooling: 1,
+  },
+  {
+    project: 'project1',
+    form: 'form1',
+    part: 'part1',
+    tooling: 2,
+  },
+  {
+    project: 'project1',
+    form: 'form1',
+    part: 'part1',
+    tooling: 3,
+  },
+  {
+    project: 'project1',
+    form: 'form1',
+    part: 'part2',
+    tooling: 4,
+  },
+  {
+    project: 'project1',
+    form: 'form1',
+    part: 'part2',
+    tooling: 5,
+  },
+  {
+    project: 'project1',
+    form: 'form2',
+    part: 'part3',
+    tooling: 6,
+  },
+  {
+    project: 'project2',
+    form: 'form3',
+    part: 'part4',
+    tooling: 7,
+  },
+  {
+    project: 'project2',
+    form: 'form3',
+    part: 'part4',
+    tooling: 8,
+  },
+];
+
+function getPartObject(partStr) {
+  return  projectInfo.reduce((a,b) => {
+    if(b.part === partStr)
     {
-      let formobj = {};
-      for(let j=0; j<5; j++)
-      {
-        let formValue = `form${j}`;
-        let formArray;
-        if((formArray = prjArray.filter( ele => {if(ele.form == formValue) return ele;})).length != 0)
-        {
-          let partobj = {};
-          for(let l=0; l<5; l++)
-          {
-            let partValue = `part${l}`;
-            let partArray;
-            if((partArray =  formArray.filter( ele => {if(ele.part == partValue) return ele;})).length != 0)
-            {
-              partobj[partValue] = Object.values(partArray).map(item => item.tooling);
-              // console.log( partobj[partValue] );
-            }
-          }
-          formobj[formValue] = partobj;
-        }
+      if(a[`${b.part}`]){
+        a[`${b.part}`].push(b.tooling);
+      } else {
+        a[`${b.part}`] = [].concat(b.tooling);
       }
-      prjobj[prjValue] = formobj;
     }
-  }
-  Object.assign(obj, prjobj);
-  console.log("Test 7");
-  console.log(obj);
+    return a;
+  }, {});
 }
-transferObject2();
+
+function getFormObject(formStr){
+  return projectInfo.reduce((a,b) => {
+    if(b.form === formStr)
+    {
+      if(a[`${b.form}`]) {
+        Object.assign(a[`${b.form}`], getPartObject(b.part));
+      } else {
+        a[`${b.form}`] = getPartObject(b.part);
+      }
+    }
+    return a;
+  }, {});
+}
+
+function getProjectObject()
+{
+  return projectInfo.reduce((a,b) => {
+    {
+      if(a[`${b.project}`]) {
+        Object.assign(a[`${b.project}`], getFormObject(b.form));
+      } else {
+        a[`${b.project}`] = getFormObject(b.form);
+      }
+    }
+    return a;
+  }, {});
+}
+
+console.log("Test 7");
+console.log(getProjectObject());
 
 
 

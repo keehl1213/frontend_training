@@ -16,10 +16,10 @@ Date.prototype.format=() => {
   let dd  = today.getDate();
   let mm = today.getMonth()+1;
   if(dd < 10)
-    dd = '0'+dd;
+    dd = `0${dd}`;
   if(mm < 10)
-    mm = '0'+mm;
-  console.log("Test 2: "+today.getFullYear()+"-"+mm+"-"+dd);
+    mm = `0${mm}`;
+  console.log(`Test 2: ${today.getFullYear()}-${mm}-${dd}`);
 }
 new Date().format();
 
@@ -78,19 +78,15 @@ function transferObject()
     },
   ];
 
-  var citygroup = person.map(item => item.city).reduce((a,b) => {
-    if(a.includes(b) === false) {
-      a.push(b);
+  var obj = person.reduce((a, b) => {
+    if(a[`${b.city}`]) {
+      a[`${b.city}`].push({name: b.name, age: b.age});
+    } else {
+      a[`${b.city}`] = [{name: b.name, age: b.age}];
     }
     return a;
-  }, []);
+  }, {});
 
-  citygroup.forEach(city => {
-    obj[city] =  person.filter(ele => {
-      if(ele.city == city)
-        return (delete ele.city);
-    });
-  });
   console.log("Test 6:");
   console.log(obj);
 }
@@ -148,42 +144,26 @@ var projectInfo = [
   },
 ];
 
-function getPartObject(partStr) {
-  return  projectInfo.reduce((a,b) => {
-    if(b.part === partStr)
-    {
-      if(a[`${b.part}`]){
-        a[`${b.part}`].push(b.tooling);
-      } else {
-        a[`${b.part}`] = [].concat(b.tooling);
-      }
-    }
-    return a;
-  }, {});
-}
-
-function getFormObject(formStr){
-  return projectInfo.reduce((a,b) => {
-    if(b.form === formStr)
-    {
-      if(a[`${b.form}`]) {
-        Object.assign(a[`${b.form}`], getPartObject(b.part));
-      } else {
-        a[`${b.form}`] = getPartObject(b.part);
-      }
-    }
-    return a;
-  }, {});
-}
-
 function getProjectObject()
 {
   return projectInfo.reduce((a,b) => {
-    {
-      if(a[`${b.project}`]) {
-        Object.assign(a[`${b.project}`], getFormObject(b.form));
+    if(a[`${b.project}`]) {
+      if(a[`${b.project}`][`${b.form}`]) {
+        if(a[`${b.project}`][`${b.form}`][`${b.part}`]){
+          a[`${b.project}`][`${b.form}`][`${b.part}`].push(b.tooling);
+        }else {
+          a[`${b.project}`][`${b.form}`][`${b.part}`] = [b.tooling];
+        }
       } else {
-        a[`${b.project}`] = getFormObject(b.form);
+        a[`${b.project}`][`${b.form}`] = {
+          [`${b.part}`] : [b.tooling]
+        }
+      }
+    } else {
+      a[`${b.project}`]  = {
+        [`${b.form}`] : {
+          [`${b.part}`] : [b.tooling]
+        }
       }
     }
     return a;
@@ -191,7 +171,8 @@ function getProjectObject()
 }
 
 console.log("Test 7");
-console.log(getProjectObject());
+console.log(JSON.stringify(getProjectObject()));
+
 
 
 

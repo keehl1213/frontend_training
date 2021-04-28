@@ -77,10 +77,7 @@ function searchArrayTitle (searchStr) {
   }];
 
   console.log("Test 2:");
-  console.log(array.filter((item) => {
-     if(item.title.indexOf(searchStr) >= 0)
-      return item;
-  }));
+  console.log(array.filter((item) => item.title.indexOf(searchStr) >= 0));
 }
 searchArrayTitle("美好");
 
@@ -135,7 +132,7 @@ function modifyArray(id, modify)
   let ele = array.find((item) => item.id === id);
    console.log("test 4:");
    console.log(array);
-   ele = Object.assign(ele, modify);
+   ele = {...ele, ...modify};
    console.log(array);
 }
 modifyArray(3, {title: "修改title", desc: "修改desc"});

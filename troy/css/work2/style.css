@@ -243,6 +243,11 @@ footer{
     padding-top: 20px;
 } 
 
+.copyright {
+    font-size: 10px;
+    text-align: center;
+}
+
 .contact-box{
     display: flex;
     flex-direction: column;
@@ -267,6 +272,7 @@ footer{
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 20px;
+    padding: 0px 120px;
 }
 
 .email-inpug{

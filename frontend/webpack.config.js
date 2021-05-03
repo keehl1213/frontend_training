@@ -92,5 +92,12 @@ module.exports = {
     // new BundleAnalyzerPlugin(),
   ],
   devServer: {
+    hot: true,
+    inline: true,
+    open: true,
+    overlay: {
+      errors: true,
+      warnings: false,
+    },
   }
 };

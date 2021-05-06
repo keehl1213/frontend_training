@@ -20,7 +20,7 @@ const Task = ({ info, onMarkDone, onDelete }) => (
 
 Task.propTypes = {
   info: PropTypes.shape({
-    isFinish: PropTypes.bool,
+    done: PropTypes.bool,
     name: PropTypes.string,
     date: PropTypes.string,
   }).isRequired,

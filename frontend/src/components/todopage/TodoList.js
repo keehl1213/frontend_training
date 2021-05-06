@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Task from './Task';
 import * as Style from './TodoStyle.js';
 
 const TodoList = ({ list, doMarkDone, doDelete }) => {
-  const [showList, setShowList] = useState(list);
   const [showDone, setShowDone] = useState(false);
 
   const filterList = (array, isShowDone) => (
@@ -15,14 +14,12 @@ const TodoList = ({ list, doMarkDone, doDelete }) => {
     setShowDone(e.target.checked);
   };
 
-  useEffect(() => {
-      setShowList(list);
-    }, [list]);
+  const showList = filterList(list, showDone);
 
   return (
     <>
       <Style.TaskInfoBar>
-        <p>{filterList(showList, showDone).length} Item(s)</p>
+        <p>{showList.length} Item(s)</p>
         <div>
           <label htmlFor="showDone">
             <input type="checkbox" id="showDone" value={showDone} onChange={onShowDoneChange} />
@@ -31,7 +28,7 @@ const TodoList = ({ list, doMarkDone, doDelete }) => {
         </div>
       </Style.TaskInfoBar>
       <Style.TaskInfoList>
-        {filterList(showList, showDone).map((todo) => (
+        {showList.map((todo) => (
           <Task info={todo} onMarkDone={doMarkDone} onDelete={doDelete} key={todo.id} />
         ))}
       </Style.TaskInfoList>

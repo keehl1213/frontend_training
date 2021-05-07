@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import * as Style from './TodoStyle.js';
 
 const Task = ({ info, onMarkDone, onDelete }) => (
-  <Style.TaskInfoRow>
-    <Style.TaskInfoName isFinish={info.done}>{info.name}</Style.TaskInfoName>
+  <Style.TaskInfoRow data-testid="test-info-row">
+    <Style.TaskInfoName data-testid="test-name" isFinish={info.done}>{info.name}</Style.TaskInfoName>
     <Style.TaskInfoBlock>
       {info.done ? (
-        <Style.TaskInfoDate>{info.date}</Style.TaskInfoDate>
+        <Style.TaskInfoDate data-testid="test-date">{info.date}</Style.TaskInfoDate>
       ) : (
         <>
-          <button type="button" onClick={() => onMarkDone(info)}>Mark as done</button>
-          <button type="button" onClick={() => onDelete(info)}>Delete</button>
+          <button type="button" data-testid="test-done-button" onClick={() => onMarkDone(info)}>Mark as done</button>
+          <button type="button" data-testid="test-delete-button" onClick={() => onDelete(info)}>Delete</button>
         </>
       )}
     </Style.TaskInfoBlock>

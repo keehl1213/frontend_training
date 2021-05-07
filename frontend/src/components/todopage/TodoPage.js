@@ -7,7 +7,7 @@ import TodoList from './TodoList';
 
 
 const getTimeStamp = () => Math.floor(new Date().getTime() / 1000);
-const transferDate = (date) => dayjs(date).format('YYYY/MM/DD HH:mm');
+export const transferDate = (date) => dayjs(date).format('YYYY/MM/DD HH:mm');
 
 const TodoPage = ({ list }) => {
   const [showList, setShowList] = useState(list);

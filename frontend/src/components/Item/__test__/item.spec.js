@@ -11,7 +11,7 @@ describe('Test List', () => {
     // console.log(items);
     expect(items).toHaveLength(1);
     expect(getByText(0)).toBeInTheDocument();
-  })
+  });
 
   test('add item', async () => {
     const { getByText } = render(<Item />);
@@ -23,5 +23,5 @@ describe('Test List', () => {
     expect(getByText(0)).toBeInTheDocument();
     expect(getByText(1)).toBeInTheDocument();
     expect(getByText(2)).toBeInTheDocument();
-  })
+  });
 });

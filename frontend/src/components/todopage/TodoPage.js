@@ -5,23 +5,12 @@ import * as Style from './TodoStyle.js';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 
-
-const getTimeStamp = () => Math.floor(new Date().getTime() / 1000);
+export const getTimeStamp = () => new Date().getTime();
 export const transferDate = (date) => dayjs(date).format('YYYY/MM/DD HH:mm');
 
 const TodoPage = ({ list }) => {
   const [showList, setShowList] = useState(list);
-  // const [apiData, setApiData] = useState([]);
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const res = await fetch('https://jsonplaceholder.typicode.com/todos');
-  //     const res1 = await res.json();
-  //     setApiData(res1);
-  //     console.log(res1);
-  //   }
-  //   fetchData();
-  // }, [list]);
   const createNewTask = (newName) => ({
         id: getTimeStamp(),
         name: newName,

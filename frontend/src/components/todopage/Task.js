@@ -1,22 +1,56 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import * as Style from './TodoStyle.js';
 
-const Task = ({ info, onMarkDone, onDelete }) => (
-  <Style.TaskInfoRow data-testid="test-info-row">
-    <Style.TaskInfoName data-testid="test-name" isFinish={info.done}>{info.name}</Style.TaskInfoName>
-    <Style.TaskInfoBlock>
-      {info.done ? (
-        <Style.TaskInfoDate data-testid="test-date">{info.date}</Style.TaskInfoDate>
-      ) : (
+const Task = ({ info, onMarkDone, onDelete }) => {
+  const [isHavor, setIsHavor] = useState(false);
+
+  const renderTask = (isDone) => {
+    if (isDone) {
+      return (<Style.TaskInfoDate data-testid="test-date">{info.date}</Style.TaskInfoDate>);
+    }
+    if (isHavor) {
+      return (
         <>
-          <button type="button" data-testid="test-done-button" onClick={() => onMarkDone(info)}>Mark as done</button>
-          <button type="button" data-testid="test-delete-button" onClick={() => onDelete(info)}>Delete</button>
+          <button type="button" data-testid="test-done-button" onClick={() => onMarkDone(info)}>
+            Mark as done
+          </button>
+          <button type="button" data-testid="test-delete-button" onClick={() => onDelete(info)}>
+            Delete
+          </button>
         </>
-      )}
-    </Style.TaskInfoBlock>
-  </Style.TaskInfoRow>
-);
+      );
+    }
+    return (<></>);
+  };
+
+  return (
+    <Style.TaskInfoRow
+      data-testid="test-info-row"
+      onMouseEnter={() => setIsHavor(true)}
+      onMouseLeave={() => setIsHavor(false)}
+    >
+      <Style.TaskInfoName data-testid="test-name" isFinish={info.done}>{info.name}</Style.TaskInfoName>
+      <Style.TaskInfoBlock>
+        {
+          renderTask(info.done)
+          // if(info.done){} (
+          //   <Style.TaskInfoDate data-testid="test-date">{info.date}</Style.TaskInfoDate>
+          //  ) : (
+          //   <>
+          //     <button type="button" data-testid="test-done-button" onClick={() => onMarkDone(info)}>
+          //       Mark as done
+          //     </button>
+          //     <button type="button" data-testid="test-delete-button" onClick={() => onDelete(info)}>
+          //         Delete
+          //     </button>
+          //   </>
+          //  )
+        }
+      </Style.TaskInfoBlock>
+    </Style.TaskInfoRow>
+  );
+};
 
 Task.propTypes = {
   info: PropTypes.shape({

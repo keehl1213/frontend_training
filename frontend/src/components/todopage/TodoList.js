@@ -19,10 +19,10 @@ const TodoList = ({ list, doMarkDone, doDelete }) => {
   return (
     <>
       <Style.TaskInfoBar>
-        <p>{showList.length} Item(s)</p>
+        <p data-testid="test-item-count">{showList.length} Item(s)</p>
         <div>
           <label htmlFor="showDone">
-            <input type="checkbox" id="showDone" value={showDone} onChange={onShowDoneChange} />
+            <input type="checkbox" id="showDone" data-testid="test-showDown-button" value={showDone} onChange={onShowDoneChange} />
             Show done items
           </label>
         </div>
@@ -36,10 +36,10 @@ const TodoList = ({ list, doMarkDone, doDelete }) => {
   );
 };
 
-export default TodoList;
-
 TodoList.propTypes = {
   list: PropTypes.array.isRequired,
   doMarkDone: PropTypes.func.isRequired,
   doDelete: PropTypes.func.isRequired,
 };
+
+export default TodoList;

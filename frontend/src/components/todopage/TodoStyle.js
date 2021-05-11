@@ -54,14 +54,9 @@ export const TaskInfoRow = styled.li`
   padding: 0px 10px;
   &:hover {
     background: rgb(229, 229, 229);
-    button{
-      display: block;
-    }
   }
 
   button {
-    display: block;
-    // display: none;
     cursor:pointer;
     white-space:nowrap;
     background: transparent;
@@ -71,9 +66,6 @@ export const TaskInfoRow = styled.li`
     color:rgb(112, 112, 112);
     outline: none;
     border: none;
-    &:hover {
-      color:blue;
-    }
   }
 
 `;

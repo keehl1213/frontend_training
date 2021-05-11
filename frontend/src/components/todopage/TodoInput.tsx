@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import * as Style from './TodoStyle.js';
+import * as Style from './TodoStyle';
 
-const TodoInput = ({doAdd, doClearDone}) => {
+const TodoInput = ({ doAdd, doClearDone }) => {
   const [inputName, setInputName] = useState("");
   const onInputChange = (e) => {
     setInputName(e.target.value);
@@ -23,9 +23,9 @@ const TodoInput = ({doAdd, doClearDone}) => {
   );
 };
 
-TodoInput.propTypes = {
-  doAdd: PropTypes.func.isRequired,
-  doClearDone: PropTypes.func.isRequired,
-};
+// TodoInput.propTypes = {
+//   doAdd: PropTypes.func.isRequired,
+//   doClearDone: PropTypes.func.isRequired,
+// };
 
 export default TodoInput;

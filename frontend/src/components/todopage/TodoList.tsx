@@ -1,12 +1,19 @@
 import React, { useState} from 'react';
 import PropTypes from 'prop-types';
 import Task from './Task';
-import * as Style from './TodoStyle.js';
+import * as Style from './TodoStyle';
+import { Todo } from './index';
 
-const TodoList = ({ list, doMarkDone, doDelete }) => {
+interface TodoListProps {
+  list: Todo[],
+  doMarkDone: (info: Todo) => void,
+  doDelete: (info: Todo) => void,
+}
+
+const TodoList = ({ list, doMarkDone, doDelete }: TodoListProps) => {
   const [showDone, setShowDone] = useState(false);
 
-  const filterList = (array, isShowDone) => (
+  const filterList = (array: Todo[], isShowDone: boolean) => (
     array.filter((ele) => (ele.done === isShowDone || ele.done === false))
   );
 
@@ -22,7 +29,7 @@ const TodoList = ({ list, doMarkDone, doDelete }) => {
         <p>{showList.length} Item(s)</p>
         <div>
           <label htmlFor="showDone">
-            <input type="checkbox" id="showDone" value={showDone} onChange={onShowDoneChange} />
+            <input type="checkbox" id="showDone" checked={showDone} onChange={onShowDoneChange} />
             Show done items
           </label>
         </div>
@@ -38,8 +45,8 @@ const TodoList = ({ list, doMarkDone, doDelete }) => {
 
 export default TodoList;
 
-TodoList.propTypes = {
-  list: PropTypes.array.isRequired,
-  doMarkDone: PropTypes.func.isRequired,
-  doDelete: PropTypes.func.isRequired,
-};
+// TodoList.propTypes = {
+//   list: PropTypes.array.isRequired,
+//   doMarkDone: PropTypes.func.isRequired,
+//   doDelete: PropTypes.func.isRequired,
+// };

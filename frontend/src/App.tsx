@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from "react-dom";
 import * as Style from './Style.js';
 import TodoPage from './components/todopage/TodoPage';
 
@@ -23,7 +22,7 @@ const todoList = [
     date: "完成時間:2021/05/05 11:42"
   }
 ];
-function App() {
+const App = () => {
   return (
     <Style.Body>
       <Style.Header>

@@ -8,11 +8,18 @@ const GitRevisionPlugin = require("git-revision-webpack-plugin");
 const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
+  entry: './src/index.tsx',
   output: {
+    path: path.join(__dirname, '/dist'),
     filename: "[name].[git-revision-hash].js"
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader',
+        exclude: /node_modules/,
+      },
       {
         enforce: 'pre',
         test: /\.js$/,
@@ -56,7 +63,7 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|mp4|ogg|svg|woff|woff2|ttf|eot)$/,
         loader: "file-loader"
-      }
+      },
     ]
   },
   resolve: {
@@ -67,7 +74,7 @@ module.exports = {
       ),
       "@": path.resolve(__dirname, "src/"),
     },
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
     modules: [
       path.resolve(__dirname, "src/"),
       path.resolve(__dirname, "node_modules/")
@@ -80,8 +87,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: path.resolve(__dirname, "src/index.html"),
-      filename: "./index.html"
+      template: 'src/index.html',
     }),
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-tw|zh-cn/),
     new webpack.DefinePlugin({

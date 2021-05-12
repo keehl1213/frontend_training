@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import * as Style from './TodoStyle.js';
+import * as Style from './TodoStyle';
 
 const Task = ({ info, onMarkDone, onDelete }) => {
   const [isHavor, setIsHavor] = useState(false);
@@ -52,16 +52,16 @@ const Task = ({ info, onMarkDone, onDelete }) => {
   );
 };
 
-Task.propTypes = {
-  info: PropTypes.shape({
-    done: PropTypes.bool,
-    name: PropTypes.string,
-    date: PropTypes.string,
-  }).isRequired,
-  onMarkDone: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-};
+// Task.propTypes = {
+//   info: PropTypes.shape({
+//     done: PropTypes.bool,
+//     name: PropTypes.string,
+//     date: PropTypes.string,
+//   }).isRequired,
+//   onMarkDone: PropTypes.func.isRequired,
+//   onDelete: PropTypes.func.isRequired,
+// };
 
-Task.defaultProps = {};
+// Task.defaultProps = {};
 
 export default Task;

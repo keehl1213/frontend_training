@@ -1,12 +1,19 @@
 import React, { useState} from 'react';
 import PropTypes from 'prop-types';
 import Task from './Task';
-import * as Style from './TodoStyle.js';
+import * as Style from './TodoStyle';
+import { Todo } from './index';
 
-const TodoList = ({ list, doMarkDone, doDelete }) => {
+interface TodoListProps {
+  list: Todo[],
+  doMarkDone: (info: Todo) => void,
+  doDelete: (info: Todo) => void,
+}
+
+const TodoList = ({ list, doMarkDone, doDelete }: TodoListProps) => {
   const [showDone, setShowDone] = useState(false);
 
-  const filterList = (array, isShowDone) => (
+  const filterList = (array: Todo[], isShowDone: boolean) => (
     array.filter((ele) => (ele.done === isShowDone || ele.done === false))
   );
 

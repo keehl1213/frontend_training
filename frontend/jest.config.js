@@ -1,13 +1,14 @@
 module.exports = {
   verbose: false,
   collectCoverage: false,
+  preset: 'ts-jest',
   collectCoverageFrom: [
     'src/utils/*.{js,jsx}',
-    'src/components/**/*.{js,jsx}',
-    'src/containers/**/*.{js,jsx}',
+    'src/components/**/*.{js,jsx,tsx}',
+    'src/containers/**/*.{js,jsx,tsx}',
     '!src/containers/**/Demo*/*',
     '!src/containers/**/style.js',
-    '!src/containers/App.js',
+    '!src/containers/App.tsx',
     '!src/components/**/style.js',
     '!src/**/index.js',
     '!**/node_modules/**',

@@ -1,27 +1,27 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import "@testing-library/jest-dom/extend-expect";
+import '@testing-library/jest-dom/extend-expect';
 import TodoList from '../TodoList';
 
 describe('Todo List Test', () => {
   const testList = [
     {
       id: 0,
-      name: "Jog in a playground",
+      name: 'Jog in a playground',
       done: false,
       date: ""
     },
     {
     id: 1,
-      name: "Read a book",
+      name: 'Read a book',
       done: true,
-      date: "完成時間:2021/05/05 11:42"
+      date: '完成時間:2021/05/05 11:42'
     },
     {
       id: 2,
-      name: "Write articles",
+      name: 'Write articles',
       done: false,
-      date: ""
+      date: ''
     }
   ];
 

@@ -1,24 +1,23 @@
 import React, { useState} from 'react';
-import PropTypes from 'prop-types';
 import Task from './Task';
 import * as Style from './TodoStyle';
 import { Todo } from './index';
 
-interface TodoListProps {
-  list: Todo[],
+type TodoListProps = {
+  list: Array<Todo>,
   doMarkDone: (info: Todo) => void,
   doDelete: (info: Todo) => void,
-}
+};
 
-const TodoList = ({ list, doMarkDone, doDelete }: TodoListProps) => {
+const TodoList = ({ list, doMarkDone, doDelete } : TodoListProps) => {
   const [showDone, setShowDone] = useState(false);
 
-  const filterList = (array: Todo[], isShowDone: boolean) => (
-    array.filter((ele) => (ele.done === isShowDone || ele.done === false))
+  const filterList = (array: Array<Todo>, isShowDone: boolean) : Array<Todo> => (
+    array.filter((ele:Todo) => (ele.done === isShowDone || ele.done === false))
   );
 
-  const onShowDoneChange = (e) => {
-    setShowDone(e.target.checked);
+  const onShowDoneChange = (e : React.FormEvent<HTMLInputElement>) : void => {
+    setShowDone(e.currentTarget.checked);
   };
 
   const showList = filterList(list, showDone);
@@ -29,7 +28,7 @@ const TodoList = ({ list, doMarkDone, doDelete }: TodoListProps) => {
         <p data-testid="test-item-count">{showList.length} Item(s)</p>
         <div>
           <label htmlFor="showDone">
-            <input type="checkbox" id="showDone" data-testid="test-showDown-button" value={showDone} onChange={onShowDoneChange} />
+            <input type="checkbox" id="showDone" data-testid="test-showDown-button" checked={showDone} onChange={onShowDoneChange} />
             Show done items
           </label>
         </div>
@@ -41,12 +40,6 @@ const TodoList = ({ list, doMarkDone, doDelete }: TodoListProps) => {
       </Style.TaskInfoList>
     </>
   );
-};
-
-TodoList.propTypes = {
-  list: PropTypes.array.isRequired,
-  doMarkDone: PropTypes.func.isRequired,
-  doDelete: PropTypes.func.isRequired,
 };
 
 export default TodoList;

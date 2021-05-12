@@ -1,17 +1,22 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';
 import * as Style from './TodoStyle';
 
-const TodoInput = ({ doAdd, doClearDone }) => {
-  const [inputName, setInputName] = useState("");
-  const onInputChange = (e) => {
-    setInputName(e.target.value);
+type TodoInputProps = {
+  doAdd: (name: string) => void;
+  doClearDone: () => void;
+};
+
+const TodoInput = ({ doAdd, doClearDone } : TodoInputProps) => {
+  const [inputName, setInputName] = useState('');
+  const onInputChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setInputName(e.currentTarget.value);
   };
 
-  const onAdd = (name) => {
-    if (name.trim() === "") return;
-    doAdd(name);
-    setInputName("");
+  const onAdd = (name: string) : void => {
+    if (name.trim() !== '') {
+      doAdd(name);
+      setInputName('');
+    }
   };
 
   return (
@@ -22,10 +27,5 @@ const TodoInput = ({ doAdd, doClearDone }) => {
     </Style.InputBox>
   );
 };
-
-// TodoInput.propTypes = {
-//   doAdd: PropTypes.func.isRequired,
-//   doClearDone: PropTypes.func.isRequired,
-// };
 
 export default TodoInput;

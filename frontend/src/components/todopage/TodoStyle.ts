@@ -70,7 +70,7 @@ export const TaskInfoRow = styled.li`
 
 `;
 
-export const TaskInfoName = styled.p<{ isFinish: boolean }>`
+export const TaskInfoName = styled.p < { isFinish: boolean } > `
   text-decoration: ${(props) => (props.isFinish ? "line-through" : "none")}
   overflow: auto;
 `;

@@ -4,27 +4,27 @@ import dayjs from 'dayjs';
 import * as Style from './TodoStyle';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
-
 import { Todo } from './index';
 
-interface TodoPageProps {
-  list: Todo[],
-}
-
 export const getTimeStamp = () => new Date().getTime();
-export const transferDate = (date) => dayjs(date).format('YYYY/MM/DD HH:mm');
+export const transferDate = (date : Date) => dayjs(date).format('YYYY/MM/DD HH:mm');
 
-const TodoPage = ({ list }: TodoPageProps) => {
+type TodoPageProps = {
+  list: Array<Todo>,
+};
+
+
+const TodoPage = ({list} : TodoPageProps) => {
   const [showList, setShowList] = useState(list);
 
-  const createNewTask = (newName: string) => ({
+  const createNewTask = (newName: string) : Todo => ({
     id: getTimeStamp(),
     name: newName,
     done: false,
-    date: ""
+    date: ''
   });
 
-  const doAdd = (name: string) => {
+  const doAdd = (name: string) : void => {
     const newList = produce(showList, (draftState) => {
       draftState.push(createNewTask(name));
     });
@@ -33,7 +33,7 @@ const TodoPage = ({ list }: TodoPageProps) => {
 
   const doMarkDone = (info: Todo): void => {
     const newList = produce(showList, (draft) => {
-      const index = draft.findIndex((todo) => todo.id === info.id);
+      const index = draft.findIndex((todo:Todo) => todo.id === info.id);
       if (index >= 0) {
         draft[index].done = true;
         draft[index].date = `完成時間:${transferDate(new Date())}`;
@@ -51,14 +51,12 @@ const TodoPage = ({ list }: TodoPageProps) => {
     setShowList(newList);
   };
 
-
   return (
     <Style.Container>
       <TodoInput doAdd={doAdd} doClearDone={doClearDone} />
       <TodoList list={showList} doMarkDone={doMarkDone} doDelete={doDelete} />
     </Style.Container>
   );
-
 };
 
 export default TodoPage;

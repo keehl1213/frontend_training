@@ -1,30 +1,28 @@
-/* eslint-disable import/no-named-as-default-member */
 import React from 'react';
 import MockDate from 'mockdate';
 import { render, screen, fireEvent} from '@testing-library/react';
-import "@testing-library/jest-dom/extend-expect";
+import '@testing-library/jest-dom/extend-expect';
 import TodoPage, {transferDate} from '../TodoPage';
-
 
 describe('Todo Page Test', () => {
   const testList = [
     {
       id: 0,
-      name: "Read a book",
+      name: 'Read a book',
       done: false,
       date: ""
     },
     {
       id: 1,
-      name: "Jog in a playground",
+      name: 'Jog in a playground',
       done: false,
       date: ""
     },
     {
       id: 2,
-      name: "Write articles",
+      name: 'Write articles',
       done: true,
-      date: "完成時間:2021/05/05 11:42"
+      date: '完成時間:2021/05/05 11:42'
     }
   ];
 
@@ -76,9 +74,9 @@ describe('Todo Page Test', () => {
     MockDate.set('2021-05-02T02:09:01');
     const checkBox = screen.getByTestId('test-showDown-button');
     fireEvent.click(checkBox);
-    const rows = screen.getAllByTestId("test-info-row");
+    const rows = screen.getAllByTestId('test-info-row');
     fireEvent.mouseOver(rows[1]);
-    const btMarkDown = screen.queryByTestId("test-done-button");
+    const btMarkDown = screen.queryByTestId('test-done-button');
     fireEvent.click(btMarkDown);
     const dates = screen.getAllByTestId('test-date');
     expect(dates).toHaveLength(2);

@@ -1,38 +1,46 @@
 import React from 'react';
 import * as Style from './Style.js';
 import TodoPage from './components/todopage/TodoPage';
+import {Todo} from './components/todopage/index';
 
-const todoList = [
+const todoList : Array<Todo> = [
   {
     id: 0,
-    name: "Read a book",
+    name: 'Read a book',
     done: false,
-    date: ""
+    date: ''
   },
   {
     id: 1,
-    name: "Jog in a playground",
+    name: 'Jog in a playground',
     done: false,
-    date: ""
+    date: ''
   },
   {
     id: 2,
-    name: "Write articles",
+    name: 'Write articles',
     done: true,
-    date: "完成時間:2021/05/05 11:42"
+    date: '完成時間:2021/05/05 11:42'
   }
 ];
+
+const TodoObj = {
+  list: todoList
+};
+
 const App = () => {
-  return (
+
+return(
     <Style.Body>
       <Style.Header>
         <Style.Title>TODO <b>LIST</b></Style.Title>
         <Style.TitleComment>A simple todolist built react hooks & context</Style.TitleComment>
       </Style.Header>
       <Style.Main>
-        <TodoPage list={todoList} />
+        <TodoPage {...TodoObj} />
       </Style.Main>
     </Style.Body>
   );
-}
+};
+
 export default App;

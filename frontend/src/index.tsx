@@ -1,12 +1,6 @@
-import React from 'react'  
+import React from 'react'
 import { render } from 'react-dom';
 import App from './App';
-
-// const Main = () => (
-//   <div>
-//     Hello world
-//   </div>
-// );
 
 render(
   <App />,

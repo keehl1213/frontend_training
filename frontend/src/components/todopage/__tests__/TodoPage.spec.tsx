@@ -3,6 +3,7 @@ import MockDate from 'mockdate';
 import { render, screen, fireEvent} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import TodoPage, {transferDate} from '../TodoPage';
+import Todo from '../index';
 
 describe('Todo Page Test', () => {
   const testList = [

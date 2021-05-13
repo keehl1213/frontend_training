@@ -14,9 +14,9 @@ describe('Todo Input Test', () => {
     const doClearDone = jest.fn(() => null);
     const todoInput = render(<TodoInput doAdd={doAdd} doClearDone={doClearDone} />);
     const input = todoInput.getByTestId('test-input');
-    expect(input.value).toBe('');
+    expect((input as HTMLInputElement).value).toBe('');
     fireEvent.change(input, { target: { value: 'buy a book' } });
-    expect(input.value).toBe('buy a book');
+    expect((input as HTMLInputElement).value).toBe('buy a book');
   });
 
   /*
@@ -33,7 +33,7 @@ describe('Todo Input Test', () => {
     fireEvent.change(input, { target: { value: 'buy a book' } });
     fireEvent.click(addButton);
     expect(doAdd).toHaveBeenCalledTimes(1);
-    expect(input.value).toBe('');
+    expect((input as HTMLInputElement).value).toBe('');
   });
 
   /*

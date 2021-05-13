@@ -32,7 +32,7 @@ describe('Todo List Test', () => {
     const itemsCount = todoList.getByTestId('test-item-count');
     const names = todoList.getAllByTestId('test-name');
     const dates = todoList.queryAllByTestId('test-date');
-    const checkBox = todoList.getByTestId('test-showDown-button');
+    const checkBox = todoList.getByTestId('test-showDown-button') as HTMLInputElement;
     expect(itemsCount).toHaveTextContent('2 Item(s)');
     expect(checkBox.checked).toEqual(false);
     expect(names).toHaveLength(2);
@@ -51,7 +51,7 @@ describe('Todo List Test', () => {
     const names = todoList.getAllByTestId('test-name');
     const dates = todoList.queryAllByTestId('test-date');
     expect(itemsCount).toHaveTextContent('3 Item(s)');
-    expect(checkBox.checked).toEqual(true);
+    expect((checkBox as HTMLInputElement).checked).toEqual(true);
     expect(names).toHaveLength(3);
     expect(names[0]).toHaveTextContent('Jog in a playground');
     expect(names[1]).toHaveTextContent('Read a book');

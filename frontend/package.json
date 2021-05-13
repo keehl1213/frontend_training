@@ -10,7 +10,7 @@
     "deploy": "npm run dist && gh-pages -d dist",
     "build:docker": "npm run dist && docker build -t reactdocker .",
     "lint": "eslint ./src --quiet",
-    "test": "jest --config=jest.config.js"
+    "test": "jest --config=jest.config.js --coverage"
   },
   "keywords": [],
   "author": "",

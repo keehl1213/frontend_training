@@ -1,13 +1,15 @@
 import React from 'react';
 import { render, fireEvent} from '@testing-library/react';
 import "@testing-library/jest-dom/extend-expect";
+import {getTimeStamp} from '../TodoPage';
 import Task from '../Task';
+import {Todo} from '../index'
 
 describe('Todo Task Test', () => {
-  test('test task without done', async () => {
+  test('test task without done', () => {
     const onMarkDone = jest.fn();
     const onDelete = jest.fn();
-    const info = {name: 'buy a book', done: false, date: ''};
+    const info : Todo = {id: getTimeStamp(), name: 'buy a book', done: false, date: ''};
     const task = render(<Task info={info} onMarkDone={onMarkDone} onDelete={onDelete} />);
     const name = task.getByTestId('test-name');
     const date = task.queryByTestId('test-date');
@@ -19,7 +21,7 @@ describe('Todo Task Test', () => {
   test('test task with done', async () => {
     const onMarkDone = jest.fn();
     const onDelete = jest.fn();
-    const info = {name: 'buy a book', done: true, date: '2020/05/07 17:41'};
+    const info = {id: getTimeStamp(), name: 'buy a book', done: true, date: '2020/05/07 17:41'};
     const task = render(<Task info={info} onMarkDone={onMarkDone} onDelete={onDelete} />);
     const name = task.getByTestId('test-name');
     const date = task.queryByTestId('test-date');
@@ -32,7 +34,7 @@ describe('Todo Task Test', () => {
   test('test Mark as down button', () => {
     const onMarkDone = jest.fn();
     const onDelete = jest.fn();
-    const info = {name: 'buy a book', done: false, date: ''};
+    const info = {id: getTimeStamp(), name: 'buy a book', done: false, date: ''};
     const task = render(<Task info={info} onMarkDone={onMarkDone} onDelete={onDelete} />);
     const row = task.getByTestId('test-info-row');
     fireEvent.mouseOver(row);
@@ -46,7 +48,7 @@ describe('Todo Task Test', () => {
   test('test Delete button', () => {
     const onMarkDone = jest.fn();
     const onDelete = jest.fn();
-    const info = {name: 'buy a book', done: false, date: ''};
+    const info = {id: getTimeStamp(), name: 'buy a book', done: false, date: ''};
     const task = render(<Task info={info} onMarkDone={onMarkDone} onDelete={onDelete} />);
     const row = task.getByTestId('test-info-row');
     fireEvent.mouseOver(row);

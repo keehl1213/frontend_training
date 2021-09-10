@@ -4,11 +4,11 @@
     "browser": true,
     "node": true,
     "mocha": true,
-    "es6": true,
+    "es6": true
   },
   "globals": {
     "ENV": false,
-    "FRONTEND": true,
+    "FRONTEND": true
   },
   "extends": "airbnb",
   "rules": {

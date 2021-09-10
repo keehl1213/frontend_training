@@ -1,11 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { render } from "react-dom";
+import TodoItem from './components/TodoItem';
+import '@/App.css';
 
-const Main = () => (
-  <div>
-    Hello world
-  </div>
-);
+const Main = () => {
+  const [inputText, setInputText] = useState('');
+  const [todoData, setTodoData] = useState([]);
+  // const [isDone ,setIsDone] = useState(false)
+
+  const handlerChangeText = (event) => {
+    setInputText(event.target.value);
+  };
+  const handlerAdd = () => {
+    if (inputText) {
+      setTodoData((todo) => [{item: inputText}, ...todo]);
+    }
+    setInputText('');
+  };
+  const handlerShowDone = () => {
+    console.log('show done');
+  };
+  const handlerDelete = (id) => {
+    const deletetodolist = todoData.filter((list, index) => list.item + index !== id);
+    setTodoData(deletetodolist);
+  };
+  const handlerDone = (id) => {
+    console.log(id);
+  };
+  return (
+    <div className="container">
+      <h1 className="font-text title">TODO<strong>LIST</strong></h1>
+      <h2 className="font-text subtitle">A Simple todolist built react hooks & context</h2>
+      <div className="todo-input-box">
+        <input placeholder="Add your task here..." value={inputText} onChange={handlerChangeText} />
+        <button onClick={handlerAdd} type="button">Add</button>
+      </div>
+      <div className="todo-data">
+        <div className="todo-checkbox-bar">
+          <span>{todoData.length} item(s)</span>
+          <label htmlFor="isdone">
+            <input type="checkbox" value="done" name="isdone" onChange={handlerShowDone} />
+             Show done items
+          </label>
+        </div>
+        {todoData.map((todo, index) => <TodoItem name={todo.item} key={todo.item} id={todo.item + index} handlerDelete={handlerDelete} handlerDone={handlerDone} />)}
+      </div>
+    </div>
+  );
+};
 
 render(<Main />, document.getElementById("app"));
 

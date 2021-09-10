@@ -9,7 +9,7 @@
     "dist": "npm run clean && webpack --mode production --config webpack.config.js",
     "deploy": "npm run dist && gh-pages -d dist",
     "build:docker": "npm run dist && docker build -t reactdocker .",
-    "lint": "eslint ./src --quiet"
+    "lint": "eslint --fix ./src --quiet"
   },
   "husky": {
     "hooks": {
@@ -23,7 +23,7 @@
   "dependencies": {
     "@rehooks/component-size": "1.0.3",
     "antd": "3.22.1",
-    "axios": "0.19.0",
+    "axios": "^0.21.4",
     "formik": "^1.5.8",
     "i18next": "17.0.12",
     "immer": "4.0.0",
@@ -38,7 +38,7 @@
     "sort-on": "4.1.0",
     "styled-components": "4.3.2",
     "uuid": "^3.4.0",
-    "yup": "^0.27.0"
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",

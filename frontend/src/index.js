@@ -13,7 +13,7 @@ const Main = () => {
   };
   const handlerAdd = () => {
     if (inputText) {
-      setTodoData((todo) => [{item: inputText}, ...todo]);
+      setTodoData((todo) => [...todo, {item: inputText}]);
     }
     setInputText('');
   };

@@ -5,31 +5,40 @@
   height: 100vh;
   text-align: center;
 }
-.todo-item {
+.text-line {
+  text-decoration: line-through;
+}
+.todo-item > li {
   text-align: left;
   list-style: none;
   color: #707070;
-}
-.todo-item > li {
   padding: 10px;
   display: flex;
   justify-content: space-between;
 }
-.todo-item:hover {
+.todo-item-hover > li {
+  text-align: left;
+  list-style: none;
+  color: #707070;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.todo-item-hover:hover {
   background: #e5e5e5;
 }
-.todo-item:hover .todo-item-actions {
+.todo-item-hover:hover .todo-item-actions {
   display: flex;
 }
 .todo-item-actions {
   display: none;
 }
-/* .isCompleted {
+.isCompleted {
   display: none;
 }
 .unCompleted {
   display: flex;
-} */
+}
 .todo-item-actions > button {
   background: transparent;
   border: none;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
 import TodoItem from './components/TodoItem';
 import '@/App.css';
@@ -6,27 +6,44 @@ import '@/App.css';
 const Main = () => {
   const [inputText, setInputText] = useState('');
   const [todoData, setTodoData] = useState([]);
-  // const [isDone ,setIsDone] = useState(false)
+  const [doneData, setDoneData] = useState([]);
+  const [isChecked, setIsChecked] = useState(false);
 
   const handlerChangeText = (event) => {
     setInputText(event.target.value);
   };
   const handlerAdd = () => {
     if (inputText) {
-      setTodoData((todo) => [...todo, {item: inputText}]);
+      setTodoData((todo) => [...todo, {item: inputText, status: false, time: null}]);
     }
     setInputText('');
   };
   const handlerShowDone = () => {
-    console.log('show done');
+   setIsChecked((checked) => !checked);
   };
   const handlerDelete = (id) => {
     const deletetodolist = todoData.filter((list, index) => list.item + index !== id);
     setTodoData(deletetodolist);
   };
   const handlerDone = (id) => {
-    console.log(id);
+  const updatedList = todoData.map((item, index) => {
+      if (item.item + index === id) {
+        const endTime = new Date().toLocaleString();
+        return {...item, status: true, time: endTime};
+      }
+      return item;
+    });
+    setDoneData((donelist) => [...donelist, updatedList.filter((list) => list.status === true)[0]]);
+    setTodoData(updatedList.filter((list) => list.status !== true));
   };
+  useEffect(() => {
+    if (isChecked) {
+      setTodoData(() => [...todoData, ...doneData]);
+    }
+    if (!isChecked) {
+      setTodoData(() => [...todoData].filter((list) => list.status !== true));
+    }
+    }, [isChecked]);
   return (
     <div className="container">
       <h1 className="font-text title">TODO<strong>LIST</strong></h1>
@@ -39,11 +56,11 @@ const Main = () => {
         <div className="todo-checkbox-bar">
           <span>{todoData.length} item(s)</span>
           <label htmlFor="isdone">
-            <input type="checkbox" value="done" name="isdone" onChange={handlerShowDone} />
+            <input type="checkbox" checked={isChecked} onChange={handlerShowDone} />
              Show done items
           </label>
         </div>
-        {todoData.map((todo, index) => <TodoItem name={todo.item} key={todo.item} id={todo.item + index} handlerDelete={handlerDelete} handlerDone={handlerDone} />)}
+        {todoData.map((todo, index) => <TodoItem value={todo} key={todo.item} id={todo.item + index} handlerDelete={handlerDelete} handlerDone={handlerDone} />)}
       </div>
     </div>
   );

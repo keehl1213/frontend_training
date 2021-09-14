@@ -16,13 +16,9 @@
   display: flex;
   justify-content: space-between;
 }
-.todo-item-hover > li {
-  text-align: left;
-  list-style: none;
-  color: #707070;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
+.todo-item--name {
+  width: 60%;
+  word-break: break-word;
 }
 .todo-item-hover:hover {
   background: #e5e5e5;

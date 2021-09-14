@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { render } from "react-dom";
 import TodoItem from './components/TodoItem';
 import '@/App.css';
@@ -6,44 +6,41 @@ import '@/App.css';
 const Main = () => {
   const [inputText, setInputText] = useState('');
   const [todoData, setTodoData] = useState([]);
-  const [doneData, setDoneData] = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isType, setIsType] = useState(['todo']);
 
   const handleChangeText = (event) => {
     setInputText(event.target.value.replace(/\s/g, ''));
   };
   const handleAdd = () => {
     if (inputText) {
-      setTodoData((todo) => [...todo, {item: inputText, status: false, time: null}]);
+      setTodoData((todo) => [...todo, {item: inputText, status: 'todo', time: '', id: new Date().getTime()}]);
     }
     setInputText('');
   };
-  const handleShowDone = () => {
-   setIsChecked((checked) => !checked);
+  const handleShowDone = (event) => {
+    const checkboxValue = event.target.value;
+    if (event.target.checked) {
+      setIsType((type) => [...type, checkboxValue]);
+    }
+    if (!event.target.checked) {
+      setIsType((type) => type.filter((element) => element !== checkboxValue));
+    }
   };
   const handleDelete = (id) => {
-    const deletetodolist = todoData.filter((list, index) => list.item + index !== id);
+    const deletetodolist = todoData.filter((list) => list.id !== id);
     setTodoData(deletetodolist);
   };
-  const handleDone = (id) => {
-  const updatedList = todoData.map((item, index) => {
-      if (item.item + index === id) {
+  const handleAction = (id, type) => {
+  const updatedList = todoData.map((item) => {
+      if (item.id === id) {
         const endTime = new Date().toLocaleString();
-        return {...item, status: true, time: endTime};
+        return {...item, status: type, time: endTime};
       }
       return item;
     });
-    setDoneData((donelist) => [...donelist, updatedList.filter((list) => list.status === true)[0]]);
-    setTodoData(updatedList.filter((list) => list.status !== true));
+    setTodoData(updatedList);
   };
-  useEffect(() => {
-    if (isChecked) {
-      setTodoData(() => [...todoData, ...doneData]);
-    }
-    if (!isChecked) {
-      setTodoData([...todoData].filter((list) => list.status !== true));
-    }
-    }, [isChecked]);
+
   return (
     <div className="container">
       <h1 className="font-text title">TODO<strong>LIST</strong></h1>
@@ -55,12 +52,18 @@ const Main = () => {
       <div className="todo-data">
         <div className="todo-checkbox-bar">
           <span>{todoData.length} item(s)</span>
-          <label htmlFor="isdone">
-            <input type="checkbox" checked={isChecked} id="isdone" onChange={handleShowDone} />
+          <span>
+            <label htmlFor="done">
+              <input type="checkbox" id="done" value="done" onChange={handleShowDone} />
              Show done items
-          </label>
+            </label>
+            <label htmlFor="archived">
+              <input type="checkbox" id="archived" value="archived" onChange={handleShowDone} />
+             Show archived items
+            </label>
+          </span>
         </div>
-        {todoData.map((todo, index) => <TodoItem value={todo} key={todo.item} id={todo.item + index} handleDelete={handleDelete} handleDone={handleDone} />)}
+        {todoData.filter((element) => isType.includes(element.status)).map((todo) => <TodoItem value={todo} key={todo.id} id={todo.id} handleDelete={handleDelete} handleAction={handleAction} />)}
       </div>
     </div>
   );

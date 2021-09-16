@@ -1,19 +1,23 @@
-import React, { useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { render } from "react-dom";
+import { v4 as uuidv4 } from 'uuid';
 import TodoItem from './components/TodoItem';
+import list from "./api/list";
 import '@/App.css';
 
 const Main = () => {
   const [inputText, setInputText] = useState('');
   const [todoData, setTodoData] = useState([]);
   const [isType, setIsType] = useState(['todo']);
+  const [isEdit, setIsEdit] = useState(false);
 
   const handleChangeText = (event) => {
-    setInputText(event.target.value.replace(/\s/g, ''));
+    setInputText(event.target.value);
   };
-  const handleAdd = () => {
+  const handleAdd = async () => {
     if (inputText) {
-      setTodoData((todo) => [...todo, {item: inputText, status: 'todo', time: '', id: new Date().getTime()}]);
+      const response = await list.addTodoItem({item: inputText, status: 'todo', time: '', id: uuidv4(), edited: isEdit });
+      setTodoData((todo) => [...todo, response.data]);
     }
     setInputText('');
   };
@@ -26,21 +30,46 @@ const Main = () => {
       setIsType((type) => type.filter((element) => element !== checkboxValue));
     }
   };
-  const handleDelete = (id) => {
-    const deletetodolist = todoData.filter((list) => list.id !== id);
+  const handleDelete = async (id) => {
+    await list.deleteTodoItem(id);
+    const deletetodolist = todoData.filter((item) => item.id !== id);
     setTodoData(deletetodolist);
   };
-  const handleAction = (id, type) => {
-  const updatedList = todoData.map((item) => {
-      if (item.id === id) {
-        const endTime = new Date().toLocaleString();
-        return {...item, status: type, time: endTime};
-      }
-      return item;
-    });
+  const handleAction = async (id, type) => {
+    const updatedList = todoData.map((element) => {
+        if (element.id === id) {
+          const endTime = new Date().toLocaleString();
+          return {...element, status: type, time: endTime};
+        }
+      return element;
+   });
+    const editIndex = updatedList.findIndex((element) => element.id === id);
+    await list.editTodoItem(id, updatedList[editIndex]);
     setTodoData(updatedList);
   };
-
+  const handleBlur = async (id, type, editvalue) => {
+    const editedList = todoData.map((item) => {
+    if (item.id === id) {
+        return {...item, item: editvalue, status: type, edited: !isEdit};
+      }
+    return item;
+   });
+    const editIndex = editedList.findIndex((element) => element.id === id);
+    await list.editTodoItem(id, editedList[editIndex]);
+    setIsEdit(() => !isEdit);
+    setTodoData(editedList);
+  };
+  const todolistData = useMemo(
+    () => todoData.filter((element) => isType.includes(element.status)),
+    [todoData, isType]
+  );
+  useEffect(() => {
+    const geToDoList = async () => {
+       const response = await list.geToDoList();
+       setTodoData(response.data);
+    };
+    geToDoList();
+  }, []);
   return (
     <div className="container">
       <h1 className="font-text title">TODO<strong>LIST</strong></h1>
@@ -51,7 +80,7 @@ const Main = () => {
       </div>
       <div className="todo-data">
         <div className="todo-checkbox-bar">
-          <span>{todoData.length} item(s)</span>
+          <span>{todolistData.length} item(s)</span>
           <span>
             <label htmlFor="done">
               <input type="checkbox" id="done" value="done" onChange={handleShowDone} />
@@ -63,7 +92,7 @@ const Main = () => {
             </label>
           </span>
         </div>
-        {todoData.filter((element) => isType.includes(element.status)).map((todo) => <TodoItem value={todo} key={todo.id} id={todo.id} handleDelete={handleDelete} handleAction={handleAction} />)}
+        {todolistData.map((todo) => <TodoItem value={todo} key={todo.id} id={todo.id} handleDelete={handleDelete} handleAction={handleAction} handleBlur={handleBlur} />)}
       </div>
     </div>
   );

@@ -1,0 +1,25 @@
+{
+  "list": [
+    {
+      "item": "Read a book",
+      "status": "todo",
+      "time": "",
+      "id": "b43ed06e-2b3f-4851-b871-f86d9a6c8485",
+      "edited": false
+    },
+    {
+      "item": "Study React",
+      "status": "todo",
+      "time": "",
+      "id": "8830f943-11ce-4d5e-89c9-ac037a6eae2c",
+      "edited": false
+    },
+    {
+      "item": "Play games",
+      "status": "todo",
+      "time": "",
+      "id": "4390c05e-8ff6-470d-9130-ea43fd20dd5e",
+      "edited": false
+    }
+  ]
+}

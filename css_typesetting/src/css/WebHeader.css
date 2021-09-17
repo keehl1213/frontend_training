@@ -1,0 +1,33 @@
+.web-header{
+  background: white;
+  height: 92px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.header-container{
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1080px;
+  color: #9c9c9c;
+}
+.header-container > h3{
+  color: #607D82;
+  text-decoration:underline;
+  text-decoration-thickness: 3px;
+  letter-spacing: 2px;
+  font-weight: 900;
+  cursor: pointer;
+}
+.header-icon{
+  width: 20px;
+  cursor: pointer;
+}
+.menu{
+  cursor: pointer;
+}

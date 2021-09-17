@@ -1,0 +1,30 @@
+.main{
+  min-width: '100vh';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-container{
+  max-width: 1020px;
+  overflow: hidden
+}
+.main-container_title{
+  background: #80a6ad;
+  width: 50%;
+  padding:0 18% 0px 20px;
+}
+.main-container_title  h3{
+  color: #405357;
+  font-size: 47px;
+  line-height: 1.2em 
+}
+.main-container_title  h4{
+color: #ffffff;
+letter-spacing: 2px;
+font-size: 22px;
+border-bottom: 2px solid #607d82;
+}
+.section{
+  margin: 92px 0px 0px 0px;
+  display: inline-flex;
+}

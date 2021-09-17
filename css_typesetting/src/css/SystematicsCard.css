@@ -1,0 +1,18 @@
+
+.card{
+  overflow: hidden;
+}
+.card-title{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 170px;
+  background: #80a6ad;
+  font-size: 48px;
+  color: white;
+}
+.card-img{
+  width: 100%;
+  object-fit: contain;
+}

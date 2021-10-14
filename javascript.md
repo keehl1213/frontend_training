@@ -31,5 +31,193 @@
 
 ### JS training online
 - [code wars](https://www.codewars.com/trainer/setup)(junior部分)
+
+
+
+
+
+### Testing 
+
+
+1. 請說明 let、const、var 差異
+
+2. 請說明 arrow function ()=>{} 跟普通的 function(){} 有什麼不同
+
+3. 將兩陣列合併： [1,2,3] [4,5,6]，預期結果如下：
+
+```
+ [1,2,3,4,5,6]
+```
+
+4. 陣列的操作
+
+資料集：
+```javascript=
+[
+  {name: 'john', age: 5}, 
+  {name: 'tom', age: 22}, 
+  {name: 'jack', age: 40},
+] 
+```
+ - 請印出 john  tom jack
+ - 請幫每個人加上email資料，預期結果如下：
+```javascript=
+[
+    {name: 'john', age: 18, email:'john@wistron.com'}, 
+    {name: 'tom', age: 20, email:'tom@wistron.com'},
+    {name: 'jack', age: 40, email:'jack@wistron.com'}}
+]
+```
+ - 請找出age大於30歲的人員
+ - 判斷是否每一個人都超過 30 歲
+ - 判斷是不是有人低於 10 歲 
+
+5. 物件的操作
+
+```javascript＝
+{
+  "1234567890": {
+    id: "1234567890",
+    name: "Nina Ricci",
+  },
+  "2345678901": {
+    id: "2345678901",
+    name: "Hello Kitty",
+  },
+  "3456789012": {
+    id: "3456789012",
+    name: "Pusheen the cat",
+  },
+}
+```
+
+ - 請印出 ["1234567890", "2345678901", "3456789012"]
+ - 請印出 ["Nina Ricci", "Hello Kitty", "Pusheen the cat"]
+
+
+6. 請問下列程式碼 console.log 分別會印出什麼？ 
+
+```javascript=
+const obj1 = { a: 1, b: 2 };
+
+let obj2 = obj1;
+let obj3 = Object.assign({},obj1);
+
+obj2.a = 3;
+
+obj1.b = 5;
+
+obj3.a = 7;
+
+console.log(obj1.a)
+console.log(obj1.b)
+console.log(obj2.a)
+console.log(obj2.b)
+console.log(obj3.a)
+console.log(obj3.b)
+```
+
+7. 請問==與===的差異並回答下方程式碼分別為 true 還是 false？
+
+```javascript=
+const a = '10';
+console.log(10 == a);
+console.log(10 === a);
+
+console.log(null == undefined)
+console.log(null === undefined)
+```
+8. 
+* 請說明以下程式碼在做什麼，console.log會印出什麼?
+
+```javascript=
+for(var i = 0; i < 5; i++) {
+  setTimeout(function(){ console.log(i); }, 20);
+}
+```
+
+* 承上，若想要印出12345，method將如何改寫?
+
+
+9. 請問console.log會印出什麼
+
+```javascript=
+console.log(1 + '2' * 3 + '4');
+```
+10. 請問 NaN 是什麼 ?
+
+11. 將相同的projectCode 提取出成一個新的object 如下 
+
+原始物件：
+```
+ [
+    {
+      "projectCode": "3PD0CZ01C001",
+      "status": "Active",
+      "productType": "NB",
+      "productName": "XXX",    
+      "partNumberId": "360.0B701.0011",    
+      "manufacturerId": "Walk",
+     
+    },
+    {
+      "projectCode": "3PD0CZ01C001",
+      "status": "Active",
+      "productType": "NB",
+      "productName": "XXX",     
+      "partNumberId": "660.01208.0001",    
+      "manufacturerId": "MACKING",
+    
+    },
+    {
+      "projectCode": "4PD0CZ01D003",
+      "status": "Active",
+      "productType": "GG",
+      "productName": "ZZZ",    
+      "partNumberId": "660.01208.0002",    
+      "manufacturerId": "MACKING",
+
+    }
+  ]
+
+  ```
+
+  目標物件：
+  ```
+  
+  [
+      {
+          "projectCode": "3PD0CZ01C001",
+          "productType": "NB",
+          "productName": "XXX",
+          "listData": [
+              {
+                status: "Active",               
+                partNumberId: "360.0B701.0011",              
+                manufacturerId: "Walk",
+               
+              },
+              {
+                status: "Active"               
+                partNumberId: "660.01208.0001"               
+                manufacturerId: "MACKING"               
+              }
+          ]
+      },
+      {
+          projectCode: "4PD0CZ01D003",
+          productName: "ZZZ",
+          productType: "GG",
+           "listData": [
+              {                
+                status: "Active",
+                partNumberId: "660.01208.0002",       
+                manufacturerId: "MACKING"               
+              }
+          ]
+      }
+  ]
+
+```
  
 
